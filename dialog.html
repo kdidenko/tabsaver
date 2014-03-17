@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Remember tabs</title>
+		<style>
+			body {width:360px;font-family:erdana,Geneva,sans-serif;font-size:10pt;color:rgb(80,120,175)}
+			.content {display:block;max-height:500px;overflow-x:hidden;overflow-y:scroll}
+			#list {list-style-type:none;padding-left:17px}
+			#list li {float:left;margin-top:10px}
+			#list li input[type=checkbox] {margin-left:-15px}
+			#list li span {display:block;font-size:90%;color:green;clear:both}		
+		</style>
+		<script src="dialog.js"></script>
+	</head>
+	<body>
+		<form action="#">
+			<fieldset id="ctrl">
+				<legend>Enter the name to store this session</legend>
+				<label for="name">Name:</label>
+				<input type="text" id="name" name="name" />
+				<button id="submit" type="submit" name="submit" value="Save">Save</button>
+			</fieldset>
+			<div class="content">
+				<ul id="list"></ul>			
+			</div>
+		</form>		
+	</body>
+</html>
