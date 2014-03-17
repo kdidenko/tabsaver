@@ -2,13 +2,34 @@
 // This software is distributed under GNU GPL v2 licence
 // For feedbacks and questions please feel free to contact me at kdidenko@gmail.com
 
+//TODO: add console logging where possible (log, warn, etc....)
+//TODO: wrap functionality below into FlowControlHandler Class BEGIN
+var doAsyncWait = true;
 
-var queryDone = false;
+var timeout = 500;
+
+function asyncWaitStart() {
+	asyncWait();	
+}
+
+function asyncWaitStop() {
+	doAsyncWait = false;
+}
+
+function asyncWait() {
+	if(doAsyncWait) {
+		setTimeout(asyncWait, timeout);
+	} else {
+		doAsyncWait = true;
+		return doAsyncWait;
+	}
+}
+//TODO: wrap functionality below into FlowControlHandler Class END
+
 
 /**
  * Tab object definition
  */
-
 function Tab () {
 	
 	this.id = null;
@@ -77,19 +98,29 @@ var session = new function() {
 		return this.tabs.length;		
 	};
 	
-	this.save = function() {
+	/**
+	 * Saves the session tabs into chrome.storage 
+	 * using the esssion name specified as a record key
+	 */
+	this.save = function(callback) {
 		// set the key for identifying stored data
 		var key = this.name;
+		// prepare tabs list JSON string
 		var tabs = JSON.stringify(this.getTabs());
+		// prepare the data object
 		var data = {};
 		data[key] = tabs;
 		
 		// save all session tabs into synchronized google storage
-		chrome.storage.sync.set(data, function(){
+		chrome.storage.sync.set(data, function() { // async function
 			if (chrome.runtime.lastError) {
-				alert(chrome.runtime.lastError.message);
+				console.log(chrome.runtime.lastError.message);
 		    }
+			// stop waiting for chrome.storage.sync.set
+			asyncWaitStop();
 		});
+		// let's wait for chrome.storage.sync.set async function to finish before proceeding
+		asyncWaitStart();
 		
 	};
 };
