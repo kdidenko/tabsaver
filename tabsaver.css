@@ -7,6 +7,7 @@ body {
 
 .content {
 	display: block;
+	height: 490px;
 	max-height: 500px;
 	overflow-x: hidden;
 	overflow-y: scroll;
@@ -23,7 +24,7 @@ ul#tabs li{
 
 #list {
 	list-style-type: none;
-	padding-left: 17px;
+	padding-left: 0px;
 }
 
 #list li {
@@ -31,9 +32,9 @@ ul#tabs li{
 	margin-top: 10px;
 }
 
-#list li input[type=checkbox] {
+/*#list li input[type=checkbox] {
 	margin-left: -15px;
-}
+}*/
 
 #list li span {
 	display: block;
