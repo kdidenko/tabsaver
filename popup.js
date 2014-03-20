@@ -19,5 +19,39 @@ function showOpenTab() {
 }
 
 // assign onclick event handlers to tab buttons elements
-document.getElementById('open_btn').onclick = showOpenTab;
-document.getElementById('save_btn').onclick = showSaveTab;
+//document.getElementById('open_btn').onclick = showOpenTab;
+//document.getElementById('save_btn').onclick = showSaveTab;
+
+
+
+	
+/*
+document.getElementById('save_btn').onclick = function() {
+	document.getElementById('save_btn').setAttribute('class', 'selected'); 
+};
+*/
+
+
+document.getElementById('open_btn').onclick = function() {
+	document.getElementById('open_btn').setAttribute('class', 'selected'); 
+	if(document.getElementById('save_btn').getAttribute("class") == "selected")	{
+		document.getElementById('save_btn').removeAttribute('class', 'selected'); 
+	}
+	showOpenTab();
+};
+
+document.getElementById('save_btn').onclick = function() {
+	document.getElementById('save_btn').setAttribute('class', 'selected'); 
+	if(document.getElementById('open_btn').getAttribute("class") == "selected")	{
+		document.getElementById('open_btn').removeAttribute('class', 'selected'); 
+	}
+	showSaveTab();
+};
+
+
+
+
+
+
+
+

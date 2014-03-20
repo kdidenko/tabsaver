@@ -21,7 +21,7 @@ body {
 
 .content {
 	display: block;
-	height: 460px;
+	height: 450px;
 	max-height: 500px;
 	overflow-x: hidden;
 	overflow-y: scroll;
@@ -75,7 +75,55 @@ ul#tabs li{
 
 #tabs {
 	list-style: none;
+	margin-top: -11px;
 }
+
+
+
+
+
+
+
+
+
+
+
+ul#tabs_link li {
+	display: inline;
+}
+
+ul#tabs_link li a {
+	color: #42454a;
+	background-color: #dedbde;
+	border: 1px solid black;
+	border-bottom: none;
+	padding: 0.3em; 
+	text-decoration: none;
+}
+
+ul#tabs_link li a.selected {
+	color: #000;
+	background-color: #f1f0ee;
+	font-weight: bold;
+	padding: 0.3em;
+}
+
+div.tabContent {
+	border: 1px solid black;
+	padding: 0.5em;
+	background-color: #f1f0ee;
+}
+
+
+
+
+
+
+
+
+
+
+
 
 .btn {
 	display: inline-block; 

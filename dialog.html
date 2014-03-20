@@ -8,13 +8,16 @@
 	<body>
 		<div id="wrap">
 			<div>
-				<span><a href="#" id="save_btn">Save</a></span>
-				<span><a href="#" id="open_btn">Open</a></span>		
+				<ul id="tabs_link">
+					<li><a href="#" id="save_btn" class="selected">Save</a></li>
+					<li><a href="#" id="open_btn">Open</a></li>	
+				</ul>	
 			</div>
+			
 			<ul id="tabs">
 			<!-- current session tab begin -->
 				<li>
-					<div id="save_tab">
+					<div id="save_tab" class="tabContent">
 						<form action="#">
 							<fieldset id="ctrl">
 								<legend>Enter the name to store this session</legend>
@@ -29,9 +32,10 @@
 					</div>
 				</li>
 				<!-- current session tab end -->
+				
 				<!-- saved sessions tab begin -->
 				<li>
-					<div id="open_tab">
+					<div id="open_tab" class="tabContent">
 						<form action="#">
 							<fieldset id="search">
 								<legend>Enter the session name to find</legend>
