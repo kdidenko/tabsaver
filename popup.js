@@ -2,9 +2,9 @@
  * opens the save session dialog to the  user
  */
 function showSaveTab() {
-	var open = document.getElementById('open');
+	var open = document.getElementById('open_tab');
 	open.style.display = 'none';
-	var save = document.getElementById('save');
+	var save = document.getElementById('save_tab');
 	save.style.display = 'block';
 }
 
@@ -12,9 +12,9 @@ function showSaveTab() {
  * opens the list of saved sessions dialog to the  user
  */
 function showOpenTab() {
-	var open = document.getElementById('open');
+	var open = document.getElementById('open_tab');
 	open.style.display = 'block';
-	var save = document.getElementById('save');
+	var save = document.getElementById('save_tab');
 	save.style.display = 'none';
 }
 

@@ -33,9 +33,13 @@ body {
 	clear: both
 }
 
-#open {
+#open_tab {
 	display: none;
 	overflow: hidden
+}
+
+#save_tab {
+	overflow: hidden;
 }
 
 #tabs {
