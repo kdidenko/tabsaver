@@ -44,11 +44,13 @@ ul#tabs li{
 
 #open_tab {
 	display: none;
-	overflow: hidden
+	overflow: hidden;
+	margin-left: -40px;
 }
 
 #save_tab {
 	overflow: hidden;
+	margin-left: -40px;
 }
 
 #tabs {
@@ -83,3 +85,4 @@ ul#tabs li{
 	background-color: #47a447; 
 	border-color: #398439;
 }
+
