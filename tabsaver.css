@@ -2,35 +2,44 @@ body {
 	width: 360px;
 	font-family: Verdana, Geneva, sans-serif;
 	font-size: 10pt;
-	color: rgb(80, 120, 175)
+	color: rgb(80, 120, 175);
 }
 
 .content {
 	display: block;
 	max-height: 500px;
 	overflow-x: hidden;
-	overflow-y: scroll
+	overflow-y: scroll;
+}
+
+legend {
+	text-align: center; 
+	font-size: 12pt;
+}
+
+ul#tabs li{
+	margin: 0px;
 }
 
 #list {
 	list-style-type: none;
-	padding-left: 17px
+	padding-left: 17px;
 }
 
 #list li {
 	float: left;
-	margin-top: 10px
+	margin-top: 10px;
 }
 
 #list li input[type=checkbox] {
-	margin-left: -15px
+	margin-left: -15px;
 }
 
 #list li span {
 	display: block;
 	font-size: 90%;
 	color: green;
-	clear: both
+	clear: both;
 }
 
 #open_tab {
@@ -44,4 +53,33 @@ body {
 
 #tabs {
 	list-style: none;
+}
+
+.btn {
+	display: inline-block; 
+	margin-bottom: 0; 
+	font-weight: 400; 
+	text-align: center; 
+	vertical-align: middle; 
+	cursor: pointer; 
+	background-image: none; 
+	border: 1px solid transparent;
+	white-space: nowrap; 
+	font-size: 14px; 
+	line-height: 1.29; 
+	border-radius: 6px; 
+	user-select: none; 
+	float: right;
+}
+	
+.btn-success {
+	color: #fff; 
+	background-color: #5cb85c; 
+	border-color: #4cae4c;
+}
+	
+.btn-success:hover, .btn-success:focus {
+	color: #000000; 
+	background-color: #47a447; 
+	border-color: #398439;
 }
