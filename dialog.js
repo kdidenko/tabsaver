@@ -198,6 +198,14 @@ var tabsaver = new function() {
 	this.renderSavedSessions = function() {
 		// get the list of saved session names
 		chrome.storage.sync.get(null, function(items) {
+			try {
+				if (chrome.runtime.lastError) {
+					console.warn(chrome.runtime.lastError.message);
+			    } 
+			} catch (exception) {
+				alert('exception.stack: ' + exception.stack);
+				console.error((new Date()).toJSON(), "exception.stack:", exception.stack);
+			}
 		    var allKeys = Object.keys(items);
 		    var ul = document.getElementById('stored');
 		    // remove all existing nodes
