@@ -5,9 +5,23 @@ body {
 	color: rgb(80, 120, 175);
 }
 
+#wrap {
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	margin: 0 auto -20px;
+}
+
+#footer, #push{
+	min-height: 20px;
+	color: #fff;
+	background-color: red; 
+	text-align: center;
+}
+
 .content {
 	display: block;
-	height: 490px;
+	height: 460px;
 	max-height: 500px;
 	overflow-x: hidden;
 	overflow-y: scroll;
@@ -27,10 +41,10 @@ ul#tabs li{
 	padding-left: 0px;
 }
 
-#list li {
+/*#list li {
 	float: left;
 	margin-top: 10px;
-}
+}*/
 
 /*#list li input[type=checkbox] {
 	margin-left: -15px;
@@ -39,8 +53,13 @@ ul#tabs li{
 #list li span {
 	display: block;
 	font-size: 90%;
+	padding-bottom: 10px;
 	color: green;
 	clear: both;
+}
+
+#list li:last-child span {
+	padding-bottom: 0px;
 }
 
 #open_tab {

@@ -6,46 +6,53 @@
 		<script type="text/javascript" src="dialog.js"></script>
 	</head>
 	<body>
-		<div>
-			<span><a href="#" id="save_btn">Save</a></span>
-			<span><a href="#" id="open_btn">Open</a></span>		
+		<div id="wrap">
+			<div>
+				<span><a href="#" id="save_btn">Save</a></span>
+				<span><a href="#" id="open_btn">Open</a></span>		
+			</div>
+			<ul id="tabs">
+			<!-- current session tab begin -->
+				<li>
+					<div id="save_tab">
+						<form action="#">
+							<fieldset id="ctrl">
+								<legend>Enter the name to store this session</legend>
+								<label for="name">Name:</label>
+								<input type="text" id="name" name="name" />
+								<button id="save" class="btn btn-success" type="submit" name="save" value="Save">Save</button>
+							</fieldset>
+							<div class="content">
+								<ul id="list"></ul>			
+							</div>
+						</form>
+					</div>
+				</li>
+				<!-- current session tab end -->
+				<!-- saved sessions tab begin -->
+				<li>
+					<div id="open_tab">
+						<form action="#">
+							<fieldset id="search">
+								<legend>Enter the session name to find</legend>
+								<label for="search">Find:</label>
+								<input type="text" id="search" name="search" />
+								<button id="find" class="btn btn-success" type="submit" name="find" value="Find">Find</button>
+							</fieldset>
+							<div class="sessions">
+								<ul id="stored"></ul>			
+							</div>
+						</form>		
+					</div>
+				</li>	
+			<!-- saved sessions tab end -->
+			</ul>
+			<div id="push"></div>
 		</div>
-		<ul id="tabs">
-		<!-- current session tab begin -->
-			<li>
-				<div id="save_tab">
-					<form action="#">
-						<fieldset id="ctrl">
-							<legend>Enter the name to store this session</legend>
-							<label for="name">Name:</label>
-							<input type="text" id="name" name="name" />
-							<button id="save" class="btn btn-success" type="submit" name="save" value="Save">Save</button>
-						</fieldset>
-						<div class="content">
-							<ul id="list"></ul>			
-						</div>
-					</form>
-				</div>
-			</li>
-			<!-- current session tab end -->
-			<!-- saved sessions tab begin -->
-			<li>
-				<div id="open_tab">
-					<form action="#">
-						<fieldset id="search">
-							<legend>Enter the session name to find</legend>
-							<label for="search">Find:</label>
-							<input type="text" id="search" name="search" />
-							<button id="find" class="btn btn-success" type="submit" name="find" value="Find">Find</button>
-						</fieldset>
-						<div class="sessions">
-							<ul id="stored"></ul>			
-						</div>
-					</form>		
-				</div>
-			</li>	
-		<!-- saved sessions tab end -->
-		</ul>
+		
+		<div id="footer">
+			<span>2014 © kdidenko & company</span>
+		</div>
 		<script type="text/javascript" src="popup.js"></script>
 	</body>
 </html>
