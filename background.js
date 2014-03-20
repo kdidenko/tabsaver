@@ -1,1 +1,3 @@
-chrome.browserAction.setBadgeText({text: "save"});
+chrome.browserAction.setBadgeText({
+	text: "save"
+});

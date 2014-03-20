@@ -8,21 +8,53 @@
 			#list {list-style-type:none;padding-left:17px}
 			#list li {float:left;margin-top:10px}
 			#list li input[type=checkbox] {margin-left:-15px}
-			#list li span {display:block;font-size:90%;color:green;clear:both}		
+			#list li span {display:block;font-size:90%;color:green;clear:both}
+			#open {display: none; overflow: hidden}	
+			#tabs {list-style: none;}
 		</style>
-		<script src="dialog.js"></script>
+		<script type="text/javascript" src="dialog.js"></script>
 	</head>
 	<body>
-		<form action="#">
-			<fieldset id="ctrl">
-				<legend>Enter the name to store this session</legend>
-				<label for="name">Name:</label>
-				<input type="text" id="name" name="name" />
-				<button id="submit" type="submit" name="submit" value="Save">Save</button>
-			</fieldset>
-			<div class="content">
-				<ul id="list"></ul>			
-			</div>
-		</form>		
+		<div>
+			<span><a href="#" id="save_btn">Save</a></span>
+			<span><a href="#" id="open_btn">Open</a></span>		
+		</div>
+		<ul id="tabs">
+		<!-- current session tab begin -->
+			<li>
+				<div id="save">
+					<form action="#">
+						<fieldset id="ctrl">
+							<legend>Enter the name to store this session</legend>
+							<label for="name">Name:</label>
+							<input type="text" id="name" name="name" />
+							<button id="submit" type="submit" name="submit" value="Save">Save</button>
+						</fieldset>
+						<div class="content">
+							<ul id="list"></ul>			
+						</div>
+					</form>
+				</div>
+			</li>
+			<!-- current session tab end -->
+			<!-- saved sessions tab begin -->
+			<li>
+				<div id="open">
+					<form action="#">
+						<fieldset id="search">
+							<legend>Enter the session name to find</legend>
+							<label for="search">Find:</label>
+							<input type="text" id="search" name="search" />
+							<button id="srch_submit" type="submit" name="srch_submit" value="Find">Find</button>
+						</fieldset>
+						<div class="sessions">
+							<ul id="stored"></ul>			
+						</div>
+					</form>		
+				</div>
+			</li>	
+		<!-- saved sessions tab end -->
+		</ul>
+		<script type="text/javascript" src="popup.js"></script>
 	</body>
 </html>

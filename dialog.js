@@ -217,13 +217,14 @@ function init() {
 	var submit = document.getElementById('submit');
 	if(submit) {
 		submit.onclick = function() {
+			// get the name of the session which will be used as a key for the storage record
 			var name = document.getElementById('name').value;
 			name = (name == 'undefined' || name == '' || name == null) ? prompt("Enter the session name"): name;
 			if(name == 'undefined' || name == '' || name == null) {
 				alert('Session name is required!');
 				return;
 			}
-			
+			// save the session with session name
 			tabsaver.storeSession(name);
 			
 			//////////
