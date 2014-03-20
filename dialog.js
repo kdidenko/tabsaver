@@ -110,6 +110,7 @@ var session = new function() {
 	 * using the session name specified as a record key
 	 */
 	this.save = function(callback) {
+		console.log('prepearing JSON data to save session');
 		// set the key for identifying stored data
 		var key = this.name;
 		// prepare tabs list JSON string
@@ -119,14 +120,22 @@ var session = new function() {
 		data[key] = tabs;
 		
 		// save all session tabs into synchronized google storage
+		console.log('saving ' + this.getTabs().length + ' tabs data to chrome.storage.sync');
 		chrome.storage.sync.set(data, function() { // async function
-			if (chrome.runtime.lastError) {
-				console.log(chrome.runtime.lastError.message);
-		    }
+			try {
+				if (chrome.runtime.lastError) {
+					console.warn(chrome.runtime.lastError.message);
+			    } 
+			} catch (exception) {
+				alert('exception.stack: ' + exception.stack);
+				console.error((new Date()).toJSON(), "exception.stack:", exception.stack);
+			}
 			// stop waiting for chrome.storage.sync.set
+			console.log('stopping waiting for asynchronous "chrome.storage.sync.set" function to finish');
 			asyncWaitStop();
 		});
 		// let's wait for chrome.storage.sync.set async function to finish before proceeding
+		console.log('waiting for asynchronous "chrome.storage.sync.set" function to finish');
 		asyncWaitStart();
 		callback();
 	};
@@ -134,6 +143,9 @@ var session = new function() {
 
 /**
  * Main object of extension implemented via singleton notation
+ */
+/**
+ * 
  */
 var tabsaver = new function() {
 
@@ -197,6 +209,7 @@ var tabsaver = new function() {
 	 */
 	this.renderSavedSessions = function() {
 		// get the list of saved session names
+		console.log('queriing chrome.storage.sync for saved extension sessions');
 		chrome.storage.sync.get(null, function(items) {
 			try {
 				if (chrome.runtime.lastError) {
@@ -207,12 +220,15 @@ var tabsaver = new function() {
 				console.error((new Date()).toJSON(), "exception.stack:", exception.stack);
 			}
 		    var allKeys = Object.keys(items);
+		    console.log('retreived ' + allKeys.length + ' stored sessions from chrome.storage.sync');
 		    var ul = document.getElementById('stored');
 		    // remove all existing nodes
+		    console.log('clearing old data from saved sessions view');
 		    while (ul.hasChildNodes()) {
 		    	ul.removeChild(ul.lastChild);
 		    }		    
 		    // move through all sessions and build the list
+		    console.log('building the fresh list of saved sessions');
 		    for ( var i = 0; i < allKeys.length; i++) {
 		    	// create list item
 		    	var li = document.createElement('li');
@@ -224,51 +240,75 @@ var tabsaver = new function() {
 			    ul.appendChild(li);
 			}
 		    // stop waiting for chrome.storage.sync.get
+		    console.log('stopping waiting for asynchronous "chrome.storage.sync.get" function to finish');
 		    asyncWaitStop();
 		});
 		// let's wait for chrome.storage.sync.get async function to finish before proceeding
+		console.log('waiting for asynchronous "chrome.storage.sync.get" function to finish');
 		asyncWaitStart();
 	};
 
+	/**
+	 * Stores current session into user's Google account storage 
+	 */
 	this.storeSession = function(name) {
 		session.name = name;
 		session.save(function(){
+			console.log('refreshing saved sessions view');
 			tabsaver.renderSavedSessions();
 		});
 	};
 
+	/**
+	 * Returns current session object
+	 */
 	this.getSession = function() {
 		return session;
+	};
+	
+	/**
+	 * Determines if user is currently logged in to his Google account.
+	 * Otherwise extension can not function properly.
+	 */	
+	this.isUserLogedIn = function() {
+		// write code here!!!	
 	};
 
 };
 
+
+/**
+ * Main entry point of extension. Works as an initialization 
+ * function to entire extension functionality.
+ */
 function init() {
+	tabsaver.isUserLogedIn();
+	//alert(chrome.identity);
 	var save = document.getElementById('save');
 	// assign event handler to Save button
 	if(save) {
 		// submit was clicked
 		save.onclick = function() {
+			console.log('"Save" button was clicked');
 			// get the name of the session which will be used as a key for the storage record
 			var name = document.getElementById('name').value;
 			name = (name == 'undefined' || name == '' || name == null) ? prompt("Enter the session name"): name;
 			if(name == 'undefined' || name == '' || name == null) {
+				console.warn('session name was not entered during saving the session');
 				alert('Session name is required!');
 				return;
 			}
 			// save the session with session name
+			console.log('savinng session named "' + name + '"');
 			tabsaver.storeSession(name);
 		};
 		
+		// render the extension views
+		console.log('rendering extension views');
 		tabsaver.renderView();
 		
 	}
 };
-
-function doNothing() {
-	alert('doing nothing');
-	return true;
-}
 
 
 /**
