@@ -3,6 +3,13 @@
 // For feedbacks and questions please feel free to contact me at kdidenko@gmail.com
 
 //TODO: add console logging where possible (log, warn, etc....)
+//TODO: add extension settings where it's possible to define:
+	// 1. whenever to save all windows tabs all current window only
+	// 2. whenever to save pinned tabs or not
+
+//TODO: add setting whenever to trim list items titles or not
+//TODO: add setting whenever to trim list items urls or not
+
 //TODO: wrap functionality below into FlowControlHandler Class BEGIN
 var doAsyncWait = true;
 
@@ -100,7 +107,7 @@ var session = new function() {
 	
 	/**
 	 * Saves the session tabs into chrome.storage 
-	 * using the esssion name specified as a record key
+	 * using the session name specified as a record key
 	 */
 	this.save = function(callback) {
 		// set the key for identifying stored data
@@ -144,7 +151,45 @@ var tabsaver = new function() {
 	 *  Renders the list of tabs from currently opened session
 	 */
 	this.renderCurrentSession = function() {
-		//alert('rendering current session view');
+		// get the list output element
+		list = document.getElementById('list');
+		// get the list of all opened tabs
+		chrome.tabs.query({'pinned' : false}, function(result) {
+			// populate the session with Tab objects
+			for ( var i = 0; i < result.length; i++) {
+				var tab = new Tab();
+				tab.setId(result[i].id);
+				tab.setTitle(result[i].title);
+				tab.setUrl(result[i].url);
+				// add tab to session singleton object
+				session.addTab(tab);				
+								
+				// render DOM to display tabs list to user				
+				var li = document.createElement('li');
+				
+				// create check box
+				var chk = document.createElement('input');
+				chk.type = 'checkbox';
+				chk.name = 'tab[' + result[i].id + ']';
+				chk.checked = 'checked';
+				
+				// add tab title element
+				var span = document.createElement('span');
+				title = result[i].title.length > 50 ? result[i].title.substring(0, 46) + '...' : result[i].title;
+				var t = document.createTextNode(title);
+				li.appendChild(chk);
+				li.appendChild(t);
+				
+				// add tab url element
+				href = result[i].url.length > 50 ? result[i].url.substring(0, 46) + '...' : result[i].url;
+				t = document.createTextNode(href);
+				
+				// compose all elements together
+				span.appendChild(t);
+				li.appendChild(span);
+				list.appendChild(li);
+			};
+		});
 	};
 	
 	/**
@@ -179,19 +224,8 @@ var tabsaver = new function() {
 
 	this.storeSession = function(name) {
 		session.name = name;
-		// query all opened tabs
-		chrome.tabs.query({'pinned': false}, function(result) {
-			for (var i = 0; i < result.length; i++) {
-				var tab = new Tab();
-				tab.setId(result[i].id);
-				tab.setTitle(result[i].title);
-				tab.setUrl(result[i].url);				
-				session.addTab(tab);
-			}
-			// save all tabs added to the session
-			session.save(function(){
-				tabsaver.renderSavedSessions();
-			});
+		session.save(function(){
+			tabsaver.renderSavedSessions();
 		});
 	};
 
@@ -200,54 +234,6 @@ var tabsaver = new function() {
 	};
 
 };
-
-/*
-function renderForm() {
-	list = document.getElementById('list');
-	// TODO: add extension settings where it's possible to define:
-	// 1. whenever to save all windows tabs all current window only
-	// 2. whenever to save pinned tabs or not
-	chrome.tabs.query({
-		'pinned' : false
-	}, function(result) {
-		for ( var i = 0; i < result.length; i++) {
-			var tab = {
-				'id' : result[i].id,
-				'url' : result[i].url,
-				'title' : result[i].title
-			};
-			tabs.push(tab);
-			var li = document.createElement('li');
-			var chk = document.createElement('input');
-			chk.type = 'checkbox';
-			chk.name = 'tab[' + result[i].id + ']';
-			chk.checked = 'checked';
-			var span = document.createElement('span');
-			// TODO: add setting whenever to trim title or not
-			title = result[i].title.length > 50 ? result[i].title.substring(0,
-					46)
-					+ '...' : result[i].title;
-			var t = document.createTextNode(title);
-			li.appendChild(chk);
-			li.appendChild(t);
-			// TODO: add setting whenever to trim url or not
-			href = result[i].url.length > 50 ? result[i].url.substring(0, 46)
-					+ '...' : result[i].url;
-			t = document.createTextNode(href);
-			span.appendChild(t);
-			li.appendChild(span);
-			list.appendChild(li);
-		};
-	});
-}
-
-function getUserSessions() {
-	chrome.storage.sync.get('myKey', function(obj) {
-		console.log(obj);
-		alert(obj);
-	});
-};
-*/
 
 function init() {
 	var save = document.getElementById('save');
