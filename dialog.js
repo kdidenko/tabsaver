@@ -121,6 +121,7 @@ var session = new function() {
 		});
 		// let's wait for chrome.storage.sync.set async function to finish before proceeding
 		asyncWaitStart();
+		callback();
 	};
 };
 
@@ -154,6 +155,10 @@ var tabsaver = new function() {
 		chrome.storage.sync.get(null, function(items) {
 		    var allKeys = Object.keys(items);
 		    var ul = document.getElementById('stored');
+		    // remove all existing nodes
+		    while (ul.hasChildNodes()) {
+		    	ul.removeChild(ul.lastChild);
+		    }		    
 		    // move through all sessions and build the list
 		    for ( var i = 0; i < allKeys.length; i++) {
 		    	// create list item
@@ -184,9 +189,9 @@ var tabsaver = new function() {
 				session.addTab(tab);
 			}
 			// save all tabs added to the session
-			session.save();
-			
-			//tabsaver.renderView();
+			session.save(function(){
+				tabsaver.renderSavedSessions();
+			});
 		});
 	};
 
