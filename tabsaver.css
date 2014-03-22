@@ -2,7 +2,8 @@ body {
 	width: 360px;
 	font-family: Verdana, Geneva, sans-serif;
 	font-size: 10pt;
-	color: rgb(80, 120, 175);
+	color: #000;
+	margin: 0px!important;
 }
 
 #wrap {
@@ -10,6 +11,7 @@ body {
 	height: auto !important;
 	height: 100%;
 	margin: 0 auto -20px;
+	background-color: red;
 }
 
 #footer, #push{
@@ -54,7 +56,7 @@ ul#tabs li{
 	display: block;
 	font-size: 90%;
 	padding-bottom: 10px;
-	color: green;
+	color: blue;
 	clear: both;
 }
 
@@ -76,17 +78,13 @@ ul#tabs li{
 #tabs {
 	list-style: none;
 	margin-top: -11px;
+	margin-bottom: 0px;
 }
 
-
-
-
-
-
-
-
-
-
+ul#tabs_link{
+	margin-top: 5px;
+	padding-left: 10px;
+}
 
 ul#tabs_link li {
 	display: inline;
@@ -94,8 +92,10 @@ ul#tabs_link li {
 
 ul#tabs_link li a {
 	color: #42454a;
-	background-color: #dedbde;
+	background-color: #ff9c00;
 	border: 1px solid black;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
 	border-bottom: none;
 	padding: 0.3em; 
 	text-decoration: none;
@@ -103,27 +103,17 @@ ul#tabs_link li a {
 
 ul#tabs_link li a.selected {
 	color: #000;
-	background-color: #f1f0ee;
+	background-color: #ff9000;
 	font-weight: bold;
 	padding: 0.3em;
 }
 
 div.tabContent {
-	border: 1px solid black;
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
 	padding: 0.5em;
 	background-color: #f1f0ee;
 }
-
-
-
-
-
-
-
-
-
-
-
 
 .btn {
 	display: inline-block; 
