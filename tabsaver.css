@@ -11,13 +11,13 @@ body {
 	height: auto !important;
 	height: 100%;
 	margin: 0 auto -20px;
-	background-color: red;
+	/*background-color: red;*/
 }
 
 #footer, #push{
 	min-height: 20px;
-	color: #fff;
-	background-color: red; 
+	color: grean;
+	padding-top: 1px;
 	text-align: center;
 }
 
@@ -82,7 +82,8 @@ ul#tabs li{
 }
 
 ul#tabs_link{
-	margin-top: 5px;
+	margin-top: 0px;
+	padding-top: 5px;
 	padding-left: 10px;
 }
 
@@ -92,27 +93,29 @@ ul#tabs_link li {
 
 ul#tabs_link li a {
 	color: #42454a;
-	background-color: #ff9c00;
+	/*background-color: #FAAC58;*/
 	border: 1px solid black;
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
 	border-bottom: none;
 	padding: 0.3em; 
+	padding-bottom: 2px;
 	text-decoration: none;
 }
 
 ul#tabs_link li a.selected {
 	color: #000;
-	background-color: #ff9000;
+	/*background-color: #FE9A2E;*/
 	font-weight: bold;
 	padding: 0.3em;
+	padding-bottom: 2px;
 }
 
 div.tabContent {
 	border-top: 1px solid black;
 	border-bottom: 1px solid black;
 	padding: 0.5em;
-	background-color: #f1f0ee;
+	/*background-color: #f1f0ee;*/
 }
 
 .btn {
