@@ -12,7 +12,9 @@ body {
 	height: auto !important;
 	height: 100%;
 	margin: 0 auto -20px;
-	/*background-color: red;*/
+	
+	padding-top: 5px;
+	background-color: #D8D8D8;
 }
 
 #footer, #push{
@@ -27,6 +29,7 @@ body {
 	display: block;
 	height: 450px;
 	max-height: 500px;
+	padding-left: 3px;
 	overflow-x: hidden;
 	overflow-y: scroll;
 }
@@ -52,9 +55,9 @@ ul#tabs li{
 	margin-top: 10px;
 }*/
 
-/*#list li input[type=checkbox] {
-	margin-left: -15px;
-}*/
+#list li input[type=checkbox] {
+	margin: 3px 3px 3px 0px;
+}
 
 input#name{
 	width: 210px;
@@ -107,8 +110,8 @@ ul#tabs_link li {
 }
 
 ul#tabs_link li a {
-	color: #fff;
-	background-color: #4cae4c;
+	color: #000;
+	background-color: #C9C9C9;
 	border: 1px solid black;
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
@@ -119,7 +122,7 @@ ul#tabs_link li a {
 }
 
 ul#tabs_link li a:hover {
-	color: #000;
+	color: red;
 }
 
 ul#tabs_link li a.selected {
@@ -134,7 +137,7 @@ ul#tabs_link li a.selected {
 div.tabContent {
 	border-top: 1px solid black;
 	border-bottom: 1px solid black;
-	padding: 0.5em;
+	padding: 5px 0px;
 	background-color: white;
 }
 
