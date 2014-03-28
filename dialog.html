@@ -7,7 +7,7 @@
 	</head>
 	<body>
 		<div id="wrap">
-			<div>
+			<div id="tabs_link_content">
 				<ul id="tabs_link">
 					<li><a href="#" id="save_btn" class="selected">Save</a></li>
 					<li><a href="#" id="open_btn">Open</a></li>	
@@ -37,12 +37,14 @@
 				<li>
 					<div id="open_tab" class="tabContent">
 						<form action="#">
-							<fieldset id="search">
-								<legend>Enter the session name to find</legend>
-								<label for="search">Find:</label>
-								<input type="text" id="search" name="search" />
-								<button id="find" class="btn btn-success" type="submit" name="find" value="Find">Find</button>
-							</fieldset>
+							<!-- Search Sessions
+								<fieldset id="search">
+									<legend>Enter the session name to find</legend>
+									<label for="search">Find:</label>
+									<input type="text" id="search" name="search" />
+									<button id="find" class="btn btn-success" type="submit" name="find" value="Find">Find</button>
+								</fieldset>
+							-->
 							<div class="sessions">
 								<ul id="stored"></ul>			
 							</div>
@@ -55,7 +57,7 @@
 		</div>
 		
 		<div id="footer">
-			<span>2014 &copy; kdidenko &amp; bvesylivskyy</span>
+			<span>2014 &copy; ITO-Global, LLC</span>
 		</div>
 		<script type="text/javascript" src="popup.js"></script>
 	</body>

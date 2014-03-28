@@ -4,6 +4,7 @@ body {
 	font-size: 10pt;
 	color: #000;
 	margin: 0px!important;
+	background-color: #ffffff;
 }
 
 #wrap {
@@ -16,7 +17,8 @@ body {
 
 #footer, #push{
 	min-height: 20px;
-	color: grean;
+	color: white;
+	background-color: black;
 	padding-top: 1px;
 	text-align: center;
 }
@@ -28,6 +30,8 @@ body {
 	overflow-x: hidden;
 	overflow-y: scroll;
 }
+
+
 
 legend {
 	text-align: center; 
@@ -51,6 +55,11 @@ ul#tabs li{
 /*#list li input[type=checkbox] {
 	margin-left: -15px;
 }*/
+
+input#name{
+	width: 210px;
+	border-radius: 5px; 
+}
 
 #list li span {
 	display: block;
@@ -83,17 +92,23 @@ ul#tabs li{
 
 ul#tabs_link{
 	margin-top: 0px;
-	padding-top: 5px;
+	/*padding-top: 5px;*/
 	padding-left: 10px;
+	margin-top: 5px;
+	/*padding-bottom: 11px;
+	margin-bottom: 1px;*/
 }
 
 ul#tabs_link li {
+	/*margin-top: 5px;
+	margin-bottom: 5px;*/
 	display: inline;
+	background-color: white;
 }
 
 ul#tabs_link li a {
-	color: #42454a;
-	/*background-color: #FAAC58;*/
+	color: #fff;
+	background-color: #4cae4c;
 	border: 1px solid black;
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
@@ -103,9 +118,14 @@ ul#tabs_link li a {
 	text-decoration: none;
 }
 
+ul#tabs_link li a:hover {
+	color: #000;
+}
+
 ul#tabs_link li a.selected {
 	color: #000;
-	/*background-color: #FE9A2E;*/
+	border-bottom: 1px solid white;
+	background-color: white;
 	font-weight: bold;
 	padding: 0.3em;
 	padding-bottom: 2px;
@@ -115,7 +135,7 @@ div.tabContent {
 	border-top: 1px solid black;
 	border-bottom: 1px solid black;
 	padding: 0.5em;
-	/*background-color: #f1f0ee;*/
+	background-color: white;
 }
 
 .btn {
