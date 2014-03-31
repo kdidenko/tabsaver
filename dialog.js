@@ -39,9 +39,9 @@ function asyncWait() {
  */
 function Tab () {
 	
-	this.id = null;
+	//this.id = null; just to save space
 	
-	this.title = null;
+	//this.title = null; just to save space
 	
 	this.url = null;
 	
@@ -173,7 +173,7 @@ var tabsaver = new function() {
 			for ( var i = 0; i < result.length; i++) {
 				var tab = new Tab();
 				tab.setId(result[i].id);
-				tab.setTitle(result[i].title);
+				//tab.setTitle(result[i].title); not saving tab title to save so extra space
 				tab.setUrl(result[i].url);
 				// add tab to session singleton object
 				session.addTab(tab);				
@@ -238,6 +238,7 @@ var tabsaver = new function() {
 		    	// create link
 		    	var a = document.createElement('a');
 		    	a.setAttribute('href', '#');
+		    	a.setAttribute('rel', allKeys[i]);
 		    	a.onclick = tabsaver.openSession;
 		    	// create title text
 		    	var title = document.createTextNode(allKeys[i]);
@@ -282,11 +283,31 @@ var tabsaver = new function() {
 		// write code here!!!	
 	};
 	
+	/**
+	 * Opens saved session in a new window
+	 */
 	this.openSession = function() {
-		alert(this.openedSessions);
+		// get the urls for session key specified
+		chrome.storage.sync.get(this.rel, function(result) {
+			var tabs = {};
+			var newTabs = [];
+			// walk though all urls saved
+			for (var key in result) {
+				tabs[key] = JSON.parse(result[key]);
+				tabs = tabs[key];
+				// build an array of urls for new window to open
+				for (var i = 0; i < tabs.length; ++i) {
+					newTabs.push(tabs[i].url);
+				}
+				// open new window with the list of saved urls
+				chrome.windows.create({
+					url: newTabs, focused: true
+				}, function() {
+					console.log('Session opened');
+				});
+			}
+		});
 	};
-	
-
 };
 
 /**
@@ -294,7 +315,7 @@ var tabsaver = new function() {
  * function to entire extension functionality.
  */
 function init() {
-	tabsaver.isUserLogedIn();
+	//tabsaver.isUserLogedIn();
 	//alert(chrome.identity);
 	var save = document.getElementById('save');
 	// assign event handler to Save button
@@ -318,7 +339,6 @@ function init() {
 		// render the extension views
 		console.log('rendering extension views');
 		tabsaver.renderView();
-		
 	}
 };
 
@@ -329,6 +349,3 @@ function init() {
 document.addEventListener('DOMContentLoaded', function() {
 	init();
 });
-
-
-
