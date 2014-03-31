@@ -148,6 +148,8 @@ var session = new function() {
  * 
  */
 var tabsaver = new function() {
+	
+	var openedSessions = null;
 
 	/**
 	 * Renders the main views of extension
@@ -220,6 +222,7 @@ var tabsaver = new function() {
 				console.error((new Date()).toJSON(), "exception.stack:", exception.stack);
 			}
 		    var allKeys = Object.keys(items);
+		    this.openedSessions = allKeys;
 		    console.log('retreived ' + allKeys.length + ' stored sessions from chrome.storage.sync');
 		    var ul = document.getElementById('stored');
 		    // remove all existing nodes
@@ -232,10 +235,15 @@ var tabsaver = new function() {
 		    for ( var i = 0; i < allKeys.length; i++) {
 		    	// create list item
 		    	var li = document.createElement('li');
+		    	// create link
+		    	var a = document.createElement('a');
+		    	a.setAttribute('href', '#');
+		    	a.onclick = tabsaver.openSession;
 		    	// create title text
-			    var title = document.createTextNode(allKeys[i]);
+		    	var title = document.createTextNode(allKeys[i]);
+		    	a.appendChild(title);		    	
 			    // append the title to list item
-			    li.appendChild(title);
+			    li.appendChild(a);
 			    // append list item to the list
 			    ul.appendChild(li);
 			}
@@ -273,9 +281,13 @@ var tabsaver = new function() {
 	this.isUserLogedIn = function() {
 		// write code here!!!	
 	};
+	
+	this.openSession = function() {
+		alert(this.openedSessions);
+	};
+	
 
 };
-
 
 /**
  * Main entry point of extension. Works as an initialization 
