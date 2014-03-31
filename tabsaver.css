@@ -89,6 +89,10 @@ input#name{
 	margin-left: -40px;
 }
 
+#open_tab form{
+	padding-bottom: 5px
+}
+
 #save_tab {
 	overflow: hidden;
 	margin-left: -40px;
