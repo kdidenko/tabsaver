@@ -12,15 +12,14 @@ body {
 	height: auto !important;
 	height: 100%;
 	margin: 0 auto -20px;
-	
 	padding-top: 5px;
-	background-color: #D8D8D8;
+	background-color: #000;
 }
 
 #footer, #push{
 	min-height: 20px;
 	color: white;
-	background-color: black;
+	background-color: #3d3d3d;
 	padding-top: 1px;
 	text-align: center;
 }
@@ -110,8 +109,8 @@ ul#tabs_link li {
 }
 
 ul#tabs_link li a {
-	color: #000;
-	background-color: #C9C9C9;
+	color: #ffffff;
+	background-color: #000000;
 	border: 1px solid black;
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
