@@ -1,15 +1,16 @@
 {
 	"manifest_version": 2,
-	"name": "Tabs Saver",
+	"name": "Tab Saver",
 	"description": "This extension stores opened tabs to reopen after browser restart.",
-	"version": "1.0.0", 
+	"version": "1.0.0",
+	"content_security_policy": "script-src 'self' https://ssl.google-analytics.com; object-src 'self'", 
 	"permissions": [
 		"tabs", 
 		"storage"		
 	],	
 	"browser_action": {
 		"default_icon": "icon-16.png",
-		"default_title" : "Tabs Saver Dialog",
+		"default_title" : "Tab Saver Dialog",
 		"default_popup": "dialog.html"
 	},
 	"background": {
