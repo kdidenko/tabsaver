@@ -13,7 +13,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb { 
-	background-color: #000000; 
+	background-color: #ff6e01; 
 	border-radius: 3px;
 }
 
@@ -28,17 +28,29 @@ body {
 
 #footer, #push{
 	min-height: 20px;
-	color: white;
-	background-color: #3d3d3d;
+	color: #909090;
+	background-color: #000000;
 	padding-top: 1px;
 	text-align: center;
+}
+
+#footer{
+	border-top: 1px solid #c89544;
+	padding: 8px;
+}
+
+#footer span a{
+	color: #c89544;
 }
 
 .content {
 	display: block;
 	height: 450px;
 	max-height: 500px;
+	padding-top: 8px;
+	padding-bottom: 8px;
 	padding-left: 3px;
+	background-color: #222222;
 	overflow-x: hidden;
 	overflow-y: scroll;
 }
@@ -67,14 +79,14 @@ input#name{
 }
 
 #list li {
-	color: rgb(77, 72, 61);
+	color: #c89544;
 }
 
 #list li span {
 	display: block;
 	font-size: 90%;
 	padding-bottom: 5px;
-	color: rgb(5, 63, 167);
+	color: #909090;
 	clear: both;
 }
 
@@ -128,13 +140,13 @@ ul#tabs_link li a {
 }
 
 ul#tabs_link li a:hover {
-	color: red;
+	color: #ff6e01;
 }
 
 ul#tabs_link li a.selected {
-	color: #000;
-	border-bottom: 1px solid #D8D8D8;
-	background-color: #D8D8D8;
+	color: #000000;
+	border-bottom: 1px solid #ff6e01;
+	background-color: #ff6e01;
 	font-weight: bold;
 	padding: 0.3em;
 	padding-bottom: 2px;
@@ -142,9 +154,9 @@ ul#tabs_link li a.selected {
 
 div.tabContent {
 	border-top: 1px solid black;
-	border-bottom: 1px solid black;
+	/*border-bottom: 1px solid black;*/
 	padding: 0px;
-	background-color: #D8D8D8;
+	background-color: #ff6e01;
 }
 
 div.tabContent form {
