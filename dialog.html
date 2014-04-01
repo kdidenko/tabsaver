@@ -21,12 +21,13 @@
 				<li>
 					<div id="save_tab" class="tabContent">
 						<form action="#">
-							<fieldset id="ctrl">
-								<legend>Enter the name to store this session</legend>
-								<label for="name">Name:</label>
-								<input type="text" id="name" name="name" />
-								<button id="save" class="btn btn-success" type="submit" name="save" value="Save">Save</button>
-							</fieldset>
+							<div class="content_field">
+								<fieldset id="ctrl">
+									<legend>Session <span class="white">Name</span></legend>
+									<input type="text" id="name" name="name" />
+									<button id="save" class="btn btn-success" type="submit" name="save" value="Save">Save</button>
+								</fieldset>
+							</div>
 							<div class="content">
 								<ul id="list"></ul>			
 							</div>
@@ -59,7 +60,7 @@
 		</div>
 		
 		<div id="footer">
-			<span>Tab Saver &copy; 2014 | <a href="#">ITO-Global, LLC</a></span>
+			<span>Tab Saver &copy; 2014 | <a href="http://www.ito-global.com">ITO-Global, LLC</a></span>
 		</div>
 		<script type="text/javascript" src="popup.js"></script>
 	</body>

@@ -26,7 +26,14 @@ body {
 	background-color: #000;
 }
 
-#footer, #push{
+#push{
+	min-height: 20px;
+	color: #909090;
+	background-color: #000000;
+	text-align: center;
+}
+
+#footer{
 	min-height: 20px;
 	color: #909090;
 	background-color: #000000;
@@ -43,9 +50,26 @@ body {
 	color: #c89544;
 }
 
+fieldset {
+	border: 1px solid #ff882e;
+	border-radius: 8px;
+	display: block;
+	background-color: #f45a00;
+}
+
+fieldset legend {
+	font-size: 12px;
+	font-weight: bold;
+	color: #f5d959;
+}
+
+fieldset legend span.white {
+	color: white !important;
+}
+
 .content {
 	display: block;
-	height: 450px;
+	height: 440px;
 	max-height: 500px;
 	padding-top: 8px;
 	padding-bottom: 8px;
@@ -53,11 +77,6 @@ body {
 	background-color: #222222;
 	overflow-x: hidden;
 	overflow-y: scroll;
-}
-
-legend {
-	text-align: center; 
-	font-size: 12pt;
 }
 
 ul#tabs li{
@@ -74,7 +93,7 @@ ul#tabs li{
 }
 
 input#name{
-	width: 225px;
+	width: 255px;
 	border-radius: 5px; 
 }
 
@@ -85,6 +104,7 @@ input#name{
 #list li span {
 	display: block;
 	font-size: 90%;
+	padding-left: 16px;
 	padding-bottom: 5px;
 	color: #909090;
 	clear: both;
@@ -99,6 +119,7 @@ input#name{
 	display: none;
 	overflow: hidden;
 	margin-left: -40px;
+	background: linear-gradient(to bottom, #e96101 1%,#fd8c17 100%);
 }
 
 #open_tab form{
@@ -145,8 +166,8 @@ ul#tabs_link li a:hover {
 
 ul#tabs_link li a.selected {
 	color: #000000;
-	border-bottom: 1px solid #ff6e01;
-	background-color: #ff6e01;
+	border-bottom: 1px solid #e96101;
+	background-color: #e96101;
 	font-weight: bold;
 	padding: 0.3em;
 	padding-bottom: 2px;
@@ -157,10 +178,6 @@ div.tabContent {
 	/*border-bottom: 1px solid black;*/
 	padding: 0px;
 	background-color: #ff6e01;
-}
-
-div.tabContent form {
-	padding-top: 5px;
 }
 
 .btn {
@@ -182,12 +199,19 @@ div.tabContent form {
 	
 .btn-success {
 	color: #000000; 
-	background-color: #5cb85c; 
-	border-color: #4cae4c;
+	background-color: #e68515;
+	border-color: #DD7600;
 }
 	
 .btn-success:hover, .btn-success:focus {
-	background-color: #47a447; 
-	border-color: #398439;
+	background-color: #DD7600; 
+	border-color: #DD7600;
 }
+
+.content_field {
+	padding: 5px 8px 10px 8px;
+	background: linear-gradient(to bottom, #e96101 1%,#fd8c17 100%);
+}
+
+
 
