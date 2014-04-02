@@ -5,6 +5,9 @@ body {
 	color: #000;
 	margin: 0px;
 	background-color: #ffffff;
+	
+	border: 5px solid #464646;
+	
 }
 
 ::-webkit-scrollbar { 
@@ -13,7 +16,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb { 
-	background-color: #ff6e01; 
+	background-color: #909090; 
 	border-radius: 3px;
 }
 
@@ -26,28 +29,35 @@ body {
 	background-color: #000;
 }
 
-#push{
-	min-height: 20px;
-	color: #909090;
-	background-color: #000000;
-	text-align: center;
+header span {
+	display: block;
+	padding: 5px 20px 10px 10px;
+	margin-bottom: 15px;
 }
 
-#footer{
-	min-height: 20px;
-	color: #909090;
-	background-color: #000000;
-	padding-top: 1px;
-	text-align: center;
-}
-
-#footer{
-	border-top: 1px solid #c89544;
-	padding: 8px;
-}
-
-#footer span a{
+header span a{
 	color: #c89544;
+	font-size: 18px;
+	font-weight: bold;
+	text-decoration: none;
+	float: right;
+}
+
+header span a:hover{
+	color: #ffffff;
+}
+
+header span a b{
+	color: #ffffff;
+}
+
+header span a:hover b{
+	color: #c89544;
+}
+
+header span a i{
+	font-size: 12px;
+	color: red;
 }
 
 fieldset {
@@ -69,12 +79,24 @@ fieldset legend span.white {
 
 .content {
 	display: block;
-	height: 440px;
+	height: 400px;
 	max-height: 500px;
 	padding-top: 8px;
 	padding-bottom: 8px;
 	padding-left: 3px;
 	background-color: #222222;
+	overflow-x: hidden;
+	overflow-y: scroll;
+}
+
+.sessions {
+	display: block;
+	height: 400px;
+	max-height: 500px;
+	padding-top: 7px;
+	padding-bottom: 4px;
+	padding-left: 3px;
+	background: linear-gradient(to bottom, #e96101 1%,#fd8c17 100%);
 	overflow-x: hidden;
 	overflow-y: scroll;
 }
@@ -119,11 +141,32 @@ input#name{
 	display: none;
 	overflow: hidden;
 	margin-left: -40px;
-	background: linear-gradient(to bottom, #e96101 1%,#fd8c17 100%);
 }
 
-#open_tab form{
-	padding-bottom: 5px
+#open_tab form ul#stored {
+	padding-left: 5px;
+	/* padding-right: 5px; */
+}
+
+#open_tab form ul#stored li {
+	list-style-type: none;
+	border: 1px solid #BE6521;
+	border-radius: 8px;
+	/* background-color: #f45a00; */
+	background: linear-gradient(to bottom, #e96101 1%,#fd8c17 100%);
+	margin-bottom: 2px;
+	display: block;
+}
+
+#open_tab form ul#stored li a {
+	color: #000000;
+	padding: 2px 2px 2px 15px;
+	display: block;
+	text-decoration: none;
+}
+
+#open_tab form ul#stored li a:hover {
+	color: #ffffff;
 }
 
 #save_tab {
@@ -175,7 +218,8 @@ ul#tabs_link li a.selected {
 
 div.tabContent {
 	border-top: 1px solid black;
-	/*border-bottom: 1px solid black;*/
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
 	padding: 0px;
 	background-color: #ff6e01;
 }
@@ -213,5 +257,34 @@ div.tabContent {
 	background: linear-gradient(to bottom, #e96101 1%,#fd8c17 100%);
 }
 
+/*Begin footer*/
+#push{
+	min-height: 20px;
+	color: #909090;
+	background-color: #000000;
+	text-align: center;
+}
 
+#footer{
+	min-height: 20px;
+	color: #909090;
+	background-color: #000000;
+	padding-top: 1px;
+	text-align: center;
+}
 
+#footer{
+	border-top: 1px solid #c89544;
+	padding: 8px;
+}
+
+#footer span a{
+	color: #c89544;
+	text-decoration: none;
+}
+
+#footer span a:hover{
+	color: #f45a00;
+}
+
+/*End footer*/

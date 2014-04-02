@@ -349,3 +349,26 @@ function init() {
 document.addEventListener('DOMContentLoaded', function() {
 	init();
 });
+
+
+
+
+
+
+
+
+//The code below will log the background color for the active range
+var color = SpreadsheetApp.getActiveRange().getBackgroundColor();
+Logger.log(color);
+
+
+
+
+
+
+
+
+
+
+
+
