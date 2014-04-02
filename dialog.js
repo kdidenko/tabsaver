@@ -185,13 +185,6 @@ var tabsaver = new function() {
 								
 				// render DOM to display tabs list to user				
 				var li = document.createElement('li');
-				// let's get the favicon
-				chrome.tabs.get(res.id, function(res) {
-					//alert(li);
-					//var img = document.createElement('img');
-					//img.setAttribute('src', res.favIconUrl);
-					//li.appendChild(img);
-				});
 				
 				// create check box
 				var chk = document.createElement('input');
@@ -199,12 +192,25 @@ var tabsaver = new function() {
 				chk.name = 'tab[' + res.id + ']';
 				chk.checked = 'checked';
 				
+				// create faviico
+				if(res.favIconUrl.indexOf('chrome://') !== -1 ) {
+					src = 'http://www.ito-global.com/favicon.ico';
+				} else {
+					src = res.favIconUrl;
+				}
+				var img = document.createElement('img');
+				img.setAttribute('src', src);
+				img.setAttribute('class', 'favicon');
+				img.setAttribute('height', '16px');
+				img.setAttribute('width', '16px');
+				
 				// add tab title element
 				var span = document.createElement('span');
 				title = res.title.length > 50 ? res.title.substring(0, 46) + '...' : res.title;
 				var t = document.createTextNode(title);
 
 				li.appendChild(chk);
+				li.appendChild(img);
 				li.appendChild(t);
 				
 				// add tab url element
