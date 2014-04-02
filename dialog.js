@@ -201,12 +201,12 @@ var tabsaver = new function() {
 				var img = document.createElement('img');
 				img.setAttribute('src', src);
 				img.setAttribute('class', 'favicon');
-				img.setAttribute('height', '16px');
-				img.setAttribute('width', '16px');
+				img.setAttribute('height', '13px');
+				img.setAttribute('width', '13px');
 				
 				// add tab title element
 				var span = document.createElement('span');
-				title = res.title.length > 50 ? res.title.substring(0, 46) + '...' : res.title;
+				title = res.title.length > 50 ? res.title.substring(0, 40) + '...' : res.title;
 				var t = document.createTextNode(title);
 
 				li.appendChild(chk);
@@ -214,7 +214,7 @@ var tabsaver = new function() {
 				li.appendChild(t);
 				
 				// add tab url element
-				href = result[i].url.length > 50 ? result[i].url.substring(0, 46) + '...' : result[i].url;
+				href = result[i].url.length > 50 ? result[i].url.substring(0, 40) + '...' : result[i].url;
 				t = document.createTextNode(href);
 				
 				// compose all elements together
