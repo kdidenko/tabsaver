@@ -9,7 +9,7 @@ function showSaveTab() {
 }
 
 /**
- * opens the list of saved sessions dialog to the  user
+ * opens the list of saved sessions dialog to the user
  */
 function showOpenTab() {
 	var open = document.getElementById('open_tab');
@@ -18,7 +18,9 @@ function showOpenTab() {
 	save.style.display = 'none';
 }
 
-// assign onclick event handlers to tab buttons elements
+/**
+ * assign onclick event handler to open session tab button
+ */
 document.getElementById('open_btn').onclick = function() {
 	document.getElementById('open_btn').setAttribute('class', 'selected'); 
 	if(document.getElementById('save_btn').getAttribute("class") == "selected")	{
@@ -27,6 +29,9 @@ document.getElementById('open_btn').onclick = function() {
 	showOpenTab();
 };
 
+/**
+ * assign onclick event handler to save session tab button
+ */
 document.getElementById('save_btn').onclick = function() {
 	document.getElementById('save_btn').setAttribute('class', 'selected'); 
 	if(document.getElementById('open_btn').getAttribute("class") == "selected")	{
@@ -34,11 +39,3 @@ document.getElementById('save_btn').onclick = function() {
 	}
 	showSaveTab();
 };
-
-
-
-
-
-
-
-

@@ -49,6 +49,10 @@ function Tab () {
 		this.id = id;
 	};
 	
+	/**
+	 *  Adds a title to the tab object
+	 *  @param title of the tab
+	 */
 	this.setTitle = function(title) {
 		this.title = title;
 	};
@@ -172,25 +176,34 @@ var tabsaver = new function() {
 			// populate the session with Tab objects
 			for ( var i = 0; i < result.length; i++) {
 				var tab = new Tab();
-				tab.setId(result[i].id);
+				var res = result[i];
+				tab.setId(res.id);
 				//tab.setTitle(result[i].title); not saving tab title to save so extra space
-				tab.setUrl(result[i].url);
+				tab.setUrl(res.url);
 				// add tab to session singleton object
 				session.addTab(tab);				
 								
 				// render DOM to display tabs list to user				
 				var li = document.createElement('li');
+				// let's get the favicon
+				chrome.tabs.get(res.id, function(res) {
+					//alert(li);
+					//var img = document.createElement('img');
+					//img.setAttribute('src', res.favIconUrl);
+					//li.appendChild(img);
+				});
 				
 				// create check box
 				var chk = document.createElement('input');
 				chk.type = 'checkbox';
-				chk.name = 'tab[' + result[i].id + ']';
+				chk.name = 'tab[' + res.id + ']';
 				chk.checked = 'checked';
 				
 				// add tab title element
 				var span = document.createElement('span');
-				title = result[i].title.length > 50 ? result[i].title.substring(0, 46) + '...' : result[i].title;
+				title = res.title.length > 50 ? res.title.substring(0, 46) + '...' : res.title;
 				var t = document.createTextNode(title);
+
 				li.appendChild(chk);
 				li.appendChild(t);
 				
@@ -349,26 +362,3 @@ function init() {
 document.addEventListener('DOMContentLoaded', function() {
 	init();
 });
-
-
-
-
-
-
-
-
-//The code below will log the background color for the active range
-var color = SpreadsheetApp.getActiveRange().getBackgroundColor();
-Logger.log(color);
-
-
-
-
-
-
-
-
-
-
-
-
