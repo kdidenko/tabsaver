@@ -5,9 +5,7 @@ body {
 	color: #000;
 	margin: 0px;
 	background-color: #ffffff;
-	
-	border: 5px solid #464646;
-	
+	/* border: 5px solid #464646; */	
 }
 
 ::-webkit-scrollbar { 
@@ -35,7 +33,7 @@ header span {
 	margin-bottom: 15px;
 }
 
-header span a{
+header span a {
 	color: #c89544;
 	font-size: 18px;
 	font-weight: bold;
@@ -43,19 +41,19 @@ header span a{
 	float: right;
 }
 
-header span a:hover{
+header span a:hover {
 	color: #ffffff;
 }
 
-header span a b{
+header span a b {
 	color: #ffffff;
 }
 
-header span a:hover b{
+header span a:hover b {
 	color: #c89544;
 }
 
-header span a i{
+header span a i {
 	font-size: 12px;
 	color: red;
 }
@@ -101,7 +99,7 @@ fieldset legend span.white {
 	overflow-y: scroll;
 }
 
-ul#tabs li{
+ul#tabs li {
 	margin: 0px;
 }
 
@@ -111,22 +109,30 @@ ul#tabs li{
 }
 
 #list li input[type=checkbox] {
-	margin: 3px 3px 3px 0px;
+	margin: 3px 3px 3px 3px;
 }
 
-input#name{
+input#name {
 	width: 255px;
 	border-radius: 5px; 
 }
 
 #list li {
 	color: #c89544;
+	margin: 5px 0px 5px 0px!important;
+	position: relative;
 }
+
+#list li img {
+	padding-top: 20px;
+	margin-left: -16px;
+	position: absolute;
+} 
 
 #list li span {
 	display: block;
 	font-size: 90%;
-	padding-left: 16px;
+	padding-left: 19px;
 	padding-bottom: 5px;
 	color: #909090;
 	clear: both;
@@ -136,6 +142,8 @@ input#name{
 	padding-bottom: 0px;
 	margin-bottom: 5px;
 }
+
+
 
 #open_tab {
 	display: none;
@@ -180,7 +188,7 @@ input#name{
 	margin-bottom: 0px;
 }
 
-ul#tabs_link{
+ul#tabs_link {
 	margin-top: 0px;
 	padding-left: 10px;
 	margin-top: 5px;
@@ -258,14 +266,14 @@ div.tabContent {
 }
 
 /*Begin footer*/
-#push{
+#push {
 	min-height: 20px;
 	color: #909090;
 	background-color: #000000;
 	text-align: center;
 }
 
-#footer{
+#footer {
 	min-height: 20px;
 	color: #909090;
 	background-color: #000000;
@@ -273,17 +281,21 @@ div.tabContent {
 	text-align: center;
 }
 
-#footer{
+#footer {
 	border-top: 1px solid #c89544;
-	padding: 8px;
+	padding: 4px;
 }
 
-#footer span a{
+#footer span {
+	font-size: 11px;
+}
+
+#footer span a {
 	color: #c89544;
 	text-decoration: none;
 }
 
-#footer span a:hover{
+#footer span a:hover {
 	color: #f45a00;
 }
 
