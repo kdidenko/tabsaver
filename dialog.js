@@ -206,7 +206,7 @@ var tabsaver = new function() {
 				
 				// add tab title element
 				var span = document.createElement('span');
-				title = res.title.length > 50 ? res.title.substring(0, 40) + '...' : res.title;
+				title = res.title.length > 50 ? res.title.substring(0, 35) + '...' : res.title;
 				var t = document.createTextNode(title);
 
 				li.appendChild(chk);

@@ -120,13 +120,10 @@ input#name {
 #list li {
 	color: #c89544;
 	margin: 5px 0px 5px 0px!important;
-	position: relative;
 }
 
 #list li img {
-	padding-top: 20px;
-	margin-left: -16px;
-	position: absolute;
+	margin: 0px 3px 0px 3px;
 } 
 
 #list li span {
