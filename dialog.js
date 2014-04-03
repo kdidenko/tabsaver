@@ -105,6 +105,24 @@ var session = new function() {
 		this.tabs.push(tab);
 	};
 	
+	/**
+	 * removes the tab from session by it's id
+	 */
+	this.removeTab = function(id) {
+		// walk through array
+		for(var i = 0; i < this.count(); i++) {
+			// check the tab id
+			if(this.tabs[i].getId() == id ){
+				// remove the tab from session
+				return this.tabs.splice(i, 1);
+			}
+		}
+		return -1;
+	};
+	
+	/**
+	 * returns the number of tabs in current session
+	 */
 	this.count = function() {
 		return this.tabs.length;		
 	};
@@ -142,6 +160,19 @@ var session = new function() {
 		console.log('waiting for asynchronous "chrome.storage.sync.set" function to finish');
 		asyncWaitStart();
 		callback();
+	};
+	
+	this.clearUnsasvedTabs = function() {
+		var checkboxes = document.getElementsByName('tab');
+		// loop over them all
+		for (var i=0; i<checkboxes.length; i++) {
+			// And stick the checked ones onto an array...
+			if (! checkboxes[i].checked) {
+				this.removeTab(checkboxes[i].id);
+			}
+		}
+		return;
+		
 	};
 };
 
@@ -189,7 +220,8 @@ var tabsaver = new function() {
 				// create check box
 				var chk = document.createElement('input');
 				chk.type = 'checkbox';
-				chk.name = 'tab[' + res.id + ']';
+				chk.name = 'tab';
+				chk.id = res.id;
 				chk.checked = 'checked';
 				
 				// create faviico
@@ -280,7 +312,10 @@ var tabsaver = new function() {
 	 * Stores current session into user's Google account storage 
 	 */
 	this.storeSession = function(name) {
-		session.name = name;
+		// set session name which will be used as a key to strore data
+		session.name = name; 
+		// remove all tabs from session which were not selected by user
+		session.clearUnsasvedTabs();
 		session.save(function(){
 			console.log('refreshing saved sessions view');
 			tabsaver.renderSavedSessions();
@@ -335,7 +370,7 @@ var tabsaver = new function() {
  */
 function init() {
 	//tabsaver.isUserLogedIn();
-	//alert(chrome.identity);
+	//alert(chrome.identity);	
 	var save = document.getElementById('save');
 	// assign event handler to Save button
 	if(save) {
@@ -359,6 +394,28 @@ function init() {
 		console.log('rendering extension views');
 		tabsaver.renderView();
 	}
+	
+	// render the extension's version
+	var i = document.getElementById('version');
+	var v = document.createTextNode(getVersion());
+	i.appendChild(v);
+};
+
+
+/**
+ * Determines the current extension's version according to manifest JSON file
+ * @returns {version String}
+ */
+function getVersion() { 
+	// init the version var with default value
+    var version = '1.0.0'; 
+    var xhr = new XMLHttpRequest(); 
+    // get the manifest JSON
+    xhr.open('GET', chrome.extension.getURL('manifest.json'), false); 
+    xhr.send(null);
+    var manifest = JSON.parse(xhr.responseText); 
+    version = manifest.version;
+    return version;
 };
 
 
