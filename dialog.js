@@ -225,7 +225,7 @@ var tabsaver = new function() {
 				chk.checked = 'checked';
 				
 				// create faviico
-				if(res.favIconUrl.indexOf('chrome://') !== -1 ) {
+				if((! res.favIconUrl || res.favIconUrl == null || res.favIconUrl == 'undefined') || res.favIconUrl.indexOf('chrome://') !== -1 ) {
 					src = 'http://www.ito-global.com/favicon.ico';
 				} else {
 					src = res.favIconUrl;
