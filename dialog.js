@@ -226,7 +226,7 @@ var tabsaver = new function() {
 				
 				// create faviico
 				if((! res.favIconUrl || res.favIconUrl == null || res.favIconUrl == 'undefined') || res.favIconUrl.indexOf('chrome://') !== -1 ) {
-					src = 'http://www.ito-global.com/favicon.ico';
+					src = 'http://tabsaver.ito-global.com/images/chrome-favicon.png';
 				} else {
 					src = res.favIconUrl;
 				}
@@ -357,7 +357,7 @@ var tabsaver = new function() {
 				chrome.windows.create({
 					url: newTabs, focused: true
 				}, function() {
-					console.log('Session "' + key + '" opened');
+					console.log('Session opened');
 				});
 			}
 		});
