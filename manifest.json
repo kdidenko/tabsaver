@@ -9,16 +9,19 @@
 		"storage",
 		"<all_urls>",
 		"chrome://favicon/"
-	],	
+	],
+		
 	"browser_action": {
 		"default_icon": "icon-16.png",
 		"default_title" : "Tab Saver Dialog",
 		"default_popup": "dialog.html"
 	},
+	
 	"background": {
 		"scripts": ["background.js"],
 		"persistent": false
 	},
+	
 	"icons": { 
 		"16": "icon-16.png",
 		"48": "icon-48.png",

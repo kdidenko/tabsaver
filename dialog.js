@@ -286,16 +286,38 @@ var tabsaver = new function() {
 		    for ( var i = 0; i < allKeys.length; i++) {
 		    	// create list item
 		    	var li = document.createElement('li');
+		    	
+		    	// create wrapper div
+		    	var div = document.createElement('div');
+		    	div.setAttribute('class', 'session-block');		    	
+		    	
 		    	// create link
 		    	var a = document.createElement('a');
 		    	a.setAttribute('href', '#');
 		    	a.setAttribute('rel', allKeys[i]);
 		    	a.onclick = tabsaver.openSession;
+
 		    	// create title text
 		    	var title = document.createTextNode(allKeys[i]);
 		    	a.appendChild(title);		    	
-			    // append the title to list item
-			    li.appendChild(a);
+		    	
+		    	// create delete button
+		    	var del = document.createElement('span');
+		    	del.setAttribute('class', 'delete-session');
+		    	del.setAttribute('rel', allKeys[i]);
+		    	var delIco = document.createTextNode('X'); //TODO: replace with image instead of text 
+		    	del.appendChild(delIco);
+		    	del.onclick = tabsaver.deleteSession;
+
+		    	// insert session link into wrapper
+		    	div.appendChild(a);
+		    	
+		    	// append delete action
+		    	div.appendChild(del);
+		    			    	
+			    // append session wrapper to the list
+			    li.appendChild(div);
+			    
 			    // append list item to the list
 			    ul.appendChild(li);
 			}
@@ -357,11 +379,25 @@ var tabsaver = new function() {
 				chrome.windows.create({
 					url: newTabs, focused: true
 				}, function() {
-					console.log('Session opened');
+					console.log('Session "' + key + '" opened');
 				});
 			}
 		});
 	};
+	
+	
+	/**
+	 * deletes the session from the storage
+	 */
+	this.deleteSession = function() {
+		var key = this.getAttribute('rel');
+		
+		
+		
+		alert('deleting session ' + key);
+	};
+	
+	
 };
 
 /**

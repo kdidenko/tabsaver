@@ -163,14 +163,31 @@ input#name {
 	display: block;
 }
 
-#open_tab form ul#stored li a {
+
+#open_tab form ul#stored li div.session-block {
+	overflow:hidden;
+}
+
+#open_tab form ul#stored li div.session-block a {
 	color: #000000;
 	padding: 2px 2px 2px 15px;
 	display: block;
 	text-decoration: none;
+	overflow: hidden;
+	float: left;
 }
 
-#open_tab form ul#stored li a:hover {
+#open_tab form ul#stored li div.session-block span.delete-session {
+	display:block;
+	float:right;
+	color: red;
+	font-weight: bold;
+	margin-right: 10px;
+	cursor: pointer;	
+}
+
+
+#open_tab form ul#stored li div.session-block a:hover {
 	color: #ffffff;
 }
 
