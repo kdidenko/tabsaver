@@ -357,7 +357,7 @@ var tabsaver = new function() {
 				chrome.windows.create({
 					url: newTabs, focused: true
 				}, function() {
-					console.log('Session opened');
+					console.log('Session "' + key + '" opened');
 				});
 			}
 		});
