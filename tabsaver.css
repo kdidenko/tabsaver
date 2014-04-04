@@ -50,7 +50,7 @@ header #social a img{
 }
 
 header #social a:hover img{
-	background-color: red;
+	background-color: #f45a00;
 }
 
 header span {
@@ -136,6 +136,7 @@ ul#tabs li {
 
 #list li input[type=checkbox] {
 	margin: 3px 3px 3px 3px;
+	vertical-align: middle; 
 }
 
 input#name {
@@ -149,7 +150,8 @@ input#name {
 }
 
 #list li img {
-	margin: 0px 3px 0px 3px;
+	margin: -1px 3px 0px 3px;
+	vertical-align: middle;
 } 
 
 #list li span {
@@ -196,8 +198,9 @@ input#name {
 
 #open_tab form ul#stored li div.session-block a {
 	color: #000000;
-	padding: 2px 2px 2px 15px;
+	padding: 2px 2px 2px 8px;
 	display: block;
+	width: 89%;
 	text-decoration: none;
 	overflow: hidden;
 	float: left;
