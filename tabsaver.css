@@ -194,11 +194,12 @@ input#name {
 #open_tab form ul#stored li div.session-block span.delete-session {
 	display:block;
 	float:right;
-	color: red;
+	/*color: red;*/
+	color: black;
 	font-weight: bold;
 	margin-right: 10px;
 	cursor: pointer;	
-	background-color: #fff;
+	/*background-color: #fff;*/
 	margin-top: 3px;
 	border-radius: 20px;
 	padding-left: 3px;
