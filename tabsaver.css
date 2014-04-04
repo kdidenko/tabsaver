@@ -198,6 +198,16 @@ input#name {
 	font-weight: bold;
 	margin-right: 10px;
 	cursor: pointer;	
+	background-color: #fff;
+	margin-top: 3px;
+	border-radius: 20px;
+	padding-left: 3px;
+	padding-right: 3px;
+	margin-bottom: 3px;
+}
+
+#open_tab form ul#stored li div.session-block span.delete-session:hover {	
+	background-color: yellow;
 }
 
 
