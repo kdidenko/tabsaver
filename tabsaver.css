@@ -27,10 +27,24 @@ body {
 	background-color: #000;
 }
 
-header span {
+#wrap > header {
 	display: block;
-	padding: 5px 20px 10px 10px;
-	margin-bottom: 15px;
+	height: 40px;
+}
+
+header #social{
+	width: 170px;
+	display: inline-block;
+	float: left;
+	padding-top: 8px;
+	padding-left: 10px;
+	padding-bottom: 8px;
+}
+
+header span {
+	display: inline-block;
+	padding: 15px 20px 10px 10px;
+	float: right;
 }
 
 header span a {
