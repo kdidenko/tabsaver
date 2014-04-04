@@ -41,6 +41,18 @@ header #social{
 	padding-bottom: 8px;
 }
 
+header #social a img{
+	background-color: #fff;
+	padding: 1px;
+	border-radius: 20px;
+	height: 24px;
+	width: 24px;
+}
+
+header #social a:hover img{
+	background-color: red;
+}
+
 header span {
 	display: inline-block;
 	padding: 15px 20px 10px 10px;
