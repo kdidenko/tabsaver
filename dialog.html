@@ -11,13 +11,13 @@
 		<div id="wrap">
 			<header>
 				<div id="social">
-					<a href="https://www.facebook.com"><img src="http://tabsaver.ito-global.com/social-media/Google+.png" /></a>
-					<a href="https://www.facebook.com"><img src="http://tabsaver.ito-global.com/social-media/Facebook.png" /></a>
-					<a href="https://www.facebook.com"><img src="http://tabsaver.ito-global.com/social-media/Linkedin.png" /></a>
-					<a href="https://www.facebook.com"><img src="http://tabsaver.ito-global.com/social-media/Twitter.png" /></a>
+					<a href="https://plus.google.com/"><img src="http://tabsaver.ito-global.com/social-media/Google+.png" title="Google+" alt="Google+" /></a>
+					<a href="https://www.facebook.com"><img src="http://tabsaver.ito-global.com/social-media/Facebook.png" title="Facebook" alt="Facebook" /></a>
+					<a href="https://www.linkedin.com/"><img src="http://tabsaver.ito-global.com/social-media/Linkedin.png" title="Linkedin" alt="Linkedin" /></a>
+					<a href="https://twitter.com/"><img src="http://tabsaver.ito-global.com/social-media/Twitter.png" title="Twitter" alt="Twitter" /></a>
 				</div>
 				
-				<span><a href="https://chrome.google.com/webstore/detail/tab-saver/fmjkkhoegfianolbdbceddpgnidbfpmo?utm_source=gmail">Tab <b>Saver</b> <i id="version">v</i></a></span>	
+				<span><a class="extUrl" href="https://chrome.google.com/webstore/detail/tab-saver/fmjkkhoegfianolbdbceddpgnidbfpmo?utm_source=gmail" title="Chrome Webstore" alt="Chrome Webstore">Tab <b>Saver</b> <i id="version">v</i></a></span>	
 			</header>
 			
 			<div id="tabs_link_content">
@@ -31,12 +31,12 @@
 			<!-- current session tab begin -->
 				<li>
 					<div id="save_tab" class="tabContent">
-						<form action="#">
+						<form action="#" id="save_frm">
 							<div class="content_field">
 								<fieldset id="ctrl">
 									<legend>Session <span class="white">Name</span></legend>
 									<input type="text" id="name" name="name" placeholder="Enter the name to save the session" />
-									<button id="save" class="btn btn-success" type="submit" name="save" value="Save">Save</button>
+									<input id="save" class="btn btn-success" type="submit" name="save" value="Save" />
 								</fieldset>
 							</div>
 							<div class="content">
@@ -71,7 +71,7 @@
 		</div>
 		
 		<div id="footer">
-			<span>Tab Saver &copy; 2014 | <a href="http://www.ito-global.com">ITO-Global, LLC</a></span>
+			<span>Tab Saver &copy; 2014 | <a class="extUrl" href="http://www.ito-global.com" title="iTO-Global" alt="iTO-Global">ITO-Global, LLC</a></span>
 		</div>
 		<script type="text/javascript" src="popup.js"></script>
 	</body>

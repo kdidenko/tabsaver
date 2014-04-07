@@ -39,3 +39,26 @@ document.getElementById('save_btn').onclick = function() {
 	}
 	showSaveTab();
 };
+
+/**
+ * adds an event listener to open an external url within the current 
+ * window where extension dialog was opened
+ */
+function initExternalUrls() {
+	var urls = document.getElementsByClassName('extUrl');
+	for(var i = 0; i < urls.length; i++ ) {
+		console.log('URL #' + i + ' = ' + urls[i].href);
+		urls[i].addEventListener('click', function() {
+			chrome.tabs.create({ url: this.href }, function(tab){});
+		}, false);
+	}
+};
+
+
+/**
+ * Event listener to handle document onload
+ */
+document.addEventListener('DOMContentLoaded', function() {
+	// initialize all external urls
+	initExternalUrls();	
+});

@@ -437,13 +437,16 @@ function init() {
 			// save the session with session name
 			console.log('savinng session named "' + name + '"');
 			tabsaver.storeSession(name);
+			// switch to saved sessions list
+			//console.log('switching to saved sessions view');
+			alert('Session saved');
 		};
 		
 		// render the extension views
 		console.log('rendering extension views');
 		tabsaver.renderView();
 	}
-	
+
 	// render the extension's version
 	var i = document.getElementById('version');
 	var v = document.createTextNode(getVersion());
