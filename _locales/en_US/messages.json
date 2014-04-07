@@ -1,0 +1,10 @@
+{
+	"appName": {
+		"message": "Tab Saver",
+		"description": "Tab Saver as displayed in the web store."
+	},
+	"appDesc": {
+		"message": "This extension stores opened tabs to reopen after browser restart.", 
+    	"description":"This extension stores opened tabs to reopen after browser restart."	
+	}
+}
