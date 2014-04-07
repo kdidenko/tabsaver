@@ -387,11 +387,27 @@ var tabsaver = new function() {
 	 * deletes the session from the storage
 	 */
 	this.deleteSession = function() {
+		// get the session key to remove
 		var key = this.getAttribute('rel');
+		// do remove the session by key
+		console.log('Removing session with the key: "' + key + '"');
+		
+		chrome.storage.sync.remove(key, function(){
+			console.log('session "' + key + '" removed');
+			tabsaver.renderSavedSessions();
+		});
+		
+		// check for errors
+		try {
+			if (chrome.runtime.lastError) {
+				console.warn(chrome.runtime.lastError.message);
+		    } 
+		} catch (exception) {
+			alert('exception.stack: ' + exception.stack);
+			console.error((new Date()).toJSON(), "exception.stack:", exception.stack);
+		}
 		
 		
-		
-		alert('deleting session ' + key);
 	};
 	
 	
