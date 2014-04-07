@@ -27,12 +27,14 @@ body {
 	background-color: #000;
 }
 
+/* Begin Header*/
 #wrap > header {
 	display: block;
 	height: 40px;
+	margin-bottom: 9px;
 }
 
-header #social{
+header #social {
 	width: 170px;
 	display: inline-block;
 	float: left;
@@ -41,7 +43,7 @@ header #social{
 	padding-bottom: 8px;
 }
 
-header #social a img{
+header #social a img {
 	background-color: #fff;
 	padding: 1px;
 	border-radius: 20px;
@@ -49,7 +51,7 @@ header #social a img{
 	width: 24px;
 }
 
-header #social a:hover img{
+header #social a:hover img {
 	background-color: #f45a00;
 }
 
@@ -85,6 +87,9 @@ header span a i {
 	color: red;
 }
 
+/* End Header*/
+
+/*Begin Fieldset*/
 fieldset {
 	border: 1px solid #ff882e;
 	border-radius: 8px;
@@ -102,6 +107,9 @@ fieldset legend span.white {
 	color: white !important;
 }
 
+/*Begin Fieldset*/
+
+/*Begin Content*/
 .content {
 	display: block;
 	height: 400px;
@@ -179,7 +187,6 @@ input#name {
 
 #open_tab form ul#stored {
 	padding-left: 5px;
-	/* padding-right: 5px; */
 }
 
 #open_tab form ul#stored li {
@@ -287,6 +294,11 @@ div.tabContent {
 	background-color: #ff6e01;
 }
 
+.content_field {
+	padding: 5px 8px 10px 8px;
+	background: linear-gradient(to bottom, #e96101 1%,#fd8c17 100%);
+}
+
 .btn {
 	display: inline-block; 
 	margin-bottom: 0; 
@@ -315,10 +327,7 @@ div.tabContent {
 	border-color: #DD7600;
 }
 
-.content_field {
-	padding: 5px 8px 10px 8px;
-	background: linear-gradient(to bottom, #e96101 1%,#fd8c17 100%);
-}
+/*End Content*/
 
 /*Begin footer*/
 #push {
