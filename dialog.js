@@ -184,8 +184,6 @@ var session = new function() {
  */
 var tabsaver = new function() {
 	
-	var openedSessions = null;
-
 	/**
 	 * Renders the main views of extension
 	 */
@@ -273,7 +271,6 @@ var tabsaver = new function() {
 				console.error((new Date()).toJSON(), "exception.stack:", exception.stack);
 			}
 		    var allKeys = Object.keys(items);
-		    this.openedSessions = allKeys;
 		    console.log('retreived ' + allKeys.length + ' stored sessions from chrome.storage.sync');
 		    var ul = document.getElementById('stored');
 		    // remove all existing nodes
