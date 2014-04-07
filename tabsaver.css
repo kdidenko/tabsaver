@@ -80,7 +80,8 @@ header span a:hover b {
 }
 
 header span a i {
-	font-size: 12px;
+	font-size: 9px;
+	font-style: normal;
 	color: red;
 }
 
