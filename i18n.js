@@ -21,14 +21,25 @@ function i18n() {
 	translate('title', 'innerHTML', title);
 	var ext_name = chrome.i18n.getMessage("ext_name");
 	translate('ext_name', 'innerHTML', ext_name);
+	var save_btn = chrome.i18n.getMessage("save_btn");
+	translate('save_btn', 'innerHTML', save_btn);
+	var open_btn = chrome.i18n.getMessage("open_btn");
+	translate('open_btn', 'innerHTML', open_btn);
+	var ssn_sess = chrome.i18n.getMessage("ssn_sess");
+	translate('ssn_sess', 'innerHTML', ssn_sess);
+	
+	/*var ssn_name = chrome.i18n.getMessage("ssn_name");  
+	translate('ssn_name', 'innerHTML', ssn_name);*/
+	
+	var inpt_name = chrome.i18n.getMessage("inpt_name"); 
+	translate('inpt_name', 'placeholder', inpt_name);
+	var save = chrome.i18n.getMessage("save");
+	translate('save', 'value', save);
 	
 	
 	/*
-	save_btn = save
-	open_btn = open
-	ssn_sess = Session; ssn_name = Name
-	inpt_name (placeholder) = Enter the name to save the session
-	save = Save
+	ssn_name = Name
+
 	*/
 	
 }

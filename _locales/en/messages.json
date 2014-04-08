@@ -12,11 +12,35 @@
     	"description": "Opens the Tab Saver Dialog"	
 	},
 	"title": {
-		"message": "A test title", 
-    	"description": "Go fuck yourself"	
+		"message": "Remember tabs", 
+    	"description": "Remember tabs"	
 	},
 	"ext_name": {
-		"message": "Хранитель<b>Закладок</b>",
-		"description": "TEXT DESCRIPTION"
+		"message": "Tab <b>Saver</b>",
+		"description": "Tab Saver"
+	},
+	"save_btn": {
+		"message": "232323Save",
+		"description": "Save"
+	},
+	"open_btn": {
+		"message": "Open",
+		"description": "Open"
+	},
+	"ssn_sess": {
+		"message": "Session",
+		"description": "Session"
+	},
+	"ssn_name": {
+		"message": "test Name",
+		"description": "Name"
+	},
+	"inpt_name": {
+		"message": "Enter the name to save the session",
+		"description": "Enter the name to save the session"
+	},
+	"save": {
+		"message": "Save",
+		"description": "Save"
 	}
 }

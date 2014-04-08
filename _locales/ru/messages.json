@@ -1,10 +1,46 @@
 {
 	"appName": {
 		"message": "Tab Saver",
-		"description": "Tab Saver as displayed in the web store."
+		"description": "Tab Saver as displayed in the web store"
 	},
 	"appDesc": {
-		"message": "This extension stores opened tabs to reopen after browser restart.", 
-    	"description":"This extension stores opened tabs to reopen after browser restart."	
+		"message": "Этот Екстеншин позволит Вам восстановить сохранении сессии после перезапуска браузера", 
+    	"description": "Этот Екстеншин позволит Вам восстановить сохраненную сессию после перезапуска браузера"	
+	},
+	"defTitle": {
+		"message": "Сохранение закладок", 
+    	"description": "Сохранение закладок"	
+	},
+	"title": {
+		"message": "Запомнить закладки", 
+    	"description": "Запомнить закладки"	
+	},
+	"ext_name": {
+		"message": "Tab <b>Saver</b>",
+		"description": "Tab Saver"
+	},
+	"save_btn": {
+		"message": "Сохранить",
+		"description": "Сохранить"
+	},
+	"open_btn": {
+		"message": "Открыть",
+		"description": "Открыть"
+	},
+	"ssn_sess": {
+		"message": "Сессии",
+		"description": "Сессии"
+	},
+	"ssn_name": {
+		"message": "Имя",
+		"description": "Имя"
+	},
+	"inpt_name": {
+		"message": "Введите имя, чтобы сохранить сеанс",
+		"description": "Введите имя, чтобы сохранить сеанс"
+	},
+	"save": {
+		"message": "Сохранить",
+		"description": "Сохранить"
 	}
 }
