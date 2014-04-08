@@ -149,7 +149,7 @@ ul#tabs li {
 	vertical-align: middle; 
 }
 
-input#name {
+input#inpt_name {
 	width: 255px;
 	border-radius: 5px; 
 }

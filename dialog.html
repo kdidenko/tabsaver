@@ -1,8 +1,9 @@
 <!doctype html>
 <html>
 	<head>
-		<title>Remember tabs</title>
+		<title id='title'>Remember tabs</title>
 		<link type="text/css" rel="stylesheet" href="tabsaver.css">
+		<script type="text/javascript" src="i18n.js"></script>
 		<script type="text/javascript" src="storage.js"></script>
 		<script type="text/javascript" src="dialog.js"></script>
 		<script type="text/javascript" src="tracking.js"></script>
@@ -16,8 +17,7 @@
 					<a href="https://www.linkedin.com/"><img src="http://tabsaver.ito-global.com/social-media/Linkedin.png" title="Linkedin" alt="Linkedin" /></a>
 					<a href="https://twitter.com/"><img src="http://tabsaver.ito-global.com/social-media/Twitter.png" title="Twitter" alt="Twitter" /></a>
 				</div-->
-				
-				<span><a class="extUrl" href="https://chrome.google.com/webstore/detail/tab-saver/fmjkkhoegfianolbdbceddpgnidbfpmo?utm_source=gmail" title="Chrome Webstore" alt="Chrome Webstore">Tab <b>Saver</b> <i id="version">v</i></a></span>	
+				<span><a class="extUrl" href="https://chrome.google.com/webstore/detail/tab-saver/fmjkkhoegfianolbdbceddpgnidbfpmo?utm_source=gmail" title="Chrome Webstore" alt="Chrome Webstore" id="ext_name">Tab <b>Saver</b> <i id="version">v</i></a></span>	
 			</header>
 			
 			<div id="tabs_link_content">
@@ -34,8 +34,8 @@
 						<form action="#" id="save_frm">
 							<div class="content_field">
 								<fieldset id="ctrl">
-									<legend>Session <span class="white">Name</span></legend>
-									<input type="text" id="name" name="name" placeholder="Enter the name to save the session" />
+									<legend id="ssn_sess">Session <span class="white" id="ssn_name">Name</span></legend>
+									<input type="text" id="inpt_name" name="name" placeholder="Enter the name to save the session" />
 									<input id="save" class="btn btn-success" type="submit" name="save" value="Save" />
 								</fieldset>
 							</div>

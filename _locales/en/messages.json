@@ -5,6 +5,18 @@
 	},
 	"appDesc": {
 		"message": "This extension stores opened tabs to reopen after browser restart.", 
-    	"description":"This extension stores opened tabs to reopen after browser restart."	
+    	"description": "This extension stores opened tabs to reopen after browser restart."	
+	},
+	"defTitle": {
+		"message": "Tab Saver Dialog", 
+    	"description": "Opens the Tab Saver Dialog"	
+	},
+	"title": {
+		"message": "A test title", 
+    	"description": "Go fuck yourself"	
+	},
+	"ext_name": {
+		"message": "Хранитель<b>Закладок</b>",
+		"description": "TEXT DESCRIPTION"
 	}
 }
