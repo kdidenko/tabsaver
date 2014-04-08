@@ -427,7 +427,7 @@ function init() {
 		save.onclick = function() {
 			console.log('"Save" button was clicked');
 			// get the name of the session which will be used as a key for the storage record
-			var name = document.getElementById('name').value;
+			var name = document.getElementById('inpt_name').value;
 			name = (name == 'undefined' || name == '' || name == null) ? prompt("Enter the session name"): name;
 			if(name == 'undefined' || name == '' || name == null) {
 				console.warn('session name was not entered during saving the session');

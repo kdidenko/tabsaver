@@ -1,6 +1,7 @@
 
 function translate(id, attribute, text) {
 	var el = document.getElementById(id);
+	// check if element exists
 	if(el !== null || el !== 'undefined' || el !== '') {
 		if(attribute !== 'innerHTML') {
 			el.setAttribute(attribute, text);
@@ -27,10 +28,8 @@ function i18n() {
 	translate('open_btn', 'innerHTML', open_btn);
 	var ssn_sess = chrome.i18n.getMessage("ssn_sess");
 	translate('ssn_sess', 'innerHTML', ssn_sess);
-	
 	/*var ssn_name = chrome.i18n.getMessage("ssn_name");  
 	translate('ssn_name', 'innerHTML', ssn_name);*/
-	
 	var inpt_name = chrome.i18n.getMessage("inpt_name"); 
 	translate('inpt_name', 'placeholder', inpt_name);
 	var save = chrome.i18n.getMessage("save");
