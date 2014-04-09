@@ -428,10 +428,10 @@ function init() {
 			console.log('"Save" button was clicked');
 			// get the name of the session which will be used as a key for the storage record
 			var name = document.getElementById('inpt_name').value;
-			name = (name == 'undefined' || name == '' || name == null) ? prompt("Enter the session name"): name;
+			name = (name == 'undefined' || name == '' || name == null) ? prompt(chrome.i18n.getMessage("sess_enter_name")): name;
 			if(name == 'undefined' || name == '' || name == null) {
 				console.warn('session name was not entered during saving the session');
-				alert('Session name is required!');
+				alert(chrome.i18n.getMessage("sess_name_required"));
 				return;
 			}
 			// save the session with session name
@@ -439,7 +439,7 @@ function init() {
 			tabsaver.storeSession(name);
 			// switch to saved sessions list
 			//console.log('switching to saved sessions view');
-			alert('Session saved');
+			alert(chrome.i18n.getMessage("sess_saved"));
 		};
 		
 		// render the extension views
