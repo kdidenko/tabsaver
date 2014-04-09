@@ -40,15 +40,15 @@
 		"description": "Сохранить"
 	},
 	"sess_name_required": {
-		"message": "Session name is required!",
-		"description": "Session name is required!"
+		"message": "Имя сессии является обязательным!",
+		"description": "Имя сессии является обязательным"
 	},
 	"sess_saved": {
-		"message": "Session saved",
-		"description": "Session saved"
+		"message": "Сессия сохранена!",
+		"description": "Сессия сохранена!"
 	},
 	"sess_enter_name": {
-		"message": "Enter the session name",
-		"description": "Enter the session name"
+		"message": "Введите имя сессии",
+		"description": "Введите имя сессии"
 	}
 }
