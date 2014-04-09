@@ -150,7 +150,7 @@ ul#tabs li {
 }
 
 input#inpt_name {
-	width: 255px;
+	width: 71%;
 	border-radius: 5px; 
 }
 
@@ -321,6 +321,7 @@ div.tabContent {
 	color: #000000; 
 	background-color: #e68515;
 	border-color: #DD7600;
+	width: 26%;
 }
 	
 .btn-success:hover, .btn-success:focus {

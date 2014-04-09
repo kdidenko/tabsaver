@@ -16,8 +16,8 @@
     	"description": "Запомнить закладки"	
 	},
 	"ext_name": {
-		"message": "Tab <b>Saver</b>",
-		"description": "Tab Saver"
+		"message": "Tab <b>Saver</b> <i id='version'>v</i>",
+		"description": "Tab <b>Saver</b> <i id='version'>v</i>"
 	},
 	"save_btn": {
 		"message": "Сохранить",
@@ -28,12 +28,8 @@
 		"description": "Открыть"
 	},
 	"ssn_sess": {
-		"message": "Сессии",
-		"description": "Сессии"
-	},
-	"ssn_name": {
-		"message": "Имя",
-		"description": "Имя"
+		"message": "Сессии <span class='white' id='ssn_name'>Имя</span>",
+		"description": "Сессии <span class='white' id='ssn_name'>Имя</span>"
 	},
 	"inpt_name": {
 		"message": "Введите имя, чтобы сохранить сеанс",

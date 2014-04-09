@@ -31,10 +31,6 @@
 		"message": "Session <span class='white' id='ssn_name'>Name</span>",
 		"description": "Session <span class='white' id='ssn_name'>Name</span>"
 	},
-	"ssn_name": {
-		"message": "test Name",
-		"description": "Name"
-	},
 	"inpt_name": {
 		"message": "Enter the name to save the session",
 		"description": "Enter the name to save the session"

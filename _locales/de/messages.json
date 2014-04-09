@@ -16,8 +16,8 @@
     	"description": "Remember tabs"	
 	},
 	"ext_name": {
-		"message": "Tab <b>Saver</b>",
-		"description": "Tab Saver"
+		"message": "Tab <b>Saver</b> <i id='version'>v</i>",
+		"description": "Tab <b>Saver</b> <i id='version'>v</i>"
 	},
 	"save_btn": {
 		"message": "Save",
@@ -28,12 +28,8 @@
 		"description": "Open"
 	},
 	"ssn_sess": {
-		"message": "Session",
-		"description": "Session"
-	},
-	"ssn_name": {
-		"message": "test Name",
-		"description": "Name"
+		"message": "Session <span class='white' id='ssn_name'>Name</span>",
+		"description": "Session <span class='white' id='ssn_name'>Name</span>"
 	},
 	"inpt_name": {
 		"message": "Enter the name to save the session",
