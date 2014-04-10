@@ -19,5 +19,5 @@ _gaq.push(['_trackPageview']);
  */
 document.addEventListener('DOMContentLoaded', function() {
 	//_gaq('send', 'event', 'category', 'action');
-	_gaq.push('send', 'event', 'pop-up', 'opened', 'Main View');
+	_gaq.push(['_trackEvent', 'Dialogs', 'Main View', 'Opened']);
 });
