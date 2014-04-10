@@ -4,51 +4,51 @@
 		"description": "Tab Saver as displayed in the web store."
 	},
 	"appDesc": {
-		"message": "This extension stores opened tabs to reopen after browser restart.", 
-    	"description": "This extension stores opened tabs to reopen after browser restart."	
+		"message": "Diese Extension speichert geöffnete Tabs um Sie nach einem Neustart des Browsers wieder zu öffnen.", 
+    	"description": "Diese Extension speichert geöffnete Tabs um Sie nach einem Neustart des Browsers wieder zu öffnen."	
 	},
 	"defTitle": {
-		"message": "Tab Saver Dialog", 
-    	"description": "Opens the Tab Saver Dialog"	
+		"message": "Tab Speicher-Dialog", 
+    	"description": "Öffnet den Tab Speicher-Dialog"	
 	},
 	"title": {
-		"message": "Remember tabs", 
-    	"description": "Remember tabs"	
+		"message": "Tabs merken", 
+    	"description": "Tabs merken"	
 	},
 	"ext_name": {
 		"message": "Tab <b>Saver</b> <i id='version'>v</i>",
 		"description": "Tab <b>Saver</b> <i id='version'>v</i>"
 	},
 	"save_btn": {
-		"message": "Save",
-		"description": "Save"
+		"message": "Speichern",
+		"description": "Speichern"
 	},
 	"open_btn": {
-		"message": "Open",
-		"description": "Open"
+		"message": "Öffnen",
+		"description": "Öffnen"
 	},
 	"ssn_sess": {
-		"message": "Session <span class='white' id='ssn_name'>Name</span>",
-		"description": "Session <span class='white' id='ssn_name'>Name</span>"
+		"message": "Sitzung <span class='white' id='ssn_name'>Name</span>",
+		"description": "Sitzung <span class='white' id='ssn_name'>Name</span>"
 	},
 	"inpt_name": {
-		"message": "Enter the name to save the session",
-		"description": "Enter the name to save the session"
+		"message": "Zum Speichern Sitzungsnamen eingeben",
+		"description": "Zum Speichern Sitzungsnamen eingeben"
 	},
 	"save": {
-		"message": "Save",
-		"description": "Save"
+		"message": "Speichern",
+		"description": "Speichern"
 	},
 	"sess_name_required": {
-		"message": "Session name is required!",
-		"description": "Session name is required!"
+		"message": "Name der Sitzung wird benötigt!",
+		"description": "Name der Sitzung wird benötigt!"
 	},
 	"sess_saved": {
-		"message": "Session saved",
-		"description": "Session saved"
+		"message": "Sitzung gespeichert",
+		"description": "Sitzung gespeichert"
 	},
 	"sess_enter_name": {
-		"message": "Enter the session name",
-		"description": "Enter the session name"
+		"message": "Gib einen Sitzungsnamen ein",
+		"description": "Gib einen Sitzungsnamen ein"
 	}
 }
