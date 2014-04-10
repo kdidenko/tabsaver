@@ -5,16 +5,16 @@ body {
 	color: #000;
 	margin: 0px;
 	background-color: #ffffff;
-	/* border: 5px solid #464646; */	
+	/* border: 5px solid #464646; */
 }
 
-::-webkit-scrollbar { 
-	width: 10px; 
+::-webkit-scrollbar {
+	width: 10px;
 	margin: 0px;
 }
 
-::-webkit-scrollbar-thumb { 
-	background-color: #909090; 
+::-webkit-scrollbar-thumb {
+	background-color: #909090;
 	border-radius: 3px;
 }
 
@@ -28,7 +28,7 @@ body {
 }
 
 /* Begin Header*/
-#wrap > header {
+#wrap>header {
 	display: block;
 	height: 40px;
 	margin-bottom: 9px;
@@ -130,7 +130,7 @@ fieldset legend span.white {
 	padding-top: 7px;
 	padding-bottom: 4px;
 	padding-left: 3px;
-	background: linear-gradient(to bottom, #e96101 1%,#fd8c17 100%);
+	background: linear-gradient(to bottom, #e96101 1%, #fd8c17 100%);
 	overflow-x: hidden;
 	overflow-y: scroll;
 }
@@ -146,23 +146,23 @@ ul#tabs li {
 
 #list li input[type=checkbox] {
 	margin: 3px 3px 3px 3px;
-	vertical-align: middle; 
+	vertical-align: middle;
 }
 
 input#inpt_name {
 	width: 71%;
-	border-radius: 5px; 
+	border-radius: 5px;
 }
 
 #list li {
 	color: #c89544;
-	margin: 5px 0px 5px 0px!important;
+	margin: 5px 0px 5px 0px !important;
 }
 
 #list li img {
 	margin: -1px 3px 0px 3px;
 	vertical-align: middle;
-} 
+}
 
 #list li span {
 	display: block;
@@ -177,8 +177,6 @@ input#inpt_name {
 	padding-bottom: 0px;
 	margin-bottom: 5px;
 }
-
-
 
 #open_tab {
 	display: none;
@@ -195,14 +193,13 @@ input#inpt_name {
 	border: 1px solid #BE6521;
 	border-radius: 8px;
 	/* background-color: #f45a00; */
-	background: linear-gradient(to bottom, #e96101 1%,#fd8c17 100%);
+	background: linear-gradient(to bottom, #e96101 1%, #fd8c17 100%);
 	margin-bottom: 2px;
 	display: block;
 }
 
-
 #open_tab form ul#stored li div.session-block {
-	overflow:hidden;
+	overflow: hidden;
 }
 
 #open_tab form ul#stored li div.session-block a {
@@ -216,13 +213,13 @@ input#inpt_name {
 }
 
 #open_tab form ul#stored li div.session-block span.delete-session {
-	display:block;
-	float:right;
+	display: block;
+	float: right;
 	/*color: red;*/
 	color: black;
 	font-weight: bold;
 	margin-right: 10px;
-	cursor: pointer;	
+	cursor: pointer;
 	/*background-color: #fff;*/
 	margin-top: 3px;
 	border-radius: 20px;
@@ -231,10 +228,10 @@ input#inpt_name {
 	margin-bottom: 3px;
 }
 
-#open_tab form ul#stored li div.session-block span.delete-session:hover {	
+#open_tab form ul#stored li div.session-block span.delete-session:hover
+	{
 	background-color: yellow;
 }
-
 
 #open_tab form ul#stored li div.session-block a:hover {
 	color: #ffffff;
@@ -269,7 +266,7 @@ ul#tabs_link li a {
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
 	border-bottom: none;
-	padding: 0.3em; 
+	padding: 0.3em;
 	padding-bottom: 2px;
 	text-decoration: none;
 }
@@ -297,35 +294,35 @@ div.tabContent {
 
 .content_field {
 	padding: 5px 8px 10px 8px;
-	background: linear-gradient(to bottom, #e96101 1%,#fd8c17 100%);
+	background: linear-gradient(to bottom, #e96101 1%, #fd8c17 100%);
 }
 
 .btn {
-	display: inline-block; 
-	margin-bottom: 0; 
-	font-weight: 400; 
-	text-align: center; 
-	vertical-align: middle; 
-	cursor: pointer; 
-	background-image: none; 
+	display: inline-block;
+	margin-bottom: 0;
+	font-weight: 400;
+	text-align: center;
+	vertical-align: middle;
+	cursor: pointer;
+	background-image: none;
 	border: 1px solid transparent;
-	white-space: nowrap; 
-	font-size: 14px; 
-	line-height: 1.4; 
-	border-radius: 6px; 
-	user-select: none; 
+	white-space: nowrap;
+	font-size: 14px;
+	line-height: 1.4;
+	border-radius: 6px;
+	user-select: none;
 	float: right;
 }
-	
+
 .btn-success {
-	color: #000000; 
+	color: #000000;
 	background-color: #e68515;
 	border-color: #DD7600;
 	width: 26%;
 }
-	
-.btn-success:hover, .btn-success:focus {
-	background-color: #DD7600; 
+
+.btn-success:hover,.btn-success:focus {
+	background-color: #DD7600;
 	border-color: #DD7600;
 }
 
