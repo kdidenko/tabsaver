@@ -5,15 +5,15 @@
 	},
 	"appDesc": {
 		"message": "This extension stores opened tabs to reopen after browser restart.", 
-    	"description": "This extension stores opened tabs to reopen after browser restart."	
+		"description": "This extension stores opened tabs to reopen after browser restart."	
 	},
 	"defTitle": {
 		"message": "Tab Saver Dialog", 
-    	"description": "Opens the Tab Saver Dialog"	
+		"description": "Opens the Tab Saver Dialog"	
 	},
 	"title": {
 		"message": "Remember tabs", 
-    	"description": "Remember tabs"	
+		"description": "Remember tabs"	
 	},
 	"ext_name": {
 		"message": "Tab <b>Saver</b> <i id='version'>v</i>",

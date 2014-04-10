@@ -1,5 +1,3 @@
-
-
 function test() {
 	alert('test');
 }
