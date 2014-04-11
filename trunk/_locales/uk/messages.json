@@ -1,0 +1,54 @@
+{
+	"appName": {
+		"message": "Tab Saver",
+		"description": "Tab Saver як відображено на Google Web Store"
+	},
+	"appDesc": {
+		"message": "Це розширення дозволить Вам відновити збережені закладки після перезапуску браузера", 
+		"description": "Це розширення дозволить Вам відновити збережені закладки після перезапуску браузера"	
+	},
+	"defTitle": {
+		"message": "Збереження закладок", 
+		"description": "Збереження закладок"	
+	},
+	"title": {
+		"message": "Зберегти закладки", 
+		"description": "Зберегти закладки"	
+	},
+	"ext_name": {
+		"message": "Tab <b>Saver</b> <i id='version'>v</i>",
+		"description": "Tab <b>Saver</b> <i id='version'>v</i>"
+	},
+	"save_btn": {
+		"message": "Зберегти",
+		"description": "Зберегти"
+	},
+	"open_btn": {
+		"message": "Відкрити",
+		"description": "Відкрити"
+	},
+	"ssn_sess": {
+		"message": "Ім'я <span class='white' id='ssn_name'>Сесії</span>",
+		"description": "Ім'я <span class='white' id='ssn_name'>Сесії</span>"
+	},
+	"inpt_name": {
+		"message": "Введіть ім'я, щоб зберегти сесію",
+		"description": "Введіть ім'я, щоб зберегти сесію"
+	},
+	"save": {
+		"message": "Зберегти",
+		"description": "Зберегти"
+	},
+	"sess_name_required": {
+		"message": "Ім'я сесії є обозязковим!",
+		"description": "Ім'я сесії є обозязковим!"
+	},
+	"sess_saved": {
+		"message": "Сесію збережено!",
+		"description": "Сесію збережено!"
+	},
+	"sess_enter_name": {
+		"message": "Введіть ім'я сесії",
+		"description": "Введіть ім'я сесії"
+	}
+}

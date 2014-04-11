@@ -1,0 +1,54 @@
+{
+	"appName": {
+		"message": "Tab Saver",
+		"description": "Tab Saver as displayed in the web store."
+	},
+	"appDesc": {
+		"message": "Diese Extension speichert geöffnete Tabs um Sie nach einem Neustart des Browsers wieder zu öffnen.", 
+    	"description": "Diese Extension speichert geöffnete Tabs um Sie nach einem Neustart des Browsers wieder zu öffnen."	
+	},
+	"defTitle": {
+		"message": "Tab Speicher-Dialog", 
+    	"description": "Öffnet den Tab Speicher-Dialog"	
+	},
+	"title": {
+		"message": "Tabs merken", 
+    	"description": "Tabs merken"	
+	},
+	"ext_name": {
+		"message": "Tab <b>Saver</b> <i id='version'>v</i>",
+		"description": "Tab <b>Saver</b> <i id='version'>v</i>"
+	},
+	"save_btn": {
+		"message": "Speichern",
+		"description": "Speichern"
+	},
+	"open_btn": {
+		"message": "Öffnen",
+		"description": "Öffnen"
+	},
+	"ssn_sess": {
+		"message": "Sitzung <span class='white' id='ssn_name'>Name</span>",
+		"description": "Sitzung <span class='white' id='ssn_name'>Name</span>"
+	},
+	"inpt_name": {
+		"message": "Zum Speichern Sitzungsnamen eingeben",
+		"description": "Zum Speichern Sitzungsnamen eingeben"
+	},
+	"save": {
+		"message": "Speichern",
+		"description": "Speichern"
+	},
+	"sess_name_required": {
+		"message": "Name der Sitzung wird benötigt!",
+		"description": "Name der Sitzung wird benötigt!"
+	},
+	"sess_saved": {
+		"message": "Sitzung gespeichert",
+		"description": "Sitzung gespeichert"
+	},
+	"sess_enter_name": {
+		"message": "Gib einen Sitzungsnamen ein",
+		"description": "Gib einen Sitzungsnamen ein"
+	}
+}

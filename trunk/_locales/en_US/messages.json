@@ -1,0 +1,54 @@
+{
+	"appName": {
+		"message": "Tab Saver",
+		"description": "Tab Saver as displayed in the web store."
+	},
+	"appDesc": {
+		"message": "This extension stores opened tabs to reopen after browser restart.", 
+		"description": "This extension stores opened tabs to reopen after browser restart."	
+	},
+	"defTitle": {
+		"message": "Tab Saver Dialog", 
+		"description": "Opens the Tab Saver Dialog"	
+	},
+	"title": {
+		"message": "Remember tabs", 
+		"description": "Remember tabs"	
+	},
+	"ext_name": {
+		"message": "Tab <b>Saver</b> <i id='version'>v</i>",
+		"description": "Tab <b>Saver</b> <i id='version'>v</i>"
+	},
+	"save_btn": {
+		"message": "Save",
+		"description": "Save tab caption"
+	},
+	"open_btn": {
+		"message": "Open",
+		"description": "Open"
+	},
+	"ssn_sess": {
+		"message": "Session <span class='white' id='ssn_name'>Name</span>",
+		"description": "Session <span class='white' id='ssn_name'>Name</span>"
+	},
+	"inpt_name": {
+		"message": "Enter the name to save the session",
+		"description": "Enter the name to save the session"
+	},
+	"save": {
+		"message": "Save",
+		"description": "Save"
+	},
+	"sess_name_required": {
+		"message": "Session name is required!",
+		"description": "Session name is required!"
+	},
+	"sess_saved": {
+		"message": "Session saved",
+		"description": "Session saved"
+	},
+	"sess_enter_name": {
+		"message": "Enter the session name",
+		"description": "Enter the session name"
+	}
+}

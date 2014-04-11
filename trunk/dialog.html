@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+<head>
+<title id='title'>Remember tabs</title>
+<script type="text/javascript" src="tracking.js"></script>
+<link type="text/css" rel="stylesheet" href="tabsaver.css">
+<script type="text/javascript" src="i18n.js"></script>
+<script type="text/javascript" src="storage.js"></script>
+<script type="text/javascript" src="dialog.js"></script>
+</head>
+<body>
+	<div id="wrap">
+		<header>
+			<!-- div id="social">
+					<a href="https://plus.google.com/"><img src="http://tabsaver.ito-global.com/social-media/Google+.png" title="Google+" alt="Google+" /></a>
+					<a href="https://www.facebook.com"><img src="http://tabsaver.ito-global.com/social-media/Facebook.png" title="Facebook" alt="Facebook" /></a>
+					<a href="https://www.linkedin.com/"><img src="http://tabsaver.ito-global.com/social-media/Linkedin.png" title="Linkedin" alt="Linkedin" /></a>
+					<a href="https://twitter.com/"><img src="http://tabsaver.ito-global.com/social-media/Twitter.png" title="Twitter" alt="Twitter" /></a>
+				</div-->
+			<span><a class="extUrl"
+				href="https://chrome.google.com/webstore/detail/tab-saver/fmjkkhoegfianolbdbceddpgnidbfpmo?utm_source=gmail"
+				title="Chrome Webstore" alt="Chrome Webstore" id="ext_name">Tab
+					<b>Saver</b> <i id="version">v</i>
+			</a></span>
+		</header>
+
+		<div id="tabs_link_content">
+			<ul id="tabs_link">
+				<li><a href="#" id="save_btn" class="selected">Save</a></li>
+				<li><a href="#" id="open_btn">Open</a></li>
+			</ul>
+		</div>
+
+		<ul id="tabs">
+			<!-- current session tab begin -->
+			<li>
+				<div id="save_tab" class="tabContent">
+					<form action="#" id="save_frm">
+						<div class="content_field">
+							<fieldset id="ctrl">
+								<legend id="ssn_sess">
+									Session <span class="white" id="ssn_name">Name</span>
+								</legend>
+								<input type="text" id="inpt_name" name="name"
+									placeholder="Enter the name to save the session" /> <input
+									id="save" class="btn btn-success" type="submit" name="save"
+									value="Save" />
+							</fieldset>
+						</div>
+						<div class="content">
+							<ul id="list"></ul>
+						</div>
+					</form>
+				</div>
+			</li>
+			<!-- current session tab end -->
+
+			<!-- saved sessions tab begin -->
+			<li>
+				<div id="open_tab" class="tabContent">
+					<form action="#">
+						<!-- Search Sessions
+								<fieldset id="search">
+									<legend>Enter the session name to find</legend>
+									<label for="search">Find:</label>
+									<input type="text" id="search" name="search" />
+									<button id="find" class="btn btn-success" type="submit" name="find" value="Find">Find</button>
+								</fieldset>
+							-->
+						<div class="sessions">
+							<ul id="stored"></ul>
+						</div>
+					</form>
+				</div>
+			</li>
+			<!-- saved sessions tab end -->
+		</ul>
+		<div id="push"></div>
+	</div>
+
+	<div id="footer">
+		<span>Tab Saver &copy; 2014 | <a class="extUrl"
+			href="http://www.ito-global.com" title="iTO-Global" alt="iTO-Global">ITO-Global,
+				LLC</a></span>
+	</div>
+	<script type="text/javascript" src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,491 @@
+// Copyright (c) 2013 Kostyantyn Didenko. All rights reserved.
+// This software is distributed under GNU GPL v2 licence
+// For feedbacks and questions please feel free to contact me at kdidenko@gmail.com
+
+//TODO: add console logging where possible (log, warn, etc....)
+//TODO: add extension settings where it's possible to define:
+	// 1. whenever to save all windows tabs all current window only
+	// 2. whenever to save pinned tabs or not
+
+//TODO: add setting whenever to trim list items titles or not
+//TODO: add setting whenever to trim list items urls or not
+
+//TODO: wrap functionality below into FlowControlHandler Class BEGIN
+var doAsyncWait = true;
+
+var timeout = 500;
+
+function asyncWaitStart() {
+	asyncWait();	
+}
+
+function asyncWaitStop() {
+	doAsyncWait = false;
+}
+
+function asyncWait() {
+	if(doAsyncWait) {
+		setTimeout(asyncWait, timeout);
+	} else {
+		doAsyncWait = true;
+		return doAsyncWait;
+	}
+}
+//TODO: wrap functionality below into FlowControlHandler Class END
+
+
+/**
+ * Tab object definition
+ */
+function Tab () {
+	
+	//this.id = null; just to save space
+	
+	//this.title = null; just to save space
+	
+	this.url = null;
+	
+	this.setId = function(id) {
+		this.id = id;
+	};
+	
+	/**
+	 *  Adds a title to the tab object
+	 *  @param title of the tab
+	 */
+	this.setTitle = function(title) {
+		this.title = title;
+	};
+	
+	this.setUrl = function(url) {
+		this.url = url;
+	};
+	
+	this.getId = function() {
+		return this.id;
+	};
+	
+	this.getTitle = function() {
+		return this.title;
+	};
+	
+	this.getUrl = function() {
+		return this.url;
+	};
+}
+
+
+/**
+ * A singleton defining current user session
+ */
+var session = new function() {
+	/**
+	 * defines the session name
+	 */
+	this.name = null;
+
+	/**
+	 * stores the list of opened tabs
+	 */
+	this.tabs = [];
+
+	/**
+	 * returns an array of user session opened tabs
+	 * @returns array of tab object
+	 */
+	this.getTabs = function() {
+		return this.tabs;
+	};
+
+	/**
+	 * adds the tab object to the list of opened tabs
+	 * @param tab object to add
+	 */
+	this.addTab = function(tab) {
+		this.tabs.push(tab);
+	};
+	
+	/**
+	 * removes the tab from session by it's id
+	 */
+	this.removeTab = function(id) {
+		// walk through array
+		for(var i = 0; i < this.count(); i++) {
+			// check the tab id
+			if(this.tabs[i].getId() == id ){
+				// remove the tab from session
+				return this.tabs.splice(i, 1);
+			}
+		}
+		return -1;
+	};
+	
+	/**
+	 * returns the number of tabs in current session
+	 */
+	this.count = function() {
+		return this.tabs.length;		
+	};
+	
+	/**
+	 * Saves the session tabs into chrome.storage 
+	 * using the session name specified as a record key
+	 */
+	this.save = function(callback) {
+		console.log('prepearing JSON data to save session');
+		// set the key for identifying stored data
+		var key = this.name;
+		// prepare tabs list JSON string
+		var tabs = JSON.stringify(this.getTabs());
+		// prepare the data object
+		var data = {};
+		data[key] = tabs;
+		
+		// save all session tabs into synchronized google storage
+		console.log('saving ' + this.getTabs().length + ' tabs data to chrome.storage.sync');
+		chrome.storage.sync.set(data, function() { // async function
+			try {
+				if (chrome.runtime.lastError) {
+					console.warn(chrome.runtime.lastError.message);
+			    } 
+			} catch (exception) {
+				alert('exception.stack: ' + exception.stack);
+				console.error((new Date()).toJSON(), "exception.stack:", exception.stack);
+			}
+			// stop waiting for chrome.storage.sync.set
+			console.log('stopping waiting for asynchronous "chrome.storage.sync.set" function to finish');
+			asyncWaitStop();
+		});
+		// let's wait for chrome.storage.sync.set async function to finish before proceeding
+		console.log('waiting for asynchronous "chrome.storage.sync.set" function to finish');
+		asyncWaitStart();
+		callback();
+	};
+	
+	this.clearUnsasvedTabs = function() {
+		var checkboxes = document.getElementsByName('tab');
+		// loop over them all
+		for (var i=0; i<checkboxes.length; i++) {
+			// And stick the checked ones onto an array...
+			if (! checkboxes[i].checked) {
+				this.removeTab(checkboxes[i].id);
+			}
+		}
+		return;
+		
+	};
+};
+
+/**
+ * Main object of extension implemented via singleton notation
+ */
+/**
+ * 
+ */
+var tabsaver = new function() {
+	
+	/**
+	 * Renders the main views of extension
+	 */
+	this.renderView = function() {
+		// show the list of currently opened tabs
+		this.renderCurrentSession();
+		// show the list of previously saved sessions
+		this.renderSavedSessions();
+	};
+	
+	/**
+	 *  Renders the list of tabs from currently opened session
+	 */
+	this.renderCurrentSession = function() {
+		// get the list output element
+		list = document.getElementById('list');
+		// get the list of all opened tabs
+		chrome.tabs.query({'pinned' : false}, function(result) {
+			// populate the session with Tab objects
+			for ( var i = 0; i < result.length; i++) {
+				var tab = new Tab();
+				var res = result[i];
+				tab.setId(res.id);
+				//tab.setTitle(result[i].title); not saving tab title to save so extra space
+				tab.setUrl(res.url);
+				// add tab to session singleton object
+				session.addTab(tab);				
+								
+				// render DOM to display tabs list to user				
+				var li = document.createElement('li');
+				
+				// create check box
+				var chk = document.createElement('input');
+				chk.type = 'checkbox';
+				chk.name = 'tab';
+				chk.id = res.id;
+				chk.checked = 'checked';
+				
+				// create faviico
+				if((! res.favIconUrl || res.favIconUrl == null || res.favIconUrl == 'undefined') || res.favIconUrl.indexOf('chrome://') !== -1 ) {
+					src = 'http://tabsaver.ito-global.com/images/chrome-favicon.png';
+				} else {
+					src = res.favIconUrl;
+				}
+				var img = document.createElement('img');
+				img.setAttribute('src', src);
+				img.setAttribute('class', 'favicon');
+				img.setAttribute('height', '13px');
+				img.setAttribute('width', '13px');
+				
+				// add tab title element
+				var span = document.createElement('span');
+				title = res.title.length > 50 ? res.title.substring(0, 35) + '...' : res.title;
+				var t = document.createTextNode(title);
+
+				li.appendChild(chk);
+				li.appendChild(img);
+				li.appendChild(t);
+				
+				// add tab url element
+				href = result[i].url.length > 50 ? result[i].url.substring(0, 40) + '...' : result[i].url;
+				t = document.createTextNode(href);
+				
+				// compose all elements together
+				span.appendChild(t);
+				li.appendChild(span);
+				list.appendChild(li);
+			};
+		});
+	};
+	
+	/**
+	 *  Renders the list of previously saved sessions
+	 */
+	this.renderSavedSessions = function() {
+		// get the list of saved session names
+		console.log('queriing chrome.storage.sync for saved extension sessions');
+		chrome.storage.sync.get(null, function(items) {
+			try {
+				if (chrome.runtime.lastError) {
+					console.warn(chrome.runtime.lastError.message);
+			    } 
+			} catch (exception) {
+				alert('exception.stack: ' + exception.stack);
+				console.error((new Date()).toJSON(), "exception.stack:", exception.stack);
+			}
+		    var allKeys = Object.keys(items);
+		    console.log('retreived ' + allKeys.length + ' stored sessions from chrome.storage.sync');
+		    var ul = document.getElementById('stored');
+		    // remove all existing nodes
+		    console.log('clearing old data from saved sessions view');
+		    while (ul.hasChildNodes()) {
+		    	ul.removeChild(ul.lastChild);
+		    }		    
+		    // move through all sessions and build the list
+		    console.log('building the fresh list of saved sessions');
+		    for ( var i = 0; i < allKeys.length; i++) {
+		    	// create list item
+		    	var li = document.createElement('li');
+		    	
+		    	// create wrapper div
+		    	var div = document.createElement('div');
+		    	div.setAttribute('class', 'session-block');		    	
+		    	
+		    	// create link
+		    	var a = document.createElement('a');
+		    	a.setAttribute('href', '#');
+		    	a.setAttribute('rel', allKeys[i]);
+		    	// add onclick event to open the sessions window
+		    	a.onclick = tabsaver.openSession;
+		    	// attach event listener to track opened sessions via GA
+		    	a.addEventListener('click', function() {
+					_gaq.push(['_trackEvent', 'Dialogs', 'Session', 'Opened']);
+				}, false);		    	
+		    	
+
+		    	// create title text
+		    	var title = document.createTextNode(allKeys[i]);
+		    	a.appendChild(title);		    	
+		    	
+		    	// create delete button
+		    	var del = document.createElement('span');
+		    	del.setAttribute('class', 'delete-session');
+		    	del.setAttribute('rel', allKeys[i]);
+		    	var delIco = document.createTextNode('X'); //TODO: replace with image instead of text 
+		    	del.appendChild(delIco);
+		    	del.onclick = tabsaver.deleteSession;
+		    	// attach event listener to track deleted sessions via GA
+		    	del.addEventListener('click', function() {
+					_gaq.push(['_trackEvent', 'Dialogs', 'Session', 'Deleted']);
+				}, false);		 		    	
+
+		    	// insert session link into wrapper
+		    	div.appendChild(a);
+		    	
+		    	// append delete action
+		    	div.appendChild(del);
+		    			    	
+			    // append session wrapper to the list
+			    li.appendChild(div);
+			    
+			    // append list item to the list
+			    ul.appendChild(li);
+			}
+		    // stop waiting for chrome.storage.sync.get
+		    console.log('stopping waiting for asynchronous "chrome.storage.sync.get" function to finish');
+		    asyncWaitStop();
+		});
+		// let's wait for chrome.storage.sync.get async function to finish before proceeding
+		console.log('waiting for asynchronous "chrome.storage.sync.get" function to finish');
+		asyncWaitStart();
+	};
+
+	/**
+	 * Stores current session into user's Google account storage 
+	 */
+	this.storeSession = function(name) {
+		// set session name which will be used as a key to strore data
+		session.name = name; 
+		// remove all tabs from session which were not selected by user
+		session.clearUnsasvedTabs();
+		session.save(function(){
+			console.log('refreshing saved sessions view');
+			tabsaver.renderSavedSessions();
+		});
+		// add GA tracking to Save Session Event
+		_gaq.push(['_trackEvent', 'Dialogs', 'Session', 'Saved']);
+	};
+
+	/**
+	 * Returns current session object
+	 */
+	this.getSession = function() {
+		return session;
+	};
+	
+	/**
+	 * Determines if user is currently logged in to his Google account.
+	 * Otherwise extension can not function properly.
+	 */	
+	this.isUserLogedIn = function() {
+		// write code here!!!	
+	};
+	
+	/**
+	 * Opens saved session in a new window
+	 */
+	this.openSession = function() {
+		// get the urls for session key specified
+		chrome.storage.sync.get(this.rel, function(result) {
+			var tabs = {};
+			var newTabs = [];
+			// walk though all urls saved
+			for (var key in result) {
+				tabs[key] = JSON.parse(result[key]);
+				tabs = tabs[key];
+				// build an array of urls for new window to open
+				for (var i = 0; i < tabs.length; ++i) {
+					newTabs.push(tabs[i].url);
+				}
+				// open new window with the list of saved urls
+				chrome.windows.create({
+					url: newTabs, focused: true
+				}, function() {
+					console.log('Session "' + key + '" opened');
+				});
+			}
+		});
+	};
+	
+	
+	/**
+	 * deletes the session from the storage
+	 */
+	this.deleteSession = function() {
+		// get the session key to remove
+		var key = this.getAttribute('rel');
+		// do remove the session by key
+		console.log('Removing session with the key: "' + key + '"');
+		
+		chrome.storage.sync.remove(key, function(){
+			console.log('session "' + key + '" removed');
+			tabsaver.renderSavedSessions();
+		});
+		
+		// check for errors
+		try {
+			if (chrome.runtime.lastError) {
+				console.warn(chrome.runtime.lastError.message);
+		    } 
+		} catch (exception) {
+			alert('exception.stack: ' + exception.stack);
+			console.error((new Date()).toJSON(), "exception.stack:", exception.stack);
+		}
+		
+		
+	};
+	
+	
+};
+
+/**
+ * Main entry point of extension. Works as an initialization 
+ * function to entire extension functionality.
+ */
+function init() {
+	//tabsaver.isUserLogedIn();
+	//alert(chrome.identity);	
+	var save = document.getElementById('save');
+	// assign event handler to Save button
+	if(save) {
+		// submit was clicked
+		save.onclick = function() {
+			console.log('"Save" button was clicked');
+			// get the name of the session which will be used as a key for the storage record
+			var name = document.getElementById('inpt_name').value;
+			name = (name == 'undefined' || name == '' || name == null) ? prompt(chrome.i18n.getMessage("sess_enter_name")): name;
+			if(name == 'undefined' || name == '' || name == null) {
+				console.warn('session name was not entered during saving the session');
+				alert(chrome.i18n.getMessage("sess_name_required"));
+				return;
+			}
+			// save the session with session name
+			console.log('savinng session named "' + name + '"');
+			tabsaver.storeSession(name);
+			// switch to saved sessions list
+			//console.log('switching to saved sessions view');
+			alert(chrome.i18n.getMessage("sess_saved"));
+		};
+		
+		// render the extension views
+		console.log('rendering extension views');
+		tabsaver.renderView();
+	}
+
+	// render the extension's version
+	var i = document.getElementById('version');
+	var v = document.createTextNode(getVersion());
+	i.appendChild(v);
+};
+
+
+/**
+ * Determines the current extension's version according to manifest JSON file
+ * @returns {version String}
+ */
+function getVersion() { 
+	// init the version var with default value
+    var version = '1.0.0'; 
+    var xhr = new XMLHttpRequest(); 
+    // get the manifest JSON
+    xhr.open('GET', chrome.extension.getURL('manifest.json'), false); 
+    xhr.send(null);
+    var manifest = JSON.parse(xhr.responseText); 
+    version = manifest.version;
+    return version;
+};
+
+
+/**
+ * Event listener to handle document onload
+ */
+document.addEventListener('DOMContentLoaded', function() {
+	init();
+});
