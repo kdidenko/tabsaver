@@ -1,19 +1,19 @@
 {
 	"appName": {
 		"message": "Tab Saver",
-		"description": "Tab Saver as displayed in the web store"
+		"description": "Tab Saver как отображается на Google Web Store"
 	},
 	"appDesc": {
-		"message": "Этот Екстеншин позволит Вам восстановить сохранении сессии после перезапуска браузера", 
-		"description": "Этот Екстеншин позволит Вам восстановить сохраненную сессию после перезапуска браузера"	
+		"message": "Это расширение позволит Вам восстановить сохранённые сессии после перезапуска браузера", 
+		"description": "Это расширение позволит Вам восстановить сохранённые сессии после перезапуска браузера"	
 	},
 	"defTitle": {
 		"message": "Сохранение закладок", 
 		"description": "Сохранение закладок"	
 	},
 	"title": {
-		"message": "Запомнить закладки", 
-		"description": "Запомнить закладки"	
+		"message": "Сохранить закладки", 
+		"description": "Сохранить закладки"	
 	},
 	"ext_name": {
 		"message": "Tab <b>Saver</b> <i id='version'>v</i>",
@@ -28,12 +28,12 @@
 		"description": "Открыть"
 	},
 	"ssn_sess": {
-		"message": "Сессии <span class='white' id='ssn_name'>Имя</span>",
-		"description": "Сессии <span class='white' id='ssn_name'>Имя</span>"
+		"message": "Имя <span class='white' id='ssn_name'>Сессии</span>",
+		"description": "Имя <span class='white' id='ssn_name'>Сессии</span>"
 	},
 	"inpt_name": {
-		"message": "Введите имя, чтобы сохранить сеанс",
-		"description": "Введите имя, чтобы сохранить сеанс"
+		"message": "Введите имя, чтобы сохранить сессию",
+		"description": "Введите имя, чтобы сохранить сессию"
 	},
 	"save": {
 		"message": "Сохранить",

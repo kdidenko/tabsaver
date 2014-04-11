@@ -18,6 +18,6 @@ _gaq.push(['_trackPageview']);
  * Event listener to handle document onload
  */
 document.addEventListener('DOMContentLoaded', function() {
-	//_gaq('send', 'event', 'category', 'action');
+	// add on dialog opened event
 	_gaq.push(['_trackEvent', 'Dialogs', 'Main View', 'Opened']);
 });

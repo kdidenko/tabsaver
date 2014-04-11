@@ -292,7 +292,13 @@ var tabsaver = new function() {
 		    	var a = document.createElement('a');
 		    	a.setAttribute('href', '#');
 		    	a.setAttribute('rel', allKeys[i]);
+		    	// add onclick event to open the sessions window
 		    	a.onclick = tabsaver.openSession;
+		    	// attach event listener to track opened sessions via GA
+		    	a.addEventListener('click', function() {
+					_gaq.push(['_trackEvent', 'Dialogs', 'Session', 'Opened']);
+				}, false);		    	
+		    	
 
 		    	// create title text
 		    	var title = document.createTextNode(allKeys[i]);
@@ -305,6 +311,10 @@ var tabsaver = new function() {
 		    	var delIco = document.createTextNode('X'); //TODO: replace with image instead of text 
 		    	del.appendChild(delIco);
 		    	del.onclick = tabsaver.deleteSession;
+		    	// attach event listener to track deleted sessions via GA
+		    	del.addEventListener('click', function() {
+					_gaq.push(['_trackEvent', 'Dialogs', 'Session', 'Deleted']);
+				}, false);		 		    	
 
 		    	// insert session link into wrapper
 		    	div.appendChild(a);
@@ -339,6 +349,8 @@ var tabsaver = new function() {
 			console.log('refreshing saved sessions view');
 			tabsaver.renderSavedSessions();
 		});
+		// add GA tracking to Save Session Event
+		_gaq.push(['_trackEvent', 'Dialogs', 'Session', 'Saved']);
 	};
 
 	/**

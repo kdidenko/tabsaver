@@ -49,6 +49,7 @@ function initExternalUrls() {
 	for(var i = 0; i < urls.length; i++ ) {
 		console.log('URL #' + i + ' = ' + urls[i].href);
 		urls[i].addEventListener('click', function() {
+			_gaq.push(['_trackEvent', 'URLs', 'Opened', this.href]);
 			chrome.tabs.create({ url: this.href }, function(tab){});
 		}, false);
 	}
