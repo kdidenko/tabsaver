@@ -50,5 +50,21 @@
 	"sess_enter_name": {
 		"message": "Enter the session name",
 		"description": "Enter the session name"
+	},
+	"list_action_choose": {
+		"message": "Choisissez une action",
+		"description": "Choisissez une action"
+	},
+	"list_action_select": {
+		"message": "- Sélectionner tout",
+		"description": "- Sélectionner tout"
+	},
+	"list_action_clear": {
+		"message": "- Effacer la sélection",
+		"description": "- Effacer la sélection"
+	},
+	"list_action_toggle": {
+		"message": "- Basculer Sélection",
+		"description": "- Basculer Sélection"
 	}
 }

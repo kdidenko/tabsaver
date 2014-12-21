@@ -50,5 +50,21 @@
 	"sess_enter_name": {
 		"message": "Введите имя сессии",
 		"description": "Введите имя сессии"
+	},
+	"list_action_choose": {
+		"message": "Выберите действие",
+		"description": "Выберите действие"
+	},
+	"list_action_select": {
+		"message": "- Отметить всё",
+		"description": "- Отметить всё"
+	},
+	"list_action_clear": {
+		"message": "- Очистить выбраное",
+		"description": "- Очистить выбраное"
+	},
+	"list_action_toggle": {
+		"message": "- Поменять выбранное",
+		"description": "- Поменять выбранное"
 	}
 }

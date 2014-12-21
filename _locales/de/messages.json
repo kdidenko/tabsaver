@@ -50,5 +50,21 @@
 	"sess_enter_name": {
 		"message": "Gib einen Sitzungsnamen ein",
 		"description": "Gib einen Sitzungsnamen ein"
+	},
+	"list_action_choose": {
+		"message": "Wählen Sie eine Aktion",
+		"description": "Wählen Sie eine Aktion"
+	},
+	"list_action_select": {
+		"message": "- Alle auswählen",
+		"description": "- Alle auswählen"
+	},
+	"list_action_clear": {
+		"message": "- Auswahl löschen",
+		"description": "- Auswahl löschen"
+	},
+	"list_action_toggle": {
+		"message": "- Auswahl umkehren",
+		"description": "- Auswahl umkehren"
 	}
 }

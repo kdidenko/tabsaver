@@ -11,6 +11,9 @@
 //TODO: add setting whenever to trim list items urls or not
 
 //TODO: wrap functionality below into FlowControlHandler Class BEGIN
+
+//TODO: switch to the sessions list tab after session saving!
+
 var doAsyncWait = true;
 
 var timeout = 500;
@@ -453,7 +456,6 @@ function init() {
 			//console.log('switching to saved sessions view');
 			alert(chrome.i18n.getMessage("sess_saved"));
 		};
-		
 		// render the extension views
 		console.log('rendering extension views');
 		tabsaver.renderView();

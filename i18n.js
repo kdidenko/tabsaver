@@ -32,6 +32,16 @@ function i18n() {
 	translate('inpt_name', 'placeholder', inpt_name);
 	var save = chrome.i18n.getMessage("save");
 	translate('save', 'value', save);
+	/*** v 1.0.9 ***/
+	var list_action_choose = chrome.i18n.getMessage("list_action_choose");
+	translate('list_action_choose', 'innerHTML', list_action_choose);
+	var list_action_select = chrome.i18n.getMessage("list_action_select");
+	translate('list_action_select', 'innerHTML', list_action_select);
+	var list_action_clear = chrome.i18n.getMessage("list_action_clear");
+	translate('list_action_clear', 'innerHTML', list_action_clear);
+	var list_action_toggle = chrome.i18n.getMessage("list_action_toggle");
+	translate('list_action_toggle', 'innerHTML', list_action_toggle);
+	/*** v 1.0.9 ***/
 }
 
 /**

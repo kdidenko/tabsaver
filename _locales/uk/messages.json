@@ -50,5 +50,21 @@
 	"sess_enter_name": {
 		"message": "Введіть ім'я сесії",
 		"description": "Введіть ім'я сесії"
+	},
+	"list_action_choose": {
+		"message": "Оберіть дію",
+		"description": "Оберіть дію"
+	},
+	"list_action_select": {
+		"message": "- Відмітити усі",
+		"description": "- Відмітити усі"
+	},
+	"list_action_clear": {
+		"message": "- Очистити відмічені",
+		"description": "- Очистити відмічені"
+	},
+	"list_action_toggle": {
+		"message": "- Поміняти відмічені",
+		"description": "- Поміняти відмічені"
 	}
 }
