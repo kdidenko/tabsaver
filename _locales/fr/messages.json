@@ -7,6 +7,11 @@
 		"message": "This extension stores opened tabs to reopen after browser restart.", 
 		"description": "This extension stores opened tabs to reopen after browser restart."	
 	},
+	"appDescShort": {
+		"message": "Tab Saver", 
+    	"description": "Tab Saver"
+    		
+	},
 	"defTitle": {
 		"message": "Tab Saver Dialog", 
 		"description": "Opens the Tab Saver Dialog"	

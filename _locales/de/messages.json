@@ -5,7 +5,13 @@
 	},
 	"appDesc": {
 		"message": "Diese Extension speichert geöffnete Tabs um Sie nach einem Neustart des Browsers wieder zu öffnen.", 
-    	"description": "Diese Extension speichert geöffnete Tabs um Sie nach einem Neustart des Browsers wieder zu öffnen."	
+    	"description": "Diese Extension speichert geöffnete Tabs um Sie nach einem Neustart des Browsers wieder zu öffnen."
+    		
+	},
+	"appDescShort": {
+		"message": "Tab Saver", 
+    	"description": "Tab Saver"
+    		
 	},
 	"defTitle": {
 		"message": "Tab Speicher-Dialog", 

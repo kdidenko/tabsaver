@@ -115,17 +115,6 @@ document.getElementById('list-action').onchange = function() {
 }
 
 
-/*var actions = document.getElementById('list-action');
-for (var i = 0; i < actions.length; i++) {
-	switch(i) {
-		case 1: break;
-		case 2: break;
-		case 3: break;
-		default: break;
-	}
-}*/
-
-
 /**
  * Event listener to handle document onload
  */

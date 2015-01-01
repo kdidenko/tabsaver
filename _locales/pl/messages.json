@@ -7,6 +7,11 @@
 		"message": "To rozszerzenie sklepy otwarte karty do ponownego otwarcia po ponownym uruchomieniu przeglądarki.", 
 		"description": "To rozszerzenie sklepy otwarte karty do ponownego otwarcia po ponownym uruchomieniu przeglądarki."	
 	},
+	"appDescShort": {
+		"message": "Tab Saver", 
+    	"description": "Tab Saver"
+    		
+	},
 	"defTitle": {
 		"message": "Tab Saver Dialog", 
 		"description": "Opens the Tab Saver Dialog"	
