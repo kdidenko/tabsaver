@@ -2,14 +2,14 @@
 function translate(id, attribute, text) {
 	var el = document.getElementById(id);
 	// check if element exists
-	if(el !== null || el !== 'undefined' || el !== '') {
+	if(el !== null && el !== 'undefined' && el !== '') {
 		if(attribute !== 'innerHTML') {
 			el.setAttribute(attribute, text);
 		} else {
 			el.innerHTML = text;
 		}
 	} else {
-		console.warn ('could not find element with id' + id);
+		console.log ('could not find element with id: ' + id);
 	}
 }
 

@@ -1,24 +1,29 @@
 <!doctype html>
 <html>
 <head>
-<title id='title'>Remember tabs</title>
-<script type="text/javascript" src="tracking.js"></script>
-<link type="text/css" rel="stylesheet" href="tabsaver.css">
-<script type="text/javascript" src="i18n.js"></script>
-<script type="text/javascript" src="storage.js"></script>
-<script type="text/javascript" src="dialog.js"></script>
+	<title id='title'>Remember tabs</title>
+	<script type="text/javascript" src="tracking.js"></script>
+	<link type="text/css" rel="stylesheet" href="tabsaver.css">
+	<script type="text/javascript" src="i18n.js"></script>
+	<script type="text/javascript" src="storage.js"></script>
+	<script type="text/javascript" src="dialog.js"></script>
 </head>
 <body>
 	<div id="wrap">
 		<header>
 			<div id="social">
-				<!--a href="https://plus.google.com/" title="Tab Saver on Google+"><img src="http://tabsaver.ito-global.com/social-media/Google+.png" alt="Tab Saver on Google+" /></a-->
-				<a href="https://www.facebook.com/tabsaver" title="Tab Saver on Facebook" class="extUrl"><img src="http://tabsaver.ito-global.com/social-media/Facebook.png" alt="Tab Saver on Facebook" /></a>
-				<!--a href="https://www.linkedin.com/"><img src="http://tabsaver.ito-global.com/social-media/Linkedin.png" title="Linkedin" alt="Linkedin" /></a>
-				<a href="https://twitter.com/" title="Tab Saver on Twitter"><img src="http://tabsaver.ito-global.com/social-media/Twitter.png" alt="Tab Saver on Twitter" /></a-->
+				<a href="https://www.facebook.com/tabsaver" title="Tab Saver on Facebook" class="extUrl">
+                    <img src="http://www.tab-saver.com/images/tab-saver/social-media/facebook-icon.png" alt="Follow Tab Saver on Facebook" title="Subscribe to Tab Saver Facebook account" />
+                </a>
+                <a href="https://twitter.com/tab_saver" title="Tab Saver on Twitter" class="extUrl">
+                    <img src="http://www.tab-saver.com/images/tab-saver/social-media/twitter-icon.png" alt="Follow Tab Saver on Twitter" title="Subscribe to Tab Saver Twitter account" />
+                </a>
+                <a href="https://google.com/+Tabsaver-chrome" title="Tab Saver on Google+" class="extUrl">
+                    <img src="http://www.tab-saver.com/images/tab-saver/social-media/google-plus-icon.png" alt="Follow Tab Saver on Google+" title="Subscribe to Tab Saver Google+ account" />
+                </a>
 			</div>
 			<span>
-				<a class="extUrl"	href="https://chrome.google.com/webstore/detail/tab-saver/fmjkkhoegfianolbdbceddpgnidbfpmo"	title="Chrome Webstore" alt="Chrome Webstore" id="ext_name">
+				<a class="extUrl" href="http://www.tab-saver.com" title="Tab Saver official website" id="ext_name">
 				Tab	<b>Saver</b> <i id="version">v</i>
 				</a>
 			</span>
@@ -52,8 +57,8 @@
 							</dl-->
 							<div id="list-control">
 								<select name="list-action" id="list-action">
-									<option value="0" id="list_action_choose">Choose an action</option>
-									<option value="1" id="list_action_select">- Select All</option>
+									<!-- option value="0" id="list_action_choose">Choose an action</option-->
+									<option value="1" id="list_action_select" selected="selected">- Select All</option>
 									<option value="2" id="list_action_clear">- Clear Selection</option>
 									<option value="3" id="list_action_toggle">- Toggle Selection</option>
 								</select>
@@ -88,7 +93,10 @@
 		<div id="push"></div>
 	</div>
 	<div id="footer">
-		<span>Tab Saver &copy; 2014 | <a class="extUrl"	href="http://www.ito-global.com" title="iTO-Global" alt="iTO-Global">ITO-Global, LLC</a></span>
+		<span>
+			<a class="extUrl" href="https://chrome.google.com/webstore/detail/tab-saver/fmjkkhoegfianolbdbceddpgnidbfpmo" title="Tab Saver at Chrome Webstore">Tab Saver</a> 
+			&copy; 2015 | 
+			<a class="extUrl" href="http://www.ito-global.com" title="ITO-Global, LLC">ITO-Global, LLC</a></span>
 	</div>
 	<script type="text/javascript" src="popup.js"></script>
 </body>

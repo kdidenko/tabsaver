@@ -14,6 +14,8 @@
 
 //TODO: switch to the sessions list tab after session saving!
 
+var version = "1.1.3";
+
 var doAsyncWait = true;
 
 var timeout = 500;
@@ -227,7 +229,7 @@ var tabsaver = new function() {
 				
 				// create faviico
 				if((! res.favIconUrl || res.favIconUrl == null || res.favIconUrl == 'undefined') || res.favIconUrl.indexOf('chrome://') !== -1 ) {
-					src = 'http://tabsaver.ito-global.com/images/chrome-favicon.png';
+					src = 'http://www.tab-saver.com/images/tab-saver/chrome-favicon.png';
 				} else {
 					src = res.favIconUrl;
 				}
@@ -474,13 +476,13 @@ function init() {
  */
 function getVersion() { 
 	// init the version var with default value
-    var version = '1.0.0'; 
+    /*var version = '1.0.0'; 
     var xhr = new XMLHttpRequest(); 
     // get the manifest JSON
-    xhr.open('GET', chrome.extension.getURL('manifest.json'), false); 
+    xhr.open('GET', chrome.extension.getURL('manifest.json'), true); 
     xhr.send(null);
     var manifest = JSON.parse(xhr.responseText); 
-    version = manifest.version;
+    version = manifest.version;*/
     return version;
 };
 

@@ -111,7 +111,7 @@ document.getElementById('list-action').onchange = function() {
 			break;
 		default: break;
 	}
-	this.selectedIndex = 0;
+	//this.selectedIndex = 0;
 }
 
 
