@@ -313,6 +313,8 @@ var tabsaver = new function() {
 			console.log('refreshing saved sessions view');
 			tabsaver.renderSavedSessions();
 			showOpenTab(); // switch to the sessions view
+			// notify user session was saved successfully
+			alert(chrome.i18n.getMessage("sess_saved"));
 		});
 	};
 
@@ -397,6 +399,7 @@ function init() {
 	console.log('rendering extension views');
 	tabsaver.renderView();
 	
+	
 	// prevent form from being submitted
 	document.getElementById('save_frm').addEventListener('submit', function(e) {
 		e.preventDefault();
@@ -406,6 +409,7 @@ function init() {
 	// save button event listener
 	document.getElementById('save').addEventListener('click', function() {
 		console.log('"Save" button was clicked');
+		
 		// get the name of the session which will be used as a key for the storage record
 		var name = document.getElementById('inpt_name').value;
 		name = (!isset(name)) ? prompt(chrome.i18n.getMessage("sess_enter_name")): name;
@@ -419,15 +423,13 @@ function init() {
 		tabsaver.storeSession(name);
 		// reset session name field
 		document.getElementById('inpt_name').value = '';
-		// notify user session was saved successfully
-		alert(chrome.i18n.getMessage("sess_saved"));
 	}, false);
 	
 	// render the extension's version
 	document.getElementById('version').appendChild(
 		document.createTextNode(getVersion())
 	);
-
+	
 	//TODO: next versions - assign import / export handlers
 	/**
 	 * e.g:

@@ -9,20 +9,45 @@
  */
 
 var userInfoUrl = 'https://www.googleapis.com/userinfo/v2/me';
-				   
+
 /**
  * User object as returned from Google user info
  */
 var guser = null;
 
-var gidentity = (function() {
-	// define states
-	var STATE_START = 1;
-	var STATE_ACQUIRING_AUTHTOKEN = 2;
-	var STATE_AUTHTOKEN_ACQUIRED = 3;
+// let's define states. CRAP! chrome.runtime do not return any error codes,
+// only string messages we have to use:
+/**
+ * @constant defines the user state as not signed in yet
+ */
+var IS_NOT_SIGNED_IN = 'The user is not signed in.';
 
+/**
+ * @constant defines the state when OAuth was not granted or revoked
+ */
+var IS_NOT_GRANTED_OAUTH2 = 'OAuth2 not granted or revoked.';
+
+/**
+ * @constant defines the state when user rejected extension permissions for
+ *           OAuth2
+ */
+var IS_REJECTED_OAUTH2 = 'OAuth2 was rejected by user!';
+
+/**
+ * @constant defines the state when user was successfully signed in and accepted
+ *           extension's permissions for OAuth2
+ */
+var IS_ACTIVE = 'Is signed in and active';
+
+var OAuthState = false;
+
+/**
+ * @class gidentity 
+ * main Google identity singleton class implementation for TabSaver extension required
+ * OAuth2 functionality
+ */
+var gidentity = (function() {
 	// define local variables
-	var state = STATE_START;
 	var access_token = null;
 	var userInfo = null;
 	var retry = true;
@@ -31,20 +56,43 @@ var gidentity = (function() {
 
 	function getToken() {
 		console.log('runnning chrome.identity.getAuthToken');
-		chrome.identity.getAuthToken({
-			'interactive' : interactive
-		}, function(token) {
-			if (chrome.runtime.lastError) {
-				_gaq.push(['_trackEvent', 'OAuth2', 'Get Token', chrome.runtime.lastError.message]);
-				console.warn(chrome.runtime.lastError.message); // "The user is not signed in." / "OAuth2 not granted or revoked."
-				callback(chrome.runtime.lastError);
-				return;
-			}
-			_gaq.push(['_trackEvent', 'OAuth2', 'Get Token', 'Token Received']);
-			console.log('token received: ' + token);
-			access_token = token;
-			infoRequestStart();
-		});
+		chrome.identity
+				.getAuthToken(
+						{
+							'interactive' : interactive
+						},
+						function(token) {
+							if (chrome.runtime.lastError) { // something happend
+								if (chrome.runtime.lastError.message == IS_NOT_SIGNED_IN) {
+									// maybe he do not have any Google's accounts at all
+									OAuthState = IS_NOT_SIGNED_IN; 
+								} else if (chrome.runtime.lastError.message == IS_NOT_GRANTED_OAUTH2) {
+									if (interactive) {
+										// he rejected our access permissions!
+										OAuthState = IS_REJECTED_OAUTH2; 
+									} else {
+										// our extension have no permissions (yet)
+										OAuthState = IS_NOT_GRANTED_OAUTH2;
+										// now try it interactive, to show user the application authorization dialog
+										gidentity.getUserInfo(true, onUserInfoFetched);
+										return
+									}
+								}
+								// "The user is not signed in." / "OAuth2 not granted or revoked."
+								_gaq.push([ '_trackEvent', 'OAuth2',
+										'Get Token', OAuthState ]);
+								console.warn(chrome.runtime.lastError.message); 
+								callback(chrome.runtime.lastError);
+								return;
+							}
+							// he is signed in, and accepted our permissions!
+							OAuthState = IS_ACTIVE; 
+							_gaq.push([ '_trackEvent', 'OAuth2', 'Get Token',
+									'Token Received' ]);
+							console.log('token received: ' + token);
+							access_token = token;
+							infoRequestStart();
+						});
 	}
 
 	function infoRequestStart() {
@@ -56,13 +104,14 @@ var gidentity = (function() {
 	}
 
 	function infoRequestComplete() {
-		if (this.status == 401 && retry) { // cached token is invalid. Retry once with a fresh one
+		if (this.status == 401 && retry) { // cached token is invalid. Retry
+			// once with a fresh one
 			retry = false;
-			
 			// log to Google Analytics event
-			_gaq.push(['_trackEvent', 'OAuth2', 'Get Token', 'Cached token is invalid. Retrying once with a fresh one']);
+			_gaq.push([ '_trackEvent', 'OAuth2', 'Get Token',
+							'Cached token is invalid. Retrying once with a fresh one' ]);
 			console.log('Cached token is invalid. Retrying once with a fresh one');
-			
+			// remove cached OAuth2 token
 			chrome.identity.removeCachedAuthToken({
 				token : access_token
 			}, getToken());
@@ -73,14 +122,15 @@ var gidentity = (function() {
 	}
 
 	return {
-		getUserInfo : function(i, c) {
+		
+		getUserInfo: function(i, c) {
 			console.log('getting user data');
 			interactive = i;
 			callback = c;
 			getToken();
 		},
 
-		revoke : function() {
+		revoke: function(callback) {
 			chrome.identity.getAuthToken({
 				'interactive' : false
 			}, function(current_token) {
@@ -97,13 +147,20 @@ var gidentity = (function() {
 									+ current_token);
 					xhr.send();
 					// log to Google Analytics event
-					_gaq.push(['_trackEvent', 'OAuth2', 'Revoke Token', 'Revoked']);
+					_gaq.push([ '_trackEvent', 'OAuth2', 'Revoke Token',
+							'Revoked' ]);
 					console.log('Token revoked and removed from cache. '
 							+ 'Check chrome://identity-internals to confirm.');
+					if(callback) {
+						callback();
+					}
 				} else {
-					// log to Google Analytics event
-					_gaq.push(['_trackEvent', 'OAuth2', 'Revoke Token', chrome.runtime.lastError.message]);
-					console.warn(chrome.runtime.lastError.message); // "The user is not signed in." / "OAuth2 not granted or revoked."
+					// "The user is not signed in." / "OAuth2 not granted or revoked."
+					// log this to Google Analytics event
+					_gaq.push([ '_trackEvent', 'OAuth2', 'Revoke Token',
+							chrome.runtime.lastError.message ]);
+					// and to console as well
+					console.warn(chrome.runtime.lastError.message);
 				}
 			});
 
@@ -113,30 +170,40 @@ var gidentity = (function() {
 })();
 
 /**
- * Callback executed after fetching the user info
+ * Callback method executed after fetching the user info
  * 
- * @param error {string} error message returned in case of failure
- * @param status {integer} XHR response status code
- * @param data {Object} XHR response data
+ * @param error
+ *            {string} error message returned in case of failure
+ * @param status
+ *            {integer} XHR response status code
+ * @param data
+ *            {Object} XHR response data
  */
 function onUserInfoFetched(error, status, data) {
 	if (!error) {
 		guser = JSON.parse(data);
 		// log to Google Analytics event
-		_gaq.push(['_trackEvent', 'OAuth2', 'UserInfo Fetched', guser.email]);
-		console.log('UserInfo Fetched: id:' + guser.id + ' email: ' + guser.email);
+		_gaq.push([ '_trackEvent', 'OAuth2', 'UserInfo Fetched', guser.email ]);
+		console.log('UserInfo Fetched: id:' + guser.id + ' email: '
+				+ guser.email);
+		if(OAuthState == IS_ACTIVE) {
+			document.getElementById('revoke').style.display = "inline";
+		}
 	}
 }
 
-/**
- * Initialize the user identity
- */
-gidentity.getUserInfo(true, onUserInfoFetched);
 
 /**
  * Assigns OAuth2 token revoking handler to 'Revoke' link
  */
 document.addEventListener('DOMContentLoaded', function() {
-	document.getElementById('revoke').addEventListener('click',
-			gidentity.revoke, false);
+	
+	// Initialize the user identity
+	gidentity.getUserInfo(false, onUserInfoFetched);
+	
+	document.getElementById('revoke').addEventListener('click', function() {
+		gidentity.revoke(function() {
+			document.getElementById('revoke').style.display = "none";
+		});
+	}, false);
 });
