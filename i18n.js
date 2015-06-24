@@ -33,8 +33,10 @@ function i18n() {
 	var save = chrome.i18n.getMessage("save");
 	translate('save', 'value', save);
 	/*** v 1.0.9 ***/
+	/* removed at v 1.1.3
 	var list_action_choose = chrome.i18n.getMessage("list_action_choose");
 	translate('list_action_choose', 'innerHTML', list_action_choose);
+	*/
 	var list_action_select = chrome.i18n.getMessage("list_action_select");
 	translate('list_action_select', 'innerHTML', list_action_select);
 	var list_action_clear = chrome.i18n.getMessage("list_action_clear");

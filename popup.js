@@ -2,20 +2,28 @@
  * opens the save session dialog to the  user
  */
 function showSaveTab() {
-	var open = document.getElementById('open_tab');
-	open.style.display = 'none';
-	var save = document.getElementById('save_tab');
-	save.style.display = 'block';
+	// switch tabs
+	document.getElementById('open_tab').style.display = 'none';
+	document.getElementById('save_tab').style.display = 'block';
+	// highlight "save" tab
+	if(document.getElementById('open_btn').getAttribute("class") == "selected")	{
+		document.getElementById('open_btn').removeAttribute('class', 'selected');
+	}
+	document.getElementById('save_btn').setAttribute('class', 'selected');	
 }
 
 /**
  * opens the list of saved sessions dialog to the user
  */
 function showOpenTab() {
-	var open = document.getElementById('open_tab');
-	open.style.display = 'block';
-	var save = document.getElementById('save_tab');
-	save.style.display = 'none';
+	// switch tabs
+	document.getElementById('open_tab').style.display = 'block';
+	document.getElementById('save_tab').style.display = 'none';
+	// highlight "open" tab
+	document.getElementById('open_btn').setAttribute('class', 'selected');
+	if(document.getElementById('save_btn').getAttribute("class") == "selected")	{
+		document.getElementById('save_btn').removeAttribute('class', 'selected');
+	}
 }
 
 /**
@@ -75,30 +83,17 @@ function toggleSelection() {
 /**
  * assign onclick event handler to open session tab button
  */
-document.getElementById('open_btn').onclick = function() {
-	document.getElementById('open_btn').setAttribute('class', 'selected'); 
-	if(document.getElementById('save_btn').getAttribute("class") == "selected")	{
-		document.getElementById('save_btn').removeAttribute('class', 'selected'); 
-	}
-	showOpenTab();
-};
+document.getElementById('open_btn').addEventListener('click', showOpenTab, false);
 
 /**
  * assign onclick event handler to save session tab button
  */
-document.getElementById('save_btn').onclick = function() {
-	document.getElementById('save_btn').setAttribute('class', 'selected'); 
-	if(document.getElementById('open_btn').getAttribute("class") == "selected")	{
-		document.getElementById('open_btn').removeAttribute('class', 'selected'); 
-	}
-	showSaveTab();
-};
-
+document.getElementById('save_btn').addEventListener('click', showSaveTab, false);
 
 /**
  * Event listener to handle list actions: Select All, Clear Selection and Toggle Selection.
  */
-document.getElementById('list-action').onchange = function() {
+document.getElementById('list-action').addEventListener('change', function() {
 	switch(parseInt(this.options[this.selectedIndex].value)) {
 		case 1: // select all
 			selectAll();
@@ -112,7 +107,7 @@ document.getElementById('list-action').onchange = function() {
 		default: break;
 	}
 	//this.selectedIndex = 0;
-}
+}, false);
 
 
 /**

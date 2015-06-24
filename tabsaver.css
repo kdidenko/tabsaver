@@ -1,4 +1,4 @@
-body {width:360px;font-family:Verdana, Geneva, sans-serif;font-size:10pt;color:#000;margin:0px;background-color:#ffffff;/* border: 5px solid #464646; */}
+body {width:360px;font-family:Verdana, Geneva, sans-serif;font-size:10pt;color:#000;margin:0px;background-color:#ffffff;border:5px solid #464646}
 ::-webkit-scrollbar {width:10px;margin:0px}
 ::-webkit-scrollbar-thumb {background-color:#909090;border-radius:3px}
 
@@ -69,3 +69,9 @@ div.tabContent {border-top:1px solid black;border-top-left-radius:8px;border-top
 #footer span a {color:#c89544;text-decoration:none}
 #footer span a:hover {color:#f45a00}
 /*End footer*/
+
+
+/* Begin import / export */
+div.export {margin:15px auto;text-align:center}
+div.export a {font-weight:900;color:black;text-decoration:none;border-bottom:1px dotted black}
+/* End import / export */

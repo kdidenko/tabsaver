@@ -4,8 +4,9 @@
 	<title id='title'>Remember tabs</title>
 	<script type="text/javascript" src="tracking.js"></script>
 	<link type="text/css" rel="stylesheet" href="tabsaver.css">
+	<script type="text/javascript" src="identity.js"></script>
 	<script type="text/javascript" src="i18n.js"></script>
-	<script type="text/javascript" src="storage.js"></script>
+	<!-- script type="text/javascript" src="storage.js"></script-->
 	<script type="text/javascript" src="dialog.js"></script>
 </head>
 <body>
@@ -84,6 +85,13 @@
 							-->
 						<div class="sessions">
 							<ul id="stored"></ul>
+							<!-- div class="export">
+								<a href="#" id="export" title="Export Sessions">Export Sessions</a> | 
+								<a href="#" id="import" title="Import Sessions">Import Sessions</a> 
+							</div-->
+							<div class="export">
+								<a href="#" id="revoke">Revoke OAuth2 token</a>
+							</div>
 						</div>
 					</form>
 				</div>
