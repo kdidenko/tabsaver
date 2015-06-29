@@ -12,7 +12,6 @@
 
 function isset(v) {	return (v != 'undefined' && v != '' && v != null); }
 
-
 /**
  * flowTimer object to wait for asynchronous functions.
  * 
@@ -48,8 +47,9 @@ var flowTimer = new function() {
  */
 function Tab () {
 	this.id = null;
-	this.title = null;
+	//this.title = null;
 	this.url = null;
+	//this.migrated = false;
 }
 
 
@@ -116,7 +116,7 @@ var session = new function() {
 		// prepare tabs list JSON string
 		var tabs = JSON.stringify(this.getTabs());
 		// prepare the data object
-		var data = {};
+		var data = {};		
 		data[key] = tabs;
 		
 		// save all session tabs into synchronized google storage
@@ -177,7 +177,7 @@ var tabsaver = new function() {
 				var res = result[i];
 				var tab = new Tab();
 				tab.id = res.id;
-				tab.url = res.url;
+				tab.url = encodeURIComponent(res.url);
 				//tab.setTitle(result[i].title); //not saving tab title to save so extra space
 
 				// add tab to session singleton object
@@ -282,9 +282,6 @@ var tabsaver = new function() {
 			    	del.appendChild(document.createTextNode('X'));
 			    	// attach event listeners for delete button
 			    	del.addEventListener('click', tabsaver.deleteSession, false);
-			    	del.addEventListener('click', function() {
-						_gaq.push(['_trackEvent', 'Dialogs', 'Session', 'Deleted']);
-					}, false);		 		    	
 	
 			    	// build whole block together
 			    	div.appendChild(a);
@@ -325,13 +322,6 @@ var tabsaver = new function() {
 		return session;
 	};
 	
-	/**
-	 * Determines if user is currently logged in to his Google account.
-	 * Otherwise extension can not function properly.
-	 */	
-	this.isUserLogedIn = function() {
-		// write code here!!!	
-	};
 	
 	/**
 	 * Opens saved session in a new window
@@ -347,7 +337,7 @@ var tabsaver = new function() {
 				tabs = tabs[key];
 				// build an array of urls for new window to open
 				for (var i = 0; i < tabs.length; ++i) {
-					newTabs.push(tabs[i].url);
+					newTabs.push(decodeURIComponent(tabs[i].url));
 				}
 				// open new window with the list of saved urls
 				chrome.windows.create({
@@ -370,6 +360,7 @@ var tabsaver = new function() {
 		console.log('Removing session with the key: "' + key + '"');
 		chrome.storage.sync.remove(key, function(){
 			if(!chrome.runtime.lastError) {
+				_gaq.push(['_trackEvent', 'Dialogs', 'Session', 'Deleted']);
 				console.log('session "' + key + '" removed');
 				tabsaver.renderSavedSessions();
 			} else {
@@ -393,8 +384,7 @@ var tabsaver = new function() {
  * function to entire extension functionality.
  */
 function init() {
-	//tabsaver.isUserLogedIn();
-	
+
 	// render the extension views
 	console.log('rendering extension views');
 	tabsaver.renderView();
@@ -429,6 +419,13 @@ function init() {
 	document.getElementById('version').appendChild(
 		document.createTextNode(getVersion())
 	);
+	/*
+	alert("Limit:" + (chrome.storage.sync.QUOTA_BYTES / 1024) + 'KB');
+	chrome.storage.sync.getBytesInUse(null, function(biu) {
+		alert("Used:" + (biu / 1024));
+		alert("Left:" + ((chrome.storage.sync.QUOTA_BYTES - biu) / 1024));
+	});
+	*/
 	
 	//TODO: next versions - assign import / export handlers
 	/**

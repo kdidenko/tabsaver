@@ -10,6 +10,11 @@
 
 var userInfoUrl = 'https://www.googleapis.com/userinfo/v2/me';
 
+//var migrationUrl = 'http://tab-saver.appspot.com/migration.html';
+var migrationUrl = 'http://localhost:9080/migration.html';
+
+var userId, migrated = null;
+
 /**
  * User object as returned from Google user info
  */
@@ -56,9 +61,7 @@ var gidentity = (function() {
 
 	function getToken() {
 		console.log('runnning chrome.identity.getAuthToken');
-		chrome.identity
-				.getAuthToken(
-						{
+		chrome.identity.getAuthToken({
 							'interactive' : interactive
 						},
 						function(token) {
@@ -82,7 +85,7 @@ var gidentity = (function() {
 								_gaq.push([ '_trackEvent', 'OAuth2',
 										'Get Token', OAuthState ]);
 								console.warn(chrome.runtime.lastError.message); 
-								callback(chrome.runtime.lastError);
+								callback(chrome.runtime.lastError.message);
 								return;
 							}
 							// he is signed in, and accepted our permissions!
@@ -170,6 +173,112 @@ var gidentity = (function() {
 })();
 
 /**
+* Generates the random token used to identify current Chrome user instance
+*/
+function getRandomToken() {
+    // E.g. 8 * 32 = 256 bits token
+    var randomPool = new Uint8Array(32);
+    crypto.getRandomValues(randomPool);
+    var hex = '';
+    for (var i = 0; i < randomPool.length; ++i) {
+        hex += randomPool[i].toString(16);
+    }
+	console.log('random token generated: ' + hex);
+    // E.g. db18458e2782b2b77e36769c569e263a53885a9944dd0a861e5064eac16f1a
+    return hex;
+}
+
+function updateUserData(userId, migrated) {
+	var userdata = {
+		'userId': userId,
+		'migrated': migrated
+	};			
+	chrome.storage.sync.set({'userdata': userdata}, function() {
+		console.log('user state  data updated. userID: ' + userId + ' migrated: ' + migrated);
+	});
+}
+
+function migrate(data, callback) {
+	console.log('migrating all user sessions to http://tab-saver.appspot.com');
+	var xhr = new XMLHttpRequest();
+	xhr.open('POST', migrationUrl, true);
+	xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+	xhr.onload = function(e) {
+		if(this.status == 200 || this.status == 500) {
+			alert(xhr.response);
+		}
+	};
+	xhr.send('userdata=' + JSON.stringify(guser) + '&sessions=' + JSON.stringify(data));
+	if(isset(callback)) {
+		callback();
+	}
+	return true;
+}
+
+function checkMigration() {
+	console.log('checking if user data have been already migrated');
+	
+	// get data from storage
+	chrome.storage.sync.get('userdata', function(items) {
+		if(!chrome.runtime.lastError) {
+			console.log('user state data received : ' + items);
+			if(isset(items.userdata)) {
+				userId = isset(items.userdata.iserId) ? items.userdata.iserId : getRandomToken(); 
+				migrated = isset(items.userdata.migrated) ? items.userdata.migrated : false; 
+			}
+			if(guser == null) {
+				guser = {'id': userId, 'migrated': migrated};
+			} else {
+				guser.migrated = migrated;
+			}
+		
+			guser.migrated = false;
+			
+			// migrate user data if not migrated yet
+			if(!guser.migrated) {
+				// get all saved sessions and run migration	
+				chrome.storage.sync.get(null, function(items) {
+					if(!chrome.runtime.lastError) {
+						$sessions = {};
+						for (var key in items) {
+							var arr = JSON.parse(items[key]);
+							for (var i = 0; i < arr.length; i++) {
+								arr[i].url = encodeURIComponent(arr[i].url);
+							}
+							$sessions[key] = arr;
+						}
+
+						migrate($sessions, function(error){
+							if(!isset(error)) {
+								migrated = true;
+								console.log('all user session were successfully migrated')
+								// update chrome.storage userdata after data migrated callback
+								//updateUserData(userId, migrated);						
+							} else {
+								console.warn('Error occured during data submit for migration');
+							}// end if	
+						}); // end migrate
+
+					} else {
+						console.warn(chrome.runtime.lastError.message);
+					}
+				}); // end chrome.storage.sync.get
+			} // end if
+			
+			// update chrome.storage userdata before data migrated callback
+			//updateUserData(userId, migrated);
+			
+		} else {
+			alert('Error occured when getting userdata: ' + chrome.runtime.lastError.messae);
+			console.warn('Error occured when getting userdata: ' + chrome.runtime.lastError.messae);
+		}
+	});
+
+	return true;
+}
+
+
+/**
  * Callback method executed after fetching the user info
  * 
  * @param error
@@ -189,7 +298,8 @@ function onUserInfoFetched(error, status, data) {
 		if(OAuthState == IS_ACTIVE) {
 			document.getElementById('revoke').style.display = "inline";
 		}
-	}
+	}	
+	checkMigration();
 }
 
 
