@@ -14,6 +14,7 @@ function isset(v) {	return (v != 'undefined' && v != '' && v != null); }
 
 /**
  * Timer object for managing the flow when using asynchronous calls
+ * @deprecated
  */
 var timer = (function () {
 	/**
@@ -23,7 +24,7 @@ var timer = (function () {
 	/**
 	 * private default timeout for flow to wait = 5 seconds
 	 */
-	var _timeout = 10000;
+	var _timeout = 5000;
 	/**
 	 * private flag to determine if timer is running or not
 	 */
