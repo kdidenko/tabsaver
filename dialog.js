@@ -27,12 +27,14 @@ var flowTimer = new function() {
 			if(this.doAsyncWait) {
 				setTimeout(this.asyncWait, this.timeout);
 			} else {
-				this.doAsyncWait = true;
+				this.doAsyncWait = true;				
 				console.log('flowTimer stopped waiting');
+				logger.push('flowTimer stopped waiting');
 			}
 		},
 		asyncWaitStart: function() {
 			console.log('flowTimer started waiting');
+			logger.push('flowTimer started waiting');
 			this.asyncWait();
 		},
 		asyncWaitStop: function() {
@@ -111,6 +113,7 @@ var session = new function() {
 	 */
 	this.save = function(callback) {
 		console.log('prepearing JSON data to save session');
+		logger.push('prepearing JSON data to save session');
 		// set the key for identifying stored data
 		var key = this.name;
 		// prepare tabs list JSON string
@@ -121,14 +124,18 @@ var session = new function() {
 		
 		// save all session tabs into synchronized google storage
 		console.log('saving ' + this.getTabs().length + ' tabs data to chrome.storage.sync');
+		logger.push('saving ' + this.getTabs().length + ' tabs data to chrome.storage.sync');
+		
 		chrome.storage.sync.set(data, function() { // async function
 			if(!chrome.runtime.lastError) {
 				console.log('session "' + key + '" have been saved');
+				logger.push('session "' + key + '" have been saved');
 				if(isset(callback)) {
 					callback();
 				}
 			} else {
 				console.warn(chrome.runtime.lastError.message);
+				logger.push('Error: ' + chrome.runtime.lastError.message); 
 			}
 		});
 		return;
@@ -172,6 +179,7 @@ var tabsaver = new function() {
 		var list = document.getElementById('list');
 		// get the list of all opened tabs
 		chrome.tabs.query({'pinned': false}, function(result) {
+			logger.push("renderCurrentSession: " + result.length + " tabs found");
 			// populate the session with Tab objects
 			for (var i = 0; i < result.length; i++) {
 				var res = result[i];
@@ -224,7 +232,8 @@ var tabsaver = new function() {
 				li.appendChild(span);
 				list.appendChild(li);
 			};
-		});
+			logger.push("Session prepared: " + JSON.stringify(session));			
+		});		
 	};
 	
 	/**
@@ -233,6 +242,7 @@ var tabsaver = new function() {
 	this.renderSavedSessions = function() {
 		// get the list of saved session names
 		console.log('querying chrome.storage.sync for saved extension sessions');
+		logger.push('querying chrome.storage.sync for saved extension sessions');			
 		
 		chrome.storage.sync.get(null, function(items) {
 			
@@ -240,17 +250,20 @@ var tabsaver = new function() {
 			
 				var allKeys = Object.keys(items);
 			    console.log('retreived ' + allKeys.length + ' stored sessions from chrome.storage.sync');
+				logger.push('retreived ' + allKeys.length + ' stored sessions from chrome.storage.sync');
 			    
 			    var ul = document.getElementById('stored');
 			    
 			    // remove all existing nodes
 			    console.log('clearing old data from saved sessions view');
+				logger.push('clearing old data from saved sessions view');
 			    while (ul.hasChildNodes()) {
 			    	ul.removeChild(ul.lastChild);
 			    }
 			    
 			    // walk through all sessions and build the list
 			    console.log('building the fresh list of saved sessions');
+				logger.push('building the fresh list of saved sessions');
 			    
 			    for (var i = 0; i < allKeys.length; i++) {
 			    	// create list item
@@ -292,6 +305,7 @@ var tabsaver = new function() {
 			} else {
 				// error occurred when getting the storage data 
 				console.warn(chrome.runtime.lastError.message);
+				logger.push('Error: ' + chrome.runtime.lastError.message);
 			}
 		});
 	};
@@ -308,6 +322,8 @@ var tabsaver = new function() {
 			// GA tracking to Save Session Event
 			_gaq.push(['_trackEvent', 'Dialogs', 'Session', 'Saved']);
 			console.log('refreshing saved sessions view');
+			logger.push('refreshing saved sessions view');
+			
 			tabsaver.renderSavedSessions();
 			showOpenTab(); // switch to the sessions view
 			// notify user session was saved successfully
@@ -344,6 +360,7 @@ var tabsaver = new function() {
 					url: newTabs, focused: true
 				}, function() {
 					console.log('Session "' + key + '" opened');
+					logger.push('Session "' + key + '" opened');
 				});
 			}
 		});
@@ -358,10 +375,12 @@ var tabsaver = new function() {
 		var key = this.getAttribute('rel');
 		// do remove the session by key
 		console.log('Removing session with the key: "' + key + '"');
+		logger.push('Removing session with the key: "' + key + '"');
 		chrome.storage.sync.remove(key, function(){
 			if(!chrome.runtime.lastError) {
 				_gaq.push(['_trackEvent', 'Dialogs', 'Session', 'Deleted']);
 				console.log('session "' + key + '" removed');
+				logger.push('session "' + key + '" removed');
 				tabsaver.renderSavedSessions();
 			} else {
 				console.warn(chrome.runtime.lastError.message);
@@ -387,6 +406,7 @@ function init() {
 
 	// render the extension views
 	console.log('rendering extension views');
+	logger.push('rendering extension views');
 	tabsaver.renderView();
 	
 	
@@ -399,17 +419,20 @@ function init() {
 	// save button event listener
 	document.getElementById('save').addEventListener('click', function() {
 		console.log('"Save" button was clicked');
+		logger.push('"Save" button was clicked');
 		
 		// get the name of the session which will be used as a key for the storage record
 		var name = document.getElementById('inpt_name').value;
 		name = (!isset(name)) ? prompt(chrome.i18n.getMessage("sess_enter_name")): name;
 		if(!isset(name)) {
 			console.warn('session name was not entered during saving the session');
+			logger.push('Warning: session name was not entered during saving the session');
 			alert(chrome.i18n.getMessage("sess_name_required"));
 			return;
 		}
 		// save the session with name specified
 		console.log('savinng session named "' + name + '"');
+		logger.push('savinng session named "' + name + '"');
 		tabsaver.storeSession(name);
 		// reset session name field
 		document.getElementById('inpt_name').value = '';
