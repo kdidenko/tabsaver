@@ -45,8 +45,8 @@
 		"description": "Зберегти"
 	},
 	"sess_name_required": {
-		"message": "Ім'я сесії є обозязковим!",
-		"description": "Ім'я сесії є обозязковим!"
+		"message": "Ім'я сесії є обов'язковим!",
+		"description": "Ім'я сесії є обов'язковим!"
 	},
 	"sess_saved": {
 		"message": "Сесію збережено!",
