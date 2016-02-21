@@ -20,13 +20,13 @@
 	},
 
 	"title": {
-		"message": "Remember tabs",
+		"message": "Remember ks",
 		"description": "Remember tabs"
 	},
 
 	"ext_name": {
-		"message": "Tab <b>Saver</b> <i id='version'>v</i>",
-		"description": "Tab <b>Saver</b> <i id='version'>v</i>"
+		"message": "Tab<b>Saver</b> <i id='version'>v</i>",
+		"description": "Tab<b>Saver</b> <i id='version'>v</i>"
 	},
 
 	"save_btn": {

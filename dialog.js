@@ -120,6 +120,9 @@ var session = new function() {
 /**
  * Main object of extension implemented via singleton notation
  */
+/**
+ * 
+ */
 var tabsaver = new function() {
 	/**
 	 * Renders the main views of extension
