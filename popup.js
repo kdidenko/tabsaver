@@ -54,6 +54,7 @@ function selectAll() {
 		}
 	}
 }
+
 /**
  * deselects all tabs in session
  */

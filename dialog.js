@@ -13,36 +13,6 @@
 function isset(v) {	return (v != undefined && v != '' && v != null); }
 
 /**
- * flowTimer object to wait for asynchronous functions.
- * 
- * Usage:
- * flowTimer.asyncWaitStart() - to start waiting for asynchronous function
- * flowTimer.asyncWaitStop()  - to stop waiting
- */
-var flowTimer = new function() {
-	return {
-		doAsyncWait: true,
-		timeout: 500,
-		asyncWait: function() {
-			if(this.doAsyncWait) {
-				setTimeout(this.asyncWait, this.timeout);
-			} else {
-				this.doAsyncWait = true;
-				console.log('flowTimer stopped waiting');
-			}
-		},
-		asyncWaitStart: function() {
-			console.log('flowTimer started waiting');
-			this.asyncWait();
-		},
-		asyncWaitStop: function() {
-			this.doAsyncWait = false;
-		}
-	}
-};
-
-
-/**
  * Tab object definition
  */
 function Tab () {
