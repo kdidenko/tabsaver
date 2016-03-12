@@ -1,16 +1,16 @@
 {
 	"appName": {
-		"message": "Tab Saver",
-		"description": "Tab Saver as displayed in the web store."
+		"message": "TabSaver",
+		"description": "TabSaver as displayed in the web store."
 	},
 	"appDesc": {
-		"message": "Diese Extension speichert geöffnete Tabs um Sie nach einem Neustart des Browsers wieder zu öffnen.", 
-    	"description": "Diese Extension speichert geöffnete Tabs um Sie nach einem Neustart des Browsers wieder zu öffnen."
+		"message": "Diese Extension speichert geöffnete Tabs um Sie nach einem Neustart des Browsers wieder zu öffnen.",
+		"description": "Diese Extension speichert geöffnete Tabs um Sie nach einem Neustart des Browsers wieder zu öffnen."
     		
 	},
 	"appDescShort": {
-		"message": "Tab Saver", 
-    	"description": "Tab Saver"
+		"message": "TabSaver",
+		"description": "TabSaver"
     		
 	},
 	"defTitle": {

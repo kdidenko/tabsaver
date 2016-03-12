@@ -1,15 +1,15 @@
 {
 	"appName": {
-		"message": "Tab Saver",
-		"description": "Tab Saver как отображается на Google Web Store"
+		"message": "TabSaver",
+		"description": "TabSaver как отображается на Google Web Store"
 	},
 	"appDesc": {
 		"message": "Это расширение позволит Вам восстановить сохранённые сессии после перезапуска браузера", 
 		"description": "Это расширение позволит Вам восстановить сохранённые сессии после перезапуска браузера"	
 	},
 	"appDescShort": {
-		"message": "Tab Saver", 
-    	"description": "Tab Saver"
+		"message": "TabSaver",
+		"description": "TabSaver"
     		
 	},
 	"defTitle": {

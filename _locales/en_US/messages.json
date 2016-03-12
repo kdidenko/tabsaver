@@ -1,24 +1,24 @@
 {
 	"appName": {
-		"message": "Tab Saver",
-		"description": "Tab Saver as displayed in the web store."
+		"message": "TabSaver",
+		"description": "TabSaver as displayed in the web store."
 	},
 	"appDesc": {
 		"message": "This extension stores opened tabs to reopen after browser restart.", 
 		"description": "This extension stores opened tabs to reopen after browser restart."	
 	},
 	"appDescShort": {
-		"message": "Tab Saver", 
-    	"description": "Tab Saver"
+		"message": "TabSaver",
+		"description": "TabSaver"
     		
 	},
 	"defTitle": {
-		"message": "Tab Saver Dialog", 
-		"description": "Opens the Tab Saver Dialog"	
+		"message": "TabSaver Dialog",
+		"description": "Opens the TabSaver Dialog"	
 	},
 	"title": {
-		"message": "Remember tabs", 
-		"description": "Remember tabs"	
+		"message": "Remember tabs",
+		"description": "Remember tabs"
 	},
 	"ext_name": {
 		"message": "Tab <b>Saver</b> <i id='version'>v</i>",

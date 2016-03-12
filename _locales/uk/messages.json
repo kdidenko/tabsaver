@@ -1,15 +1,15 @@
 {
 	"appName": {
-		"message": "Tab Saver",
-		"description": "Tab Saver як відображено на Google Web Store"
+		"message": "TabSaver",
+		"description": "TabSaver як відображено на Google Web Store"
 	},
 	"appDesc": {
 		"message": "Це розширення дозволить Вам відновити збережені закладки після перезапуску браузера", 
 		"description": "Це розширення дозволить Вам відновити збережені закладки після перезапуску браузера"	
 	},
 	"appDescShort": {
-		"message": "Tab Saver", 
-    	"description": "Tab Saver"
+		"message": "TabSaver",
+		"description": "TabSaver"
     		
 	},
 	"defTitle": {

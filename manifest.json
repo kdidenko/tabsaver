@@ -5,8 +5,8 @@
 	"description": "__MSG_appDesc__",
 	"short_name": "__MSG_appDescShort__",
 	"default_locale": "en",
-	"version": "1.1.8",
-	"content_security_policy": "script-src 'self' https://ssl.google-analytics.com https://stats.g.doubleclick.net; object-src 'self'", 
+	"version": "1.1.9",
+	"content_security_policy": "script-src 'self' https://ssl.google-analytics.com https://stats.g.doubleclick.net https://ajax.googleapis.com; object-src 'self'",
 	"permissions": [
 		"identity",
 		"tabs", 

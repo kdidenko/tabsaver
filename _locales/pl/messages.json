@@ -1,20 +1,20 @@
 {
 	"appName": {
-		"message": "Tab Saver",
-		"description": "Tab Saver, jak wyświetlane w sklepie internetowym."
+		"message": "TabSaver",
+		"description": "TabSaver, jak wyświetlane w sklepie internetowym."
 	},
 	"appDesc": {
 		"message": "To rozszerzenie sklepy otwarte karty do ponownego otwarcia po ponownym uruchomieniu przeglądarki.", 
 		"description": "To rozszerzenie sklepy otwarte karty do ponownego otwarcia po ponownym uruchomieniu przeglądarki."	
 	},
 	"appDescShort": {
-		"message": "Tab Saver", 
-    	"description": "Tab Saver"
+		"message": "TabSaver",
+		"description": "TabSaver"
     		
 	},
 	"defTitle": {
-		"message": "Tab Saver Dialog", 
-		"description": "Opens the Tab Saver Dialog"	
+		"message": "TabSaver Dialog",
+		"description": "Opens the TabSaver Dialog"	
 	},
 	"title": {
 		"message": "Zapamiętaj tabs", 
