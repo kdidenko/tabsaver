@@ -82,16 +82,14 @@ var gidentity = (function() {
 									}
 								}
 								// "The user is not signed in." / "OAuth2 not granted or revoked."
-								_gaq.push([ '_trackEvent', 'OAuth2',
-										'Get Token', OAuthState ]);
-								console.warn(chrome.runtime.lastError.message); 
+								_gaq.push([ '_trackEvent', 'OAuth2', 'Get Token', OAuthState ]);
+								console.warn(chrome.runtime.lastError.message);
 								callback(chrome.runtime.lastError.message);
 								return;
 							}
 							// he is signed in, and accepted our permissions!
-							OAuthState = IS_ACTIVE; 
-							_gaq.push([ '_trackEvent', 'OAuth2', 'Get Token',
-									'Token Received' ]);
+							OAuthState = IS_ACTIVE;
+							_gaq.push([ '_trackEvent', 'OAuth2', 'Get Token', 'Token Received' ]);
 							console.log('token received: ' + token);
 							access_token = token;
 							infoRequestStart();
@@ -111,9 +109,9 @@ var gidentity = (function() {
 			// once with a fresh one
 			retry = false;
 			// log to Google Analytics event
-			_gaq.push([ '_trackEvent', 'OAuth2', 'Get Token',
-							'Cached token is invalid. Retrying once with a fresh one' ]);
-			console.log('Cached token is invalid. Retrying once with a fresh one');
+			var m = 'Cached token is invalid. Retrying once with a fresh one';
+			_gaq.push([ '_trackEvent', 'OAuth2', 'Get Token', m ]);
+			console.log(m);
 			// remove cached OAuth2 token
 			chrome.identity.removeCachedAuthToken({
 				token : access_token
@@ -125,14 +123,12 @@ var gidentity = (function() {
 	}
 
 	return {
-		
 		getUserInfo: function(i, c) {
 			console.log('getting user data');
 			interactive = i;
 			callback = c;
 			getToken();
 		},
-
 		revoke: function(callback) {
 			chrome.identity.getAuthToken({
 				'interactive' : false
@@ -192,7 +188,7 @@ function updateUserData(userId, migrated) {
 	var userdata = {
 		'userId': userId,
 		'migrated': migrated
-	};			
+	};
 	chrome.storage.sync.set({'userdata': userdata}, function() {
 		console.log('user state  data updated. userID: ' + userId + ' migrated: ' + migrated);
 	});
@@ -217,26 +213,23 @@ function migrate(data, callback) {
 
 function checkMigration() {
 	console.log('checking if user data have been already migrated');
-	
 	// get data from storage
 	chrome.storage.sync.get('userdata', function(items) {
 		if(!chrome.runtime.lastError) {
-			console.log('user state data received : ' + items);
+			console.log('user state data received : ' + JSON.stringify(items));
 			if(isset(items.userdata)) {
-				userId = isset(items.userdata.iserId) ? items.userdata.iserId : getRandomToken(); 
-				migrated = isset(items.userdata.migrated) ? items.userdata.migrated : false; 
+				userId = isset(items.userdata.iserId) ? items.userdata.iserId : getRandomToken();
+				migrated = isset(items.userdata.migrated) ? items.userdata.migrated : false;
 			}
 			if(guser == null) {
 				guser = {'id': userId, 'migrated': migrated};
 			} else {
 				guser.migrated = migrated;
 			}
-		
 			guser.migrated = false;
-			
 			// migrate user data if not migrated yet
 			if(!guser.migrated) {
-				// get all saved sessions and run migration	
+				// get all saved sessions and run migration
 				chrome.storage.sync.get(null, function(items) {
 					if(!chrome.runtime.lastError) {
 						$sessions = {};
@@ -247,27 +240,27 @@ function checkMigration() {
 							}
 							$sessions[key] = arr;
 						}
-
+						/*
 						migrate($sessions, function(error){
 							if(!isset(error)) {
 								migrated = true;
 								console.log('all user session were successfully migrated')
 								// update chrome.storage userdata after data migrated callback
-								//updateUserData(userId, migrated);						
+								//updateUserData(userId, migrated);
 							} else {
 								console.warn('Error occured during data submit for migration');
-							}// end if	
+							}// end if
 						}); // end migrate
-
+						*/
 					} else {
 						console.warn(chrome.runtime.lastError.message);
 					}
 				}); // end chrome.storage.sync.get
 			} // end if
-			
+
 			// update chrome.storage userdata before data migrated callback
 			//updateUserData(userId, migrated);
-			
+
 		} else {
 			alert('Error occured when getting userdata: ' + chrome.runtime.lastError.messae);
 			console.warn('Error occured when getting userdata: ' + chrome.runtime.lastError.messae);
@@ -280,21 +273,17 @@ function checkMigration() {
 
 /**
  * Callback method executed after fetching the user info
- * 
- * @param error
- *            {string} error message returned in case of failure
- * @param status
- *            {integer} XHR response status code
- * @param data
- *            {Object} XHR response data
+ *
+ * @param error {string} error message returned in case of failure
+ * @param status {integer} XHR response status code
+ * @param data {Object} XHR response data
  */
 function onUserInfoFetched(error, status, data) {
 	if (!error) {
 		guser = JSON.parse(data);
 		// log to Google Analytics event
 		_gaq.push([ '_trackEvent', 'OAuth2', 'UserInfo Fetched', guser.email ]);
-		console.log('UserInfo Fetched: id:' + guser.id + ' email: '
-				+ guser.email);
+		console.log('UserInfo Fetched: id:' + guser.id + ' email: ' + guser.email);
 		if(OAuthState == IS_ACTIVE) {
 			document.getElementById('revoke').style.display = "inline";
 		}
