@@ -125,14 +125,12 @@ var gidentity = (function() {
 	}
 
 	return {
-		
 		getUserInfo: function(i, c) {
 			console.log('getting user data');
 			interactive = i;
 			callback = c;
 			getToken();
 		},
-
 		revoke: function(callback) {
 			chrome.identity.getAuthToken({
 				'interactive' : false
@@ -217,11 +215,10 @@ function migrate(data, callback) {
 
 function checkMigration() {
 	console.log('checking if user data have been already migrated');
-	
 	// get data from storage
 	chrome.storage.sync.get('userdata', function(items) {
 		if(!chrome.runtime.lastError) {
-			console.log('user state data received : ' + items);
+			console.log('user state data received : ' + JSON.stringify(items));
 			if(isset(items.userdata)) {
 				userId = isset(items.userdata.iserId) ? items.userdata.iserId : getRandomToken(); 
 				migrated = isset(items.userdata.migrated) ? items.userdata.migrated : false; 
@@ -231,9 +228,7 @@ function checkMigration() {
 			} else {
 				guser.migrated = migrated;
 			}
-		
 			guser.migrated = false;
-			
 			// migrate user data if not migrated yet
 			if(!guser.migrated) {
 				// get all saved sessions and run migration	
@@ -247,7 +242,7 @@ function checkMigration() {
 							}
 							$sessions[key] = arr;
 						}
-
+						/*
 						migrate($sessions, function(error){
 							if(!isset(error)) {
 								migrated = true;
@@ -258,7 +253,7 @@ function checkMigration() {
 								console.warn('Error occured during data submit for migration');
 							}// end if	
 						}); // end migrate
-
+						*/
 					} else {
 						console.warn(chrome.runtime.lastError.message);
 					}
