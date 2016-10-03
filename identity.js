@@ -82,16 +82,14 @@ var gidentity = (function() {
 									}
 								}
 								// "The user is not signed in." / "OAuth2 not granted or revoked."
-								_gaq.push([ '_trackEvent', 'OAuth2',
-										'Get Token', OAuthState ]);
+								_gaq.push([ '_trackEvent', 'OAuth2', 'Get Token', OAuthState ]);
 								console.warn(chrome.runtime.lastError.message); 
 								callback(chrome.runtime.lastError.message);
 								return;
 							}
 							// he is signed in, and accepted our permissions!
 							OAuthState = IS_ACTIVE; 
-							_gaq.push([ '_trackEvent', 'OAuth2', 'Get Token',
-									'Token Received' ]);
+							_gaq.push([ '_trackEvent', 'OAuth2', 'Get Token', 'Token Received' ]);
 							console.log('token received: ' + token);
 							access_token = token;
 							infoRequestStart();
@@ -111,9 +109,9 @@ var gidentity = (function() {
 			// once with a fresh one
 			retry = false;
 			// log to Google Analytics event
-			_gaq.push([ '_trackEvent', 'OAuth2', 'Get Token',
-							'Cached token is invalid. Retrying once with a fresh one' ]);
-			console.log('Cached token is invalid. Retrying once with a fresh one');
+			var m = 'Cached token is invalid. Retrying once with a fresh one';
+			_gaq.push([ '_trackEvent', 'OAuth2', 'Get Token', m ]);
+			console.log(m);
 			// remove cached OAuth2 token
 			chrome.identity.removeCachedAuthToken({
 				token : access_token
@@ -276,20 +274,16 @@ function checkMigration() {
 /**
  * Callback method executed after fetching the user info
  * 
- * @param error
- *            {string} error message returned in case of failure
- * @param status
- *            {integer} XHR response status code
- * @param data
- *            {Object} XHR response data
+ * @param error {string} error message returned in case of failure
+ * @param status {integer} XHR response status code
+ * @param data {Object} XHR response data
  */
 function onUserInfoFetched(error, status, data) {
 	if (!error) {
 		guser = JSON.parse(data);
 		// log to Google Analytics event
 		_gaq.push([ '_trackEvent', 'OAuth2', 'UserInfo Fetched', guser.email ]);
-		console.log('UserInfo Fetched: id:' + guser.id + ' email: '
-				+ guser.email);
+		console.log('UserInfo Fetched: id:' + guser.id + ' email: ' + guser.email);
 		if(OAuthState == IS_ACTIVE) {
 			document.getElementById('revoke').style.display = "inline";
 		}
