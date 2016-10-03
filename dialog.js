@@ -10,7 +10,7 @@
 	// 2. whenever to save pinned tabs or not
 
 
-function isset(v) {	return (v != 'undefined' && v != '' && v != null); }
+function isset(v) {	return (v != undefined && v != '' && v != null); }
 
 /**
  * flowTimer object to wait for asynchronous functions.
@@ -149,9 +149,6 @@ var session = new function() {
 
 /**
  * Main object of extension implemented via singleton notation
- */
-/**
- * 
  */
 var tabsaver = new function() {
 	/**
