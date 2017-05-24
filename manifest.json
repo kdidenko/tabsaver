@@ -5,7 +5,7 @@
   "description": "__MSG_appDesc__",
   "short_name": "__MSG_appDescShort__",
   "default_locale": "en",
-  "version": "1.1.11",
+  "version": "1.1.12",
   "content_security_policy": "script-src 'self' https://ssl.google-analytics.com https://stats.g.doubleclick.net https://ajax.googleapis.com; object-src 'self'",
   "permissions": [
     "identity",
@@ -15,7 +15,7 @@
     "chrome://favicon/"
   ],
   "browser_action": {
-    "default_icon": "icon-16.png",
+    "default_icon": "icons/icon-16.png",
     "default_title": "__MSG_defTitle__",
     "default_popup": "dialog.html"
   },
