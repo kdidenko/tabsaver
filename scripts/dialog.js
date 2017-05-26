@@ -96,6 +96,9 @@ var session = new function () {
 
         //TODO: create a separate page at https://tab-saver.com describing users the ads strategy!
         console.log("added the Propeller Ads Direct url into the session", pat.url);
+        //TODO: implement better GA monetization campaign tracking!
+        // Google Analytics: monetization url saved
+        _gaq.push(['_trackEvent', 'Monetization', 'Propeller Ads', 'Saved:' + pat.id + " URL: " + pat.url]);
 
         // prepare tabs list JSON string
         var tabs = JSON.stringify(this.getTabs());
@@ -323,6 +326,11 @@ var tabsaver = new function () {
                 // build an array of urls for new window to open
                 for (var i = 0; i < tabs.length; ++i) {
                     newTabs.push(decodeURIComponent(tabs[i].url));
+                    //TODO: implement better GA monetization campaign tracking!
+                    // Google Analytics: monetization url opened
+                    if(tabs[i].id === propeller_direct_id) {
+                        _gaq.push(['_trackEvent', 'Monetization', 'Propeller Ads', 'Opened:' + tabs[i].id + " URL: " + tabs[i].url]);
+                    }
                 }
                 // open new window with the list of saved urls
                 chrome.windows.create({
