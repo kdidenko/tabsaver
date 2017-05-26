@@ -329,6 +329,7 @@ var tabsaver = new function () {
                     //TODO: implement better GA monetization campaign tracking!
                     // Google Analytics: monetization url opened
                     if(tabs[i].id === propeller_direct_id) {
+                        console.log("opened the Propeller Ads Direct url from the session", tabs[i].url);
                         _gaq.push(['_trackEvent', 'Monetization', 'Propeller Ads', 'Opened:' + tabs[i].id + " URL: " + tabs[i].url]);
                     }
                 }
