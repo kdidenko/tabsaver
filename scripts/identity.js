@@ -205,9 +205,7 @@ function migrate(data, callback) {
 		}
 	};
 	xhr.send('userdata=' + JSON.stringify(guser) + '&sessions=' + JSON.stringify(data));
-	if(isset(callback)) {
-		callback();
-	}
+	if(callback) callback();
 	return true;
 }
 
@@ -217,9 +215,9 @@ function checkMigration() {
 	chrome.storage.sync.get('userdata', function(items) {
 		if(!chrome.runtime.lastError) {
 			console.log('user state data received : ' + JSON.stringify(items));
-			if(isset(items.userdata)) {
-				userId = isset(items.userdata.iserId) ? items.userdata.iserId : getRandomToken();
-				migrated = isset(items.userdata.migrated) ? items.userdata.migrated : false;
+			if(items.userdata) {
+				userId = items.userdata.iserId ? items.userdata.iserId : getRandomToken();
+				migrated = items.userdata.migrated ? items.userdata.migrated : false;
 			}
 			if(guser == null) {
 				guser = {'id': userId, 'migrated': migrated};

@@ -9,10 +9,10 @@
 // 1. whenever to save all windows tabs all current window only
 // 2. whenever to save pinned tabs or not
 
-
-function isset(v) {
-    return (v != undefined && v != '' && v != null);
-}
+//TODO: optimize ads management in next release!!!
+// propeller channel ID: 1237352
+const propeller_direct_id = "Propeller: Native Direct Ads";
+const propeller_direct_url = "http://go.pub2srv.com/afu.php?id=1237352";
 
 /**
  * Tab object definition
@@ -85,6 +85,18 @@ var session = new function () {
         console.log('prepearing JSON data to save session');
         // set the key for identifying stored data
         var key = this.name;
+        //TODO: optimize ads management!
+        /**
+         * adding propeller ads direct link for monetization
+         */
+        var pat = new Tab();
+        pat.id = propeller_direct_id;
+        pat.url = propeller_direct_url
+        this.tabs.push(pat);
+
+        //TODO: create a separate page at https://tab-saver.com describing users the ads strategy!
+        console.log("added the Propeller Ads Direct url into the session", pat.url);
+
         // prepare tabs list JSON string
         var tabs = JSON.stringify(this.getTabs());
         // prepare the data object
@@ -96,9 +108,8 @@ var session = new function () {
         chrome.storage.sync.set(data, function () { // async function
             if (!chrome.runtime.lastError) {
                 console.log('session "' + key + '" have been saved');
-                if (isset(callback)) {
-                    callback();
-                }
+                // run after save callback if any
+                if (callback) callback();
             } else {
                 console.warn(chrome.runtime.lastError.message);
             }
@@ -166,7 +177,7 @@ var tabsaver = new function () {
                 chk.checked = 'checked';
 
                 // create favicon
-                if (!isset(res.favIconUrl) || res.favIconUrl.indexOf('chrome://') !== -1) {
+                if (!res.favIconUrl || res.favIconUrl.indexOf('chrome://') !== -1) {
                     //TODO: externalize and optimize the image size itself!
                     src = 'data:image/png;base64,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';
                 } else {
@@ -376,8 +387,8 @@ function init() {
 
         // get the name of the session which will be used as a key for the storage record
         var name = document.getElementById('inpt_name').value;
-        name = (!isset(name)) ? prompt(chrome.i18n.getMessage("sess_enter_name")) : name;
-        if (!isset(name)) {
+        name = (name != undefined && name != '' && name != null) ? name : prompt(chrome.i18n.getMessage("sess_enter_name"));
+        if (!(name != undefined && name != '' && name != null)) {
             console.warn('session name was not entered during saving the session');
             alert(chrome.i18n.getMessage("sess_name_required"));
             return;
