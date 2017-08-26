@@ -1,13 +1,41 @@
 /**
- * Copyright (c) 2015 Kostyantyn Didenko. All rights reserved. This software is
- * distributed under GNU GPL v2 licence For feedbacks and questions please feel
- * free to contact me at kdidenko@gmail.com
- * 
- * @author Kostyantyn Didenko
- * @since v 1.1.4
- * @see https://developer.chrome.com/apps/app_identity
+ * @namespace tabsaver/oauth2 
+ *
+ * @module: OAuth2
+ * @file: Module for Authenticating users and Authorizing application 
+ * client through Google OAuth2 API using Google Chrome Account.
+ *
+ * @author: Kostyantyn Didenko
+ * @email: kdidenko@gmail.com
+ * @url: https://tab-saver.com
+ * @version: v1.1.14
+ * @since: v1.1.4
+ *
+ * @licence: This software is distributed under GNU GPL v3 licence 
+ * For feedbacks and questions please feel free to visit the official 
+ * source code repository Issues Tracking system at 
+ * @see: https://github.com/kdidenko/tabsaver/issues
+ *
+ * @see: https://developer.chrome.com/apps/app_identity
+ * @see: https://support.google.com/accounts/answer/1721977
  */
 
+ /**
+  *  A service class for all OAuth2 related functionality intended to 
+  *  become the semi-standalone OAuth2 module initially running as a 
+  *  BackgroundPage to procure the Authentication results even before 
+  *  the actual user interaction with Extension's UI
+  *  
+  *  @class: OAuth2
+  *  @since: v1.1.14
+  */
+const OAuth2 = {__proto__ = null};
+
+/**
+ *  @TODO: migrate all functionality from below code into OAuth2 service.
+ *  @due: v1.1.15
+ */
+ 
 var userInfoUrl = 'https://www.googleapis.com/userinfo/v2/me';
 
 //var migrationUrl = 'http://tab-saver.appspot.com/migration.html';
@@ -285,19 +313,22 @@ function onUserInfoFetched(error, status, data) {
 		if(OAuthState == IS_ACTIVE) {
 			document.getElementById('revoke').style.display = "inline";
 		}
-	}	
+	}
 	checkMigration();
 }
 
 
 /**
- * Assigns OAuth2 token revoking handler to 'Revoke' link
+ * Init() section:
+ *
+ * 1. Initialize OAuth2 Authentication process to obtain the Google API Access Token
+ * 2. Retrieve the End-User's account Info
+ * 3. Assign OAuth2 token revocation handler to extension's UI 'Revoke' button
  */
 document.addEventListener('DOMContentLoaded', function() {
-	
-	// Initialize the user identity
+	// initialize the user identity
 	gidentity.getUserInfo(false, onUserInfoFetched);
-	
+	// assign access token handler element
 	document.getElementById('revoke').addEventListener('click', function() {
 		gidentity.revoke(function() {
 			document.getElementById('revoke').style.display = "none";
