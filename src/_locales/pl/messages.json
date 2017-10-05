@@ -1,0 +1,75 @@
+{
+	"appName": {
+		"message": "TabSaver",
+		"description": "TabSaver, jak wyświetlane w sklepie internetowym."
+	},
+	"appDesc": {
+		"message": "To rozszerzenie sklepy otwarte karty do ponownego otwarcia po ponownym uruchomieniu przeglądarki.", 
+		"description": "To rozszerzenie sklepy otwarte karty do ponownego otwarcia po ponownym uruchomieniu przeglądarki."	
+	},
+	"appDescShort": {
+		"message": "TabSaver",
+		"description": "TabSaver"
+    		
+	},
+	"defTitle": {
+		"message": "TabSaver Dialog",
+		"description": "Opens the TabSaver Dialog"	
+	},
+	"title": {
+		"message": "Zapamiętaj tabs", 
+		"description": "Zapamiętaj tabs"	
+	},
+	"ext_name": {
+		"message": "Tab <b>Saver</b> <i id='version'>v</i>",
+		"description": "Tab <b>Saver</b> <i id='version'>v</i>"
+	},
+	"save_btn": {
+		"message": "Save",
+		"description": "Save tab caption"
+	},
+	"open_btn": {
+		"message": "Open",
+		"description": "Open"
+	},
+	"ssn_sess": {
+		"message": "Session <span class='white' id='ssn_name'>Name</span>",
+		"description": "Session <span class='white' id='ssn_name'>Name</span>"
+	},
+	"inpt_name": {
+		"message": "Enter the name to save the session",
+		"description": "Enter the name to save the session"
+	},
+	"save": {
+		"message": "Save",
+		"description": "Save"
+	},
+	"sess_name_required": {
+		"message": "Session name is required!",
+		"description": "Session name is required!"
+	},
+	"sess_saved": {
+		"message": "Session saved",
+		"description": "Session saved"
+	},
+	"sess_enter_name": {
+		"message": "Enter the session name",
+		"description": "Enter the session name"
+	},
+	"list_action_choose": {
+		"message": "Choose an action",
+		"description": "Choose an action"
+	},
+	"list_action_select": {
+		"message": "- Select All",
+		"description": "- Select All"
+	},
+	"list_action_clear": {
+		"message": "- Clear Selection",
+		"description": "- Clear Selection"
+	},
+	"list_action_toggle": {
+		"message": "- Toggle Selection",
+		"description": "- Toggle Selection"
+	}
+}
