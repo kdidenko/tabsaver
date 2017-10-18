@@ -1,0 +1,75 @@
+{
+	"appName": {
+		"message": "TabSaver",
+		"description": "TabSaver как отображается на Google Web Store"
+	},
+	"appDesc": {
+		"message": "Это расширение позволит Вам восстановить сохранённые сессии после перезапуска браузера", 
+		"description": "Это расширение позволит Вам восстановить сохранённые сессии после перезапуска браузера"	
+	},
+	"appDescShort": {
+		"message": "TabSaver",
+		"description": "TabSaver"
+    		
+	},
+	"defTitle": {
+		"message": "Сохранение закладок", 
+		"description": "Сохранение закладок"	
+	},
+	"title": {
+		"message": "Сохранить закладки", 
+		"description": "Сохранить закладки"	
+	},
+	"ext_name": {
+		"message": "Tab <b>Saver</b> <i id='version'>v</i>",
+		"description": "Tab <b>Saver</b> <i id='version'>v</i>"
+	},
+	"save_btn": {
+		"message": "Сохранить",
+		"description": "Сохранить"
+	},
+	"open_btn": {
+		"message": "Открыть",
+		"description": "Открыть"
+	},
+	"ssn_sess": {
+		"message": "Имя <span class='white' id='ssn_name'>Сессии</span>",
+		"description": "Имя <span class='white' id='ssn_name'>Сессии</span>"
+	},
+	"inpt_name": {
+		"message": "Введите имя, чтобы сохранить сессию",
+		"description": "Введите имя, чтобы сохранить сессию"
+	},
+	"save": {
+		"message": "Сохранить",
+		"description": "Сохранить"
+	},
+	"sess_name_required": {
+		"message": "Имя сессии является обязательным!",
+		"description": "Имя сессии является обязательным"
+	},
+	"sess_saved": {
+		"message": "Сессия сохранена!",
+		"description": "Сессия сохранена!"
+	},
+	"sess_enter_name": {
+		"message": "Введите имя сессии",
+		"description": "Введите имя сессии"
+	},
+	"list_action_choose": {
+		"message": "Выберите действие",
+		"description": "Выберите действие"
+	},
+	"list_action_select": {
+		"message": "- Отметить всё",
+		"description": "- Отметить всё"
+	},
+	"list_action_clear": {
+		"message": "- Очистить выбраное",
+		"description": "- Очистить выбраное"
+	},
+	"list_action_toggle": {
+		"message": "- Поменять выбранное",
+		"description": "- Поменять выбранное"
+	}
+}

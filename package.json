@@ -1,0 +1,40 @@
+{
+  "name": "tabsaver",
+  "version": "1.1.14",
+  "description": "TabSaver is a Google Chrome Extension that stores opened tabs in session to reopen them after browser restart",
+  "main": "dialog.js",
+  "scripts": {
+    "test": "tests/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kdidenko/tabsaver.git"
+  },
+  "keywords": [
+    "TabSaver",
+    "Google",
+    "Chrome",
+    "Extension",
+    "Session",
+    "Tabs",
+    "Manager",
+    "Store",
+    "Save",
+    "Re-open",
+    "Browser"
+  ],
+  "author": "Kostyantyn Didenko <kdidenko@ito-global.com> (https://tab-saver.com/)",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/kdidenko/tabsaver/issues"
+  },
+  "homepage": "https://tab-saver.com/",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-connect": "^5.0.0",
+    "gulp-sass": "^3.1.0",
+    "gulp-uglify": "^3.0.0",
+    "gulp-util": "^3.0.8"
+  }
+}
