@@ -1,36 +1,40 @@
 {
-  "name": "tabsaver",
-  "version": "1.1.14",
-  "description": "TabSaver is a Google Chrome extension for selectively `Saving` opened browser `Tabs` for later.",
-  "main": "src/scripts/dialog.js",
-  "scripts": {
-    "test": "tests/index.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/kdidenko/tabsaver.git"
-  },
-  "keywords": [
-    "TabSaver",
-    "Google",
-    "Chrome",
-    "Session",
-    "Tabs",
-    "Saving",
-    "Extension"
-  ],
-  "author": "Kostyantyn Didenko <kdidenko@ito-global.com> (https://tab-saver.com/)",
-  "license": "GPL-3.0",
-  "bugs": {
-    "url": "https://github.com/kdidenko/tabsaver/issues"
-  },
-  "homepage": "https://tab-saver.com/",
-  "devDependencies": {
-    "grunt": "^1.0.1",
-    "grunt-contrib-cssmin": "^2.2.1",
-    "grunt-contrib-jshint": "^1.1.0",
-    "grunt-contrib-uglify": "^3.1.0",
-    "grunt-contrib-watch": "^1.0.0",
-    "jshint-stylish": "^2.2.1"
-  }
+	"name": "tabsaver",
+	"version": "1.1.14",
+	"description": "TabSaver is a browser extension for quickly saving lists of opened tabs to reopen them after browser restart",
+	"main": "src/scripts/dialog.js",
+	"scripts": {
+		"test": "node test/index.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/kdidenko/tabsaver.git"
+	},
+	"keywords": [
+		"TabSaver",
+		"Google",
+		"Chrome",
+		"Session",
+		"History",
+		"Browser",
+		"Tabs",
+		"Saving",
+		"Restoring",
+		"Extension"
+	],
+	"author": "Kostyantyn Didenko <kdidenko@ito-global.com> (https://tab-saver.com/)",
+	"license": "GPL-3.0",
+	"bugs": {
+		"url": "https://github.com/kdidenko/tabsaver/issues"
+	},
+	"homepage": "https://tab-saver.com/",
+	"devDependencies": {
+		"grunt": "^1.0.2",
+		"grunt-contrib-cssmin": "^2.2.1",
+		"grunt-contrib-jshint": "^1.1.0",
+		"grunt-contrib-uglify": "^3.3.0",
+		"grunt-contrib-watch": "^1.0.0",
+		"jshint-stylish": "^2.2.1"
+	},
+	"private": true
 }
