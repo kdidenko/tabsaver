@@ -1,11 +1,9 @@
-# TabSaver v 1
+# TabSaver v1.x
 
-TabSaver is an ultimate tool for storing and managing Google Chrome's session before closing the browser.
+TabSaver is a simple and lightweight Google Chrome Extension for saving, synchronizing and restoring the list of opened tabs before closing the browser.
 
-Have you ever faced a mess of tabs in your browser? Do you want to save a lot of information and at the same time not to spend much time? TabSaver will help you to save the Google Chrome session.
+Have you ever faced a mess of tabs in your browser? Do you want to browse a lot of information and at the same time not to spend much time organizing your browser tabs? TabSaver will help you!
+ 
+TabSaver - is an easy way to sort, select and save the list of opened browser tabs instantly. There’s no need to be annoyed with too many confusing tabs in Chrome. You can shut down the browser at any time and continue your navigation from anywhere - saved tabs will be simply re-opened. One click will save your minutes every day which you can use later in a better way.
 
-TabSaver. Easy and simple way to sort and save Google Chrome session tabs in the browser. There’s no need to be annoyed with too many confusing tabs in Chrome. You can shut down the browser at any time and access it from anywhere. 
-
-The same tabs will be re-opened. One click will save one hour every day which you can use in a better way. Designed by a group of ITO-Global experts with a simple and user-friendly interface with makes it easy to save Chrome sessions. 
-
-It converts all your tabs into the list by only clicking one button. Now, it’s easily to work with a lot of information in browser and not thinking about it sudden disappearance.
+Designed by a group of Free Open Source Software enthusiasts, with a simple and user-friendly interface in mind, making it extremely easy to save your browsing sessions by converting all your opened tabs into the synchronizable list with just one click. Now, it is easy to work with a lot of information in a browser without worry about its persistence.

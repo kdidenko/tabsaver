@@ -5,8 +5,8 @@
 	},
 
 	"appDesc": {
-		"message": "This extension stores opened tabs to reopen after browser restart.",
-		"description": "This extension stores opened tabs to reopen after browser restart."
+		"message": "This extension stores the list of opened tabs to reopen them after browser restart.",
+		"description": "This extension stores the list of opened tabs to reopen them after browser restart."
 	},
 
 	"appDescShort": {
