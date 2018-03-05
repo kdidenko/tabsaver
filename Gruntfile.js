@@ -1,46 +1,71 @@
 /**
- * @file Gruntfile.js
- *
- */
-
-/** global includes */
-
-const stylish = require('jshint-stylish'); // let's do it with style ;)
+ * A module that defines the configuration and registers both 
+ * defaults and globals for the project's Grunt tasks
+ * @module tabsaver/grunt
+ * @author Kostyanntyn Didenko <kdidenko@ito-global.com>
+ * @since 1.2.0
+ * 
+ * @todo: 1. define module:tabsaver.grunt.uglify tasks using `grunt-contrib-uglify` plug-in 
+ * @todo: 2. define module:tabsaver.grunt.watch tasks using `grunt-contrib-watch` plug-in 
+ * @todo: 3. define module:tabsaver.grunt.cssmin tasks using `grunt-contrib-cssmin` plug-in 
+ * */
 
 /**
- * Grunt tasks export
- * @param {Object} grunt itself
+ * @function
+ * Creates the initial Grunt configuration, loads the rest of Grunt tasks
+ * and registeres Grunt's global tasks 
+ * 
+ * @param {IGrunt} grunt - instance itself
+ * @returns void
  */
 module.exports = function (grunt) {
+	'use strict';
 
-    /**
-     * Main Grunt configuration initialization function
-     * @param {Object} grunt config
-     */
-    grunt.initConfig({
-
-        // read the project details and settings
-        package: grunt.file.readJSON('package.json'),
-
-        /** all Grunt configuration goes here */
-
-        /** JSHint task configuration */
-        jshint: {
-            /** linting options */
-            options: {
-                reporter: stylish,
-                esversion: 6
-            },
-
-            /** lint the Gruntfile and all JavaScripts from extension */
-            build: ['Gruntfile.js', 'src/**/*.js']
-        }
-
-    });
-
-    /** Loading all required Grunt plugins */
-    grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-cssmin');
-    grunt.loadNpmTasks('grunt-contrib-watch');
+	// init Grunt project configuration
+	grunt.initConfig({
+		/** 
+		 * @readonly 
+		 * read and store the project's metadata and settings
+		 */
+		package: grunt.file.readJSON('package.json'),
+		/** 
+		 * @readonly
+		 * @enum enumerates main paths for current project
+		 */
+		paths: {
+			src: 'src/',
+			build: 'build/',
+			tests: 'test/',
+			grunt: {
+				file: 'Gruntfile.js',
+				tasks: 'grunt/'
+			}
+		},
+		/** 
+		 * @readonly
+		 * @enum enumerates main matching globs for project files
+		 */
+		globs: {
+			js: {
+				flat: '*.js',
+				deep: '**/*.js'
+			}
+		}
+	});
+	/** 
+	 * @external 
+	 * load and marge external Grunt tasks into current configuration
+	 */
+	grunt.loadTasks(grunt.config('paths.grunt.tasks'));
+	/**
+	 * @global
+	 * register Grunt project global tasks
+	 * @requires module:tabsaver.grunt.jshint 
+	 */
+	grunt.registerTask('build', ['jshint-all']);
+	/**
+	 * @default
+	 * register Grunt project default task 
+	 */
+	grunt.registerTask('default', ['build']);
 };

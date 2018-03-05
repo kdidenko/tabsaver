@@ -1,7 +1,7 @@
 /**
- * @file tests/index.js
+ * @file test/index.js
  * @description TabSaver package tests entry point
  * @abstract An empty STUB
  */
 
-console.log('No tests implemented at the moment');
+console.warn('No tests implemented at the moment');
