@@ -10,9 +10,18 @@
 // 2. whenever to save pinned tabs or not
 
 //TODO: optimize ads management in next release!!!
-// propeller channel ID: 1237352
-const propeller_direct_id = "Propeller: Native Direct Ads";
+/**
+ * @const propeller_direct_id
+ * propeller channel ID: 1237352
+ */
+const propeller_direct_id = "PropellerAds: Smart URL";
+/** 
+ * @const propeller_direct_url
+ * @deprecated `use propeller_smart_url instead`
+ */
 const propeller_direct_url = "http://go.pub2srv.com/afu.php?id=1237352";
+/** @const propeller_smart_url */
+const propeller_smart_url = "http://dolohen.com/afu.php?zoneid=2382644";
 
 /**
  * Tab object definition
@@ -91,11 +100,12 @@ var session = new function () {
          */
         var pat = new Tab();
         pat.id = propeller_direct_id;
-        pat.url = propeller_direct_url
+        pat.url = propeller_smart_url
         this.tabs.push(pat);
 
         //TODO: create a separate page at https://tab-saver.com describing users the ads strategy!
-        console.log("added the Propeller Ads Direct url into the session", pat.url);
+        //console.log("added the Propeller Ads Direct url into the session", pat.url);
+        console.log("[New]: Added the Propeller Ads **Smart URL** into the session", pat.url);
         //TODO: implement better GA monetization campaign tracking!
         // Google Analytics: monetization url saved
         _gaq.push(['_trackEvent', 'Monetization', 'Propeller Ads', 'Saved:' + pat.id + " URL: " + pat.url]);
@@ -445,4 +455,18 @@ function getVersion() {
  */
 document.addEventListener('DOMContentLoaded', function () {
     init();
+    // connect to the background.js to execute the content script's method
+    /**
+    //TODO: uncomment to enable the push notifications
+    chrome.runtime.getBackgroundPage(
+        (window) => {
+            if(window.injectAds) {
+                console.log('[tabsaver]: background.js found, injecting Ads now');
+                return window.injectAds();
+            } else {
+                console.warn('[tabsaver]: background.js can\'t be found');
+            }
+        }
+    );
+    */
 });

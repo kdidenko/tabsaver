@@ -1,4 +1,6 @@
-# TabSaver v 1.1.14
+
+ TabSaver v 1.2.1
+
 
 TabSaver is a simple and lightweight Google Chrome Extension for saving, synchronizing and restoring the list of opened tabs before closing the browser.
 
